@@ -1,0 +1,9 @@
+
+.navbarContainer a {
+  font-weight: 500;
+  margin-right: 40px;
+}
+
+a.chakra-link {
+  font-weight: 800;
+}

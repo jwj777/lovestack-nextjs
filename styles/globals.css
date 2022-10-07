@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Manrope:wght@300;400;500;600;700;800&display=swap');
+
+html,
+body {
+  padding: 0;
+  margin: 100px;
+  color: blue;
+}
+
+h2.chakra-heading {
+  font-size: 15rem;
+}
+
+a {
+  /* color: inherit;*/
+  color: #541221 !important;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
