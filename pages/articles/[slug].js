@@ -24,7 +24,7 @@ export default function Article({ article }) {
 }
 
 export async function getStaticPaths() {
-  const res = await fetch('http://localhost:1337/api/articles');
+  const res = await fetch(process.env.API_URL + '/api/articles');
   const data = await res.json();
   const articles = data.data;
 
@@ -42,7 +42,7 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }) {
   const { slug } = params;
 
-  const res = await fetch(`http://localhost:1337/api/articles?filters[Slug]=${slug}`);
+  const res = await fetch(process.env.API_URL + `/api/articles?filters[Slug]=${slug}`);
   const res2 = await res.json();
   const res3 = res2.data;
   const article = res3[0].attributes;

@@ -17,7 +17,7 @@ export default function Article({ product }) {
 }
 
 export async function getStaticPaths() {
-  const res = await fetch('http://localhost:1337/api/products');
+  const res = await fetch(process.env.API_URL + '/api/products');
   const data = await res.json();
   const products = data.data;
   console.log(products);

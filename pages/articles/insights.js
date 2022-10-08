@@ -38,14 +38,14 @@ export default function Insights({ articles, insightsPage }) {
 export async function getStaticProps() {
 
   // get posts from strapi
-  const resarticles = await fetch('http://localhost:1337/api/articles');
+  const resarticles = await fetch(process.env.API_URL + '/api/articles');
   const resarticlesjson = await resarticles.json();
   const articles = resarticlesjson.data;
 
   console.log(articles);
 
   // get home page from strapi
-  const reshome = await fetch('http://localhost:1337/api/pages/1')
+  const reshome = await fetch(process.env.API_URL + '/api/pages/1')
   const reshomejson = await reshome.json();
   const insightsPage = reshomejson.data;
 

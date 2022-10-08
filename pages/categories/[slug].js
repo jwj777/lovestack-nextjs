@@ -57,7 +57,7 @@ export default function Category({ category, companies, categories }) {
 export async function getStaticPaths() {
 
   // get category slugs
-  const res = await fetch('http://localhost:1337/api/product-categories');
+  const res = await fetch(process.env.API_URL + '/api/product-categories');
   const data = await res.json();
   const categories = data.data;
 

@@ -40,7 +40,7 @@ export default function Categories({ categories }) {
 export async function getStaticProps() {
 
   // get categories from strapi
-  const rescat = await fetch('http://localhost:1337/api/product-categories');
+  const rescat = await fetch(process.env.API_URL + '/api/product-categories');
   const rescatjson = await rescat.json();
   const categories = rescatjson.data;
 

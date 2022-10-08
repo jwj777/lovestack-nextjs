@@ -36,7 +36,7 @@ export default function Company({ company }) {
 
 
 export async function getStaticPaths() {
-  const res = await fetch('http://localhost:1337/api/companies');
+  const res = await fetch(process.env.API_URL + '/api/companies');
   const data = await res.json();
   const companies = data.data;
 
@@ -55,7 +55,7 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }) {
   const { slug } = params;
 
-  const res = await fetch(`http://localhost:1337/api/companies?filters[Slug]=${slug}&populate=*`);
+  const res = await fetch(process.env.API_URL + `/api/companies?filters[Slug]=${slug}&populate=*`);
   const res2 = await res.json();
   const res3 = res2.data;
   const company = res3[0].attributes;
