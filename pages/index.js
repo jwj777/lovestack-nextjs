@@ -25,8 +25,6 @@ export async function getStaticProps() {
   const resarticlesjson = await resarticles.json();
   const articles = resarticlesjson.data;
 
-  console.log(process.env.API_URL);
-
   // get home page from strapi
   const reshome = await fetch(process.env.API_URL + '/api/homepages/1')
   const reshomejson = await reshome.json();
