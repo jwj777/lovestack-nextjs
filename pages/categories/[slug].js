@@ -29,12 +29,12 @@ export default function Category({ category, companies, categories }) {
           {companies.map((item, index) => {
 
           return (
-            <Box key={item.attributes.slug} className="companyItem" flex='1' mb={8}>
+            <Box key={item.attributes.websiteUrl} className="companyItem" flex='1' mb={8}>
               <LinkBox>
                 <LinkOverlay href={"/companies/" + item.attributes.slug}>
                   <Image alt={item.attributes.websiteUrl + 'homepage screenshot'}>{item.attributes.mainImage}</Image>
                   <Heading as='h2' size='lg' mb={2}>
-                  <div>{item.attributes.companyName}</div> 
+                    <div>{item.attributes.companyName}</div> 
                   </Heading>
                   <Text>{item.attributes.websiteUrl}</Text>
                 </LinkOverlay>
