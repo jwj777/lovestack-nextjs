@@ -2,8 +2,6 @@ import Head from 'next/head'
 import { Flex, Heading, Container, Text } from '@chakra-ui/react'
 import Layout from '../components/layout/Layout'
 import Header from '/components/header/Header'
-import headCustom from '../components/headCustom'
-
 
 export default function Home({ homepage }) {
   return (

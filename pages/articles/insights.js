@@ -13,7 +13,6 @@ export default function Insights({ articles, insightsPage }) {
     </Flex>
 
     <Flex className="articlesContainer" flexDirection='column' maxW='container.lg'>
-
       {articles.map((item, index) => {
         return (
         <Box key={item.id} className="articleItem" flex='1' mb={8}>
