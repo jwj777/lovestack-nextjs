@@ -16,27 +16,27 @@ export default function Category({ category, companies, categories }) {
       <Flex alignItems="center" justifyContent="center">
       <Container maxW={'7xl'} flex={'1 0 auto'} py={8} mt={20}>
       
-        <Heading fontSize='4xl' mb={1}>{category.name}</Heading>
-        <Text fontSize='lg' mt={4} mb={8}>{category.desription}</Text>
+        <Heading fontSize='4xl' mb={1}>{/**category.name**/}</Heading>
+        <Text fontSize='lg' mt={4} mb={8}>{/**category.desription**/}</Text>
 
         <Box className="categoryItem" flex='1' mb={8}>
 
           <Heading textStyle='h2' as='h2' size='lg' mb={2}>
-            {category.attributes.name}
+            {/**category.attributes.name**/}
           </Heading>
 
 
           {companies.map((item, index) => {
 
           return (
-            <Box className="companyItem" flex='1' mb={8}>
+            <Box key={item.id} className="companyItem" flex='1' mb={8}>
               <LinkBox>
-                <LinkOverlay href={"/companies/" + item.attributes.slug}>
-                  <Image>{item.attributes.mainImage}</Image>
+                <LinkOverlay href={"/companies/" + item.data.attributes.slug}>
+                  <Image>{item.data.attributes.mainImage}</Image>
                   <Heading as='h2' size='lg' mb={2}>
-                  <div>{item.attributes.companyName}</div> 
+                  <div>{item.data.attributes.companyName}</div> 
                   </Heading>
-                  <Text>{item.attributes.websiteUrl}</Text>
+                  <Text>{item.data.attributes.websiteUrl}</Text>
                 </LinkOverlay>
               </LinkBox>
             </Box>
@@ -78,11 +78,9 @@ export async function getStaticProps({ params }) {
   const { slug } = params;
 
   // get category
-  const res = await fetch(`http://localhost:1337/api/product-categories?[Slug]=${slug}`);
+  const res = await fetch(process.env.API_URL + `/api/product-categories?[Slug]=${slug}`);
   const res2 = await res.json();
-  const res3 = res2.data;
-  const category = res3[0];
-
+  const category = res2[0];
 
   const matchingCategories = await fetchAPI("/product-categories", {
     filters: { slug: params.slug },
@@ -97,7 +95,7 @@ export async function getStaticProps({ params }) {
   const allCategories = await fetchAPI("/product-categories");
 
   // get companies
-  const rescompanies = await fetch(`http://localhost:1337/api/companies?filters[product_categories][slug][$eq]=${slug}`);
+  const rescompanies = await fetch(process.env.API_URL + `/api/companies?filters[product_categories][slug][$eq]=${slug}`);
   const rescompaniesjson = await rescompanies.json();
   const companies = rescompaniesjson.data;
  
