@@ -12,17 +12,17 @@ export default function Insights({ articles, insightsPage }) {
       <Heading fontSize='6xl' mb={3}>{insightsPage.attributes.headline}</Heading>
     </Flex>
 
-    <Flex classsName="articlesContainer" flexDirection='column' maxW='container.lg'>
+    <Flex className="articlesContainer" flexDirection='column' maxW='container.lg'>
 
       {articles.map((item, index) => {
         return (
-        <Box className="articleItem" flex='1' mb={8}>
+        <Box key={item.id} className="articleItem" flex='1' mb={8}>
           <LinkBox>
-            <LinkOverlay href={"/articles/" + item.attributes.slug}>
+            <LinkOverlay href={"/articles/" + item.data.attributes.slug}>
               <Heading as='h2' size='lg' mb={2}>
                 {item.attributes.Headline}
               </Heading>
-              <Text className="subheading">{item.attributes.Subheading}</Text>
+              <Text className="subheading">{item.data.attributes.Subheading}</Text>
             </LinkOverlay>
           </LinkBox>
         </Box>
@@ -39,10 +39,10 @@ export async function getStaticProps() {
 
   // get posts from strapi
   const resarticles = await fetch(process.env.API_URL + '/api/articles');
-  const resarticlesjson = await resarticles.json();
-  const articles = resarticlesjson.data;
+  const articles = await resarticles.json();
+  // const articles = resarticlesjson.data;
 
-  console.log(articles);
+  console.log(resarticlesjson);
 
   // get home page from strapi
   const reshome = await fetch(process.env.API_URL + '/api/pages/1')
