@@ -13,7 +13,7 @@ export default function Categories({ categories }) {
     {categories.map((item, index) => {
       return (
 
-      <Box key={index} className="categoryItem" flex='1' mb={8}>
+      <Box key={item.attributes.slug} className="categoryItem" flex='1' mb={8}>
         <LinkBox>
           <LinkOverlay href={"/categories/" + item.attributes.slug}>
             <Heading textStyle='h2' as='h2' size='lg' mb={2}>
