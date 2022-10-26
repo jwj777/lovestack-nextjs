@@ -29,14 +29,14 @@ export default function Category({ category, companies, categories }) {
           {companies.map((item, index) => {
 
           return (
-            <Box key={item.id} className="companyItem" flex='1' mb={8}>
+            <Box key={index} className="companyItem" flex='1' mb={8}>
               <LinkBox>
-                <LinkOverlay href={"/companies/" + item.data.attributes.slug}>
-                  <Image>{item.data.attributes.mainImage}</Image>
+                <LinkOverlay href={"/companies/" + item.attributes.slug}>
+                  <Image>{item.attributes.mainImage}</Image>
                   <Heading as='h2' size='lg' mb={2}>
-                  <div>{item.data.attributes.companyName}</div> 
+                  <div>{item.attributes.companyName}</div> 
                   </Heading>
-                  <Text>{item.data.attributes.websiteUrl}</Text>
+                  <Text>{item.attributes.websiteUrl}</Text>
                 </LinkOverlay>
               </LinkBox>
             </Box>
@@ -58,8 +58,8 @@ export async function getStaticPaths() {
 
   // get category slugs
   const res = await fetch(process.env.API_URL + '/api/product-categories');
-  const data = await res.json();
-  const categories = data.data;
+  const resjson = await res.json();
+  const categories = resjson.data;
 
   console.log(categories)
 

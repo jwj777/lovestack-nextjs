@@ -13,14 +13,14 @@ export default function Categories({ categories }) {
     {categories.map((item, index) => {
       return (
 
-      <Box key={item.id} className="categoryItem" flex='1' mb={8}>
+      <Box key={index} className="categoryItem" flex='1' mb={8}>
         <LinkBox>
-          <LinkOverlay href={"/categories/" + item.data.attributes.slug}>
+          <LinkOverlay href={"/categories/" + item.attributes.slug}>
             <Heading textStyle='h2' as='h2' size='lg' mb={2}>
-              {item.data.attributes.name}
+              {item.attributes.name}
             </Heading>
             <Text 
-              className="subheading">{item.data.attributes.description}
+              className="subheading">{item.attributes.description}
             </Text>
           </LinkOverlay>
         </LinkBox>
@@ -41,7 +41,8 @@ export async function getStaticProps() {
 
   // get categories from strapi
   const rescat = await fetch(process.env.API_URL + '/api/product-categories');
-  const categories = await rescat.json();
+  const rescatjson = await rescat.json();
+  const categories = rescatjson.data;
 
   return {
     props: { categories },
