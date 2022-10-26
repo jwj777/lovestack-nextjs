@@ -28,6 +28,8 @@ export async function getStaticPaths() {
   const data = await res.json();
   const articles = data.data;
 
+  console.log(articles)
+
   const paths = articles.map((item, index) => ( {
     params: {slug: item.attributes.slug}
   }));
@@ -46,6 +48,7 @@ export async function getStaticProps({ params }) {
   const res2 = await res.json();
   const res3 = res2.data;
   const article = res3[0].attributes;
+
   console.log(article);
 
   return {
