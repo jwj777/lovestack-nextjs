@@ -3,12 +3,16 @@ import Layout from '/components/layout/Layout'
 import Header from '/components/header/Header'
 
 
-export default function Categories({ categories }) {
+export default function Categories({ catPage, categories }) {
   return (
 
   <Layout>
 
     <Flex classsName="categoriesContainer" flexDirection='column' maxW='container.lg'>
+
+    <Flex h={120}>
+      <Heading fontSize='6xl' mb={3}>{catPage.attributes.Headline}</Heading>
+    </Flex>
 
     {categories.map((item, index) => {
       return (
@@ -39,13 +43,18 @@ export default function Categories({ categories }) {
 
 export async function getStaticProps() {
 
+  // get categories page data
+  const res = await fetch('https://oyster-app-z9jps.ondigitalocean.app/api/pages?filters[slug]=categories');
+  const catpagejson = await res.json();
+  const catPage = catpagejson.data[0];
+
   // get categories from strapi
   const rescat = await fetch(process.env.API_URL + '/api/product-categories');
   const rescatjson = await rescat.json();
   const categories = rescatjson.data;
 
   return {
-    props: { categories },
+    props: { catPage, categories },
   };
 
 }

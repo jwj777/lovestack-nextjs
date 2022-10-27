@@ -36,8 +36,6 @@ export async function getStaticPaths() {
   const data = await res.json();
   const companies = data.data;
 
-  console.log(companies);
-
   const paths = companies.map((item, index) => ( {
     params: {slug: item.attributes.slug}
   }));
