@@ -15,12 +15,12 @@ export default function Company({ company }) {
     <Heading fontSize='4xl' mb={1}>{company.companyName}</Heading>
     <Text fontSize='lg' mt={4} mb={8}>{company.companyDescription}</Text>  
 
-    <Image
+    {/* <Image
       boxSize='200px'
       objectFit='cover'
       src={process.env.API_URL + company.mainImage.data.attributes.url}
       alt={company.companyName + ' Website Homepage'}
-    />
+    /> */}
 
     </Container>
     </Flex>
@@ -35,6 +35,8 @@ export async function getStaticPaths() {
   const res = await fetch(process.env.API_URL + '/api/companies');
   const data = await res.json();
   const companies = data.data;
+
+  console.log(companies);
 
   const paths = companies.map((item, index) => ( {
     params: {slug: item.attributes.slug}
@@ -55,8 +57,6 @@ export async function getStaticProps({ params }) {
   const res2 = await res.json();
   const res3 = res2.data;
   const company = res3[0].attributes;
-
-  console.log(company.mainImage.data.attributes.url)
 
   return {
     props: { company },
