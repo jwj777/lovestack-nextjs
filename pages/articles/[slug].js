@@ -38,16 +38,10 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }) {
   const { slug } = params;
 
-  const res = await fetch('https://oyster-app-z9jps.ondigitalocean.app/' + `/api/articles?filters[Slug]=${slug}`);
+  const res = await fetch(process.env.API_URL + `/api/articles?filters[slug]=${slug}`);
   const res2 = await res.json();
   const res3 = res2.data;
-
-  console.log(process.env.API_URL + `/api/articles?filters[Slug]=${slug}`)
-  console.log(JSON.stringify(res));
-
   const article = res3[0].attributes;
-
-
 
   return {
     props: { article },

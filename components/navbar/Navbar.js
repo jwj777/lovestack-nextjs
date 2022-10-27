@@ -6,8 +6,8 @@ export default function Navbar() {
   return (
 
     <Flex className={styles.navbarContainer} fontSize='lg'>  
-      <Link href="/categories/categories">Categories</Link>
-      <Link href="/articles/insights">Insights</Link>
+      <Link href="/pages/categories">Categories</Link>
+      <Link href="/pages/insights">Insights</Link>
     </Flex>
 
   )
