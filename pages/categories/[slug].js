@@ -29,7 +29,7 @@ export default function Category({ category, companies, categories }) {
           {companies.map((item, index) => {
 
           return (
-            <div key={item.attributes.websiteUrl}>
+            <div key={index}>
             <Box className="companyItem" flex='1' mb={8}>
               <LinkBox>
                 <LinkOverlay href={"/companies/" + item.attributes.slug}>
