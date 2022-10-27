@@ -45,8 +45,6 @@ export async function getStaticProps() {
   const reshome = await fetch(process.env.API_URL + '/api/pages/1')
   const reshomejson = await reshome.json();
   const insightsPage = reshomejson.data;
-
-  console.log(insightsPage);
   
   return {
     props: { articles, insightsPage },
