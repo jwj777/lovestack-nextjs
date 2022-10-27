@@ -18,13 +18,9 @@ export default function Company({ company }) {
     <Image
       boxSize='200px'
       objectFit='cover'
-      src={'http://localhost:1337' + company.mainImage.data.attributes.url}
+      src={process.env.API_URL + company.mainImage.data.attributes.url}
       alt={company.companyName + ' Website Homepage'}
     />
-
-
-   
-
 
     </Container>
     </Flex>
@@ -55,7 +51,7 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }) {
   const { slug } = params;
 
-  const res = await fetch(process.env.API_URL + `/api/companies?filters[Slug]=${slug}&populate=*`);
+  const res = await fetch(process.env.API_URL + `/api/companies?filters[slug]=${slug}&populate=*`);
   const res2 = await res.json();
   const res3 = res2.data;
   const company = res3[0].attributes;
