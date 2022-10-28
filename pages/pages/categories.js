@@ -44,12 +44,12 @@ export default function Categories({ catPage, categories }) {
 export async function getStaticProps() {
 
   // get categories page data
-  const res = await fetch('https://oyster-app-z9jps.ondigitalocean.app/api/pages?filters[slug]=categories');
+  const res = await fetch(`${process.env.API_URL}/api/pages?filters[slug]=categories`);
   const catpagejson = await res.json();
   const catPage = catpagejson.data[0];
 
   // get categories from strapi
-  const rescat = await fetch(process.env.API_URL + '/api/product-categories');
+  const rescat = await fetch(`${process.env.API_URL}/api/product-categories`);
   const rescatjson = await rescat.json();
   const categories = rescatjson.data;
 

@@ -80,11 +80,11 @@ export async function getStaticProps({ params }) {
   const { slug } = params;
 
   // get category
-  const res = await fetch(process.env.API_URL + `/api/product-categories?[slug]=${slug}`);
+  const res = await fetch(`${process.env.API_URL}/api/product-categories?[slug]=${slug}`);
   const res2 = await res.json();
   const category = res2[0];
 
-  const matchingCategories = await fetchAPI("/product-categories", {
+  const matchingCategories = await fetchAPI(`${process.env.API_URL}/product-categories`, {
     filters: { slug: params.slug },
     populate: {
       companies: {
@@ -94,10 +94,10 @@ export async function getStaticProps({ params }) {
   });
 
 
-  const allCategories = await fetchAPI("/product-categories");
+  const allCategories = await fetchAPI(`${process.env.API_URL}/product-categories`);
 
   // get companies
-  const rescompanies = await fetch(process.env.API_URL + `/api/companies?filters[product_categories][slug][$eq]=${slug}`);
+  const rescompanies = await fetch(`${process.env.API_URL}/api/companies?filters[product_categories][slug][$eq]=${slug}`);
   const rescompaniesjson = await rescompanies.json();
   const companies = rescompaniesjson.data;
  
