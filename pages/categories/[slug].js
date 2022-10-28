@@ -16,8 +16,8 @@ export default function Category({ category, companies, categories }) {
       <Flex alignItems="center" justifyContent="center">
       <Container maxW={'7xl'} flex={'1 0 auto'} py={8} mt={20}>
       
-        <Heading fontSize='4xl' mb={1}>{/**category.name**/}</Heading>
-        <Text fontSize='lg' mt={4} mb={8}>{/**category.desription**/}</Text>
+        <Heading fontSize='4xl' mb={1}>{category.categoryName}</Heading>
+        <Text fontSize='lg' mt={4} mb={8}>{category.categoryDesription}</Text>
 
         <Box className="categoryItem" flex='1' mb={8}>
 
