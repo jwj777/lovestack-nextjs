@@ -21,10 +21,10 @@ export default function Categories({ catPage, categories }) {
         <LinkBox>
           <LinkOverlay href={"/categories/" + item.attributes.slug}>
             <Heading textStyle='h2' as='h2' size='lg' mb={2}>
-              {item.attributes.name}
+              {item.attributes.categoryName}
             </Heading>
             <Text 
-              className="subheading">{item.attributes.description}
+              className="subheading">{item.attributes.categoryDescription}
             </Text>
           </LinkOverlay>
         </LinkBox>

@@ -80,7 +80,7 @@ export async function getStaticProps({ params }) {
   const { slug } = params;
 
   // get category
-  const res = await fetch(process.env.API_URL + `/api/product-categories?[Slug]=${slug}`);
+  const res = await fetch(process.env.API_URL + `/api/product-categories?[slug]=${slug}`);
   const res2 = await res.json();
   const category = res2[0];
 
