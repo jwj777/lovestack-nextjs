@@ -1,7 +1,7 @@
 import { getStrapiMedia } from "../lib/media";
 import { Image } from '@chakra-ui/react'
 
-const mainImage = ({ image }) => {
+const webScreenshot = ({ image }) => {
   const { alternativeText, width, height } = image.data.attributes;
 
   return (
@@ -16,4 +16,4 @@ const mainImage = ({ image }) => {
   );
 };
 
-export default mainImage;
+export default webScreenshot;

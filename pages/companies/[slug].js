@@ -1,4 +1,4 @@
-import { Flex, Heading, Container, Image, Text, Link } from '@chakra-ui/react'
+import { Flex, Heading, Container, Image, Text, Link, List, UnorderedList, ListItem } from '@chakra-ui/react'
 import Header from '/components/header/Header'
 import NextImage from "next/image";
 
@@ -9,18 +9,39 @@ export default function Company({ company }) {
 
     <Header />
 
-    <Flex alignItems="center" justifyContent="center">
+    <Flex alignItems='center' justifyContent='center'>
     <Container maxW={'7xl'} flex={'1 0 auto'} py={8} mt={20}>
-    
-    <Heading fontSize='4xl' mb={1}>{company.companyName}</Heading>
-    <Text fontSize='lg' mt={4} mb={8}>{company.companyDescription}</Text>  
 
-    {/* <Image
-      boxSize='200px'
-      objectFit='cover'
-      src={process.env.API_URL + company.mainImage.data.attributes.url}
-      alt={company.companyName + ' Website Homepage'}
-    /> */}
+      <Flex alignItems="center" justifyContent="flex-start">
+        <Container>
+          <Image
+            boxSize='200px'
+            objectFit='cover'
+            src={process.env.API_URL + company.webScreenshot.data[0].attributes.url}
+            alt={company.companyName + ' Website Homepage'}
+          />
+        </Container>
+        <Container>
+          <Heading fontSize='4xl' mb={1}>{company.companyName}</Heading>
+        </Container>
+      </Flex>
+
+      <Text fontSize='lg' mt={4} mb={8}>{company.companyDescription}</Text>
+
+      <UnorderedList className="company-links">
+        <ListItem>
+          <Text mt={4} mb={8}>Headquarters: {company.Heardquarters}</Text>
+        </ListItem>
+        <ListItem>
+          <Text mt={4} mb={8}>Year Founded: {company.yearFounded}</Text>
+        </ListItem>
+        <ListItem>
+          <Link href={company.companyUrl}>{company.companyUrl}</Link>
+        </ListItem>
+        <ListItem>
+          <Link href={'https://www.twitter.com/' + company.companyUrl}>{'twitter.com/' + company.twitterHandle}</Link>
+        </ListItem>
+      </UnorderedList>
 
     </Container>
     </Flex>
