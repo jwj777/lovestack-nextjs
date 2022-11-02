@@ -30,10 +30,10 @@ export default function Company({ company }) {
 
       <UnorderedList className="company-links">
         <ListItem>
-          <Text mt={4} mb={8}>Headquarters: {company.Heardquarters}</Text>
+          {/* <Text mt={4} mb={8}>Headquarters: {company.Heardquarters}</Text> */}
         </ListItem>
         <ListItem>
-          <Text mt={4} mb={8}>Year Founded: {company.yearFounded}</Text>
+          {/* <Text mt={4} mb={8}>Year Founded: {company.yearFounded}</Text> */}
         </ListItem>
         <ListItem>
           <Link href={company.companyUrl}>{company.companyUrl}</Link>
