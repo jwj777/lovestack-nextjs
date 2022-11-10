@@ -1,8 +1,7 @@
 import { Flex, Heading, Container, Image, Text, Link, Icon, Box, UnorderedList, ListItem } from '@chakra-ui/react'
 import { FaGlobe, FaTwitter } from 'react-icons/fa'
 import Header from '/components/header/Header'
-import renderField from '../../components/utils/renderField'
-import CompanyHeading from '../../components/company/companies-heading'
+import CompanyHeading from '../../components/company/company-header'
 
 export default function Company({ company }) {
   return (

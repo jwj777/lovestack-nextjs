@@ -5,7 +5,7 @@ import styles from './company-item.module.css'
 
 function CompanyItem({ company, index }) {
   return (
-  <Box key={company + '__' + index} className={styles.companyItem}>
+  <Box key={company.attributes.name + '__' + index} className={styles.companyItem}>
     <LinkBox>
       <LinkOverlay href={"/companies/" + company.attributes.slug} display="flex" alignItems="center">
         <Image 
