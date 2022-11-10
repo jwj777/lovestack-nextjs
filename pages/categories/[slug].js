@@ -19,7 +19,7 @@ export default function Category({ category, companies }) {
         <Box className="row-list company-list" flex='1' mb={8}>
         {companies.map((item, index) => {
           return (
-            <CompanyItem company={item} />
+            <CompanyItem key={index} company={item} />
           );
         })}
         </Box>
