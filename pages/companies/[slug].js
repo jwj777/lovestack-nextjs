@@ -2,6 +2,7 @@ import { Flex, Heading, Container, Image, Text, Link, Icon, Box, UnorderedList, 
 import { FaGlobe, FaTwitter } from 'react-icons/fa'
 import Header from '/components/header/Header'
 import renderField from '../../components/utils/renderField'
+import CompanyHeading from '../../components/company/companies-heading'
 
 export default function Company({ company }) {
   return (
@@ -13,18 +14,7 @@ export default function Company({ company }) {
       <Flex alignItems='center' justifyContent='center'>
         <Container className="main-content" maxW={'7xl'} flex={'1 0 auto'}>
 
-          <Box display="flex" alignItems="center" justifyContent="flex-start" mb={8}>
-              <Image
-                htmlWidth={'220px'}
-                src={company.webScreenshot.data[0].attributes.url}
-                alt={company.companyName + ' Website Homepage'}
-              />
-              <Box pl={8}>
-                <Heading fontSize='4xl'>{renderField(company.companyName)}</Heading>
-                <Text>Categories: {company.product_categories.data[0].attributes.categoryName}</Text>
-                <Text>{company.Headquarters}</Text>
-              </Box>
-          </Box>
+          <CompanyHeading company={company} />
 
           <Box display="flex">
 
