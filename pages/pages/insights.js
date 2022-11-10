@@ -12,7 +12,7 @@ export default function Insights({ articles, insightsPage }) {
       <Heading fontSize='6xl' mb={3}>{insightsPage.attributes.Headline}</Heading>
     </Flex>
 
-    <Flex className="articlesContainer" flexDirection='column' maxW='container.lg'>
+    <Flex className="articles-container" flexDirection='column' maxW='container.lg'>
       {articles.map((item, index) => {
         return (
         <Box key={index} className="articleItem" flex='1' mb={8}>

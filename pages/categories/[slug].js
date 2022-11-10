@@ -1,7 +1,7 @@
 import { Flex, Heading, Box, Image, LinkBox, LinkOverlay, Container, Text, Link } from '@chakra-ui/react'
 import Header from '/components/header/Header'
-import Companies from '../../components/companies';
-import Company from '../companies/[slug]';
+import CompanyItem from '../../components/company-item/company-item'
+
 
 export default function Category({ category, companies }) {
     return (
@@ -11,36 +11,21 @@ export default function Category({ category, companies }) {
       <Header />
 
       <Flex alignItems="center" justifyContent="center">
-      <Container maxW={'7xl'} flex={'1 0 auto'} py={8} mt={20}>
+      <Container className="main-content" maxW={'7xl'} flex={'1 0 auto'}>
       
         <Heading fontSize='4xl' mb={1}>{category.attributes.categoryName}</Heading>
         <Text fontSize='lg' mt={4} mb={8}>{category.attributes.categoryDesription}</Text>
 
-        <Box className="categoryItem" flex='1' mb={8}>
-
-          {companies.map((item, index) => {
-
+        <Box className="row-list company-list" flex='1' mb={8}>
+        {companies.map((item, index) => {
           return (
-            <div key={index}>
-            <Box className="companyItem" flex='1' mb={8}>
-              <LinkBox>
-                <LinkOverlay href={"/companies/" + item.attributes.slug}>
-                  <Image alt={item.attributes.websiteUrl + 'homepage screenshot'}>{item.attributes.mainImage}</Image>
-                  <Heading as='h2' size='lg' mb={2}>
-                    <div>{item.attributes.companyName}</div> 
-                  </Heading>
-                  <Text>{item.attributes.websiteUrl}</Text>
-                </LinkOverlay>
-              </LinkBox>
-            </Box>
-            </div>
-            );
-          })}
-
+            <CompanyItem company={item} />
+          );
+        })}
         </Box>
 
-
       </Container>
+
       </Flex>
 
       </div>
@@ -76,7 +61,7 @@ export async function getStaticProps({ params }) {
   const category = res3[0];
   
   // get companies
-  const rescompanies = await fetch(process.env.API_URL + `/api/companies?filters[product_categories][slug][$eq]=${slug}`);
+  const rescompanies = await fetch(process.env.API_URL + `/api/companies?filters[product_categories][slug][$eq]=${slug}&populate=*`);
   const rescompaniesjson = await rescompanies.json();
   const companies = rescompaniesjson.data;
 

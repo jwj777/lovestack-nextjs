@@ -8,7 +8,7 @@ export default function Categories({ catPage, categories }) {
 
   <Layout>
 
-    <Flex classsName="categoriesContainer" flexDirection='column' maxW='container.lg'>
+    <Flex className="categories-container" flexDirection='column' maxW='container.lg'>
 
     <Flex h={120}>
       <Heading fontSize='6xl' mb={3}>{catPage.attributes.Headline}</Heading>
@@ -17,7 +17,7 @@ export default function Categories({ catPage, categories }) {
     {categories.map((item, index) => {
       return (
 
-      <Box key={item.attributes.slug} className="categoryItem" flex='1' mb={8}>
+      <Box key={item.attributes.slug} className="category-item" flex='1' mb={8}>
         <LinkBox>
           <LinkOverlay href={"/categories/" + item.attributes.slug}>
             <Heading textStyle='h2' as='h2' size='lg' mb={2}>

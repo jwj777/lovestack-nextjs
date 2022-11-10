@@ -1,50 +1,50 @@
-import { Flex, Heading, Container, Image, Text, Link, List, UnorderedList, ListItem } from '@chakra-ui/react'
+import { Flex, Heading, Container, Image, Text, Link, Icon, Box, UnorderedList, ListItem } from '@chakra-ui/react'
+import { FaGlobe, FaTwitter } from 'react-icons/fa'
 import Header from '/components/header/Header'
-import NextImage from "next/image";
+import renderField from '../../components/utils/renderField'
 
 export default function Company({ company }) {
   return (
 
     <div>
 
-    <Header />
+      <Header />
 
-    <Flex alignItems='center' justifyContent='center'>
-    <Container maxW={'7xl'} flex={'1 0 auto'} py={8} mt={20}>
+      <Flex alignItems='center' justifyContent='center'>
+        <Container className="main-content" maxW={'7xl'} flex={'1 0 auto'}>
 
-      <Flex alignItems="center" justifyContent="flex-start">
-        <Container>
-          <Image
-            boxSize='200px'
-            objectFit='cover'
-            src={process.env.API_URL + company.webScreenshot.data[0].attributes.url}
-            alt={company.companyName + ' Website Homepage'}
-          />
-        </Container>
-        <Container>
-          <Heading fontSize='4xl' mb={1}>{company.companyName}</Heading>
+          <Box display="flex" alignItems="center" justifyContent="flex-start" mb={8}>
+              <Image
+                htmlWidth={'220px'}
+                src={company.webScreenshot.data[0].attributes.url}
+                alt={company.companyName + ' Website Homepage'}
+              />
+              <Box pl={8}>
+                <Heading fontSize='4xl'>{renderField(company.companyName)}</Heading>
+                <Text>Categories: {company.product_categories.data[0].attributes.categoryName}</Text>
+                <Text>{company.Headquarters}</Text>
+              </Box>
+          </Box>
+
+          <Box display="flex">
+
+          <Text fontSize='md' mt={4} mb={8} pr={16}>{company.companyDescription}</Text>
+
+          <UnorderedList className="company-links" styleType={'none'}>
+            <ListItem display="flex" alignItems="center">
+              <Icon as={FaGlobe} w={4} h={4} mr={2}></Icon>
+              <Link href={company.companyUrl}>{company.companyUrl}</Link>
+            </ListItem>
+            <ListItem>
+              <Icon as={FaTwitter} w={4} h={4} mr={2}></Icon>
+              <Link href={'https://www.twitter.com/' + company.twitterHandle}>{'twitter.com/' + company.twitterHandle}</Link>
+            </ListItem>
+          </UnorderedList>
+
+          </Box>
+
         </Container>
       </Flex>
-
-      <Text fontSize='lg' mt={4} mb={8}>{company.companyDescription}</Text>
-
-      <UnorderedList className="company-links">
-        <ListItem>
-          {/* <Text mt={4} mb={8}>Headquarters: {company.Heardquarters}</Text> */}
-        </ListItem>
-        <ListItem>
-          {/* <Text mt={4} mb={8}>Year Founded: {company.yearFounded}</Text> */}
-        </ListItem>
-        <ListItem>
-          <Link href={company.companyUrl}>{company.companyUrl}</Link>
-        </ListItem>
-        <ListItem>
-          <Link href={'https://www.twitter.com/' + company.companyUrl}>{'twitter.com/' + company.twitterHandle}</Link>
-        </ListItem>
-      </UnorderedList>
-
-    </Container>
-    </Flex>
 
     </div>
 
@@ -54,8 +54,8 @@ export default function Company({ company }) {
 
 export async function getStaticPaths() {
   const res = await fetch(process.env.API_URL + '/api/companies');
-  const data = await res.json();
-  const companies = data.data;
+  const resjson = await res.json();
+  const companies = resjson.data;
 
   const paths = companies.map((item, index) => ( {
     params: {slug: item.attributes.slug}
@@ -76,6 +76,8 @@ export async function getStaticProps({ params }) {
   const res2 = await res.json();
   const res3 = res2.data;
   const company = res3[0].attributes;
+
+  console.log(company)
 
   return {
     props: { company },

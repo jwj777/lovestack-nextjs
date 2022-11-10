@@ -113,13 +113,16 @@
   margin-left: 0.5rem;
 }
 
+.logo-stack {
+  font-weight: 700 ;
+}
+
 @media (max-width: 600px) {
   .grid {
     width: 100%;
     flex-direction: column;
   }
 }
-
 
 .divchart {
   height: 100vh;
