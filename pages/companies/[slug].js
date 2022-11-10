@@ -1,7 +1,7 @@
 import { Flex, Heading, Container, Image, Text, Link, Icon, Box, UnorderedList, ListItem } from '@chakra-ui/react'
-import { FaGlobe, FaTwitter } from 'react-icons/fa'
 import Header from '/components/header/Header'
 import CompanyHeading from '../../components/company/company-header'
+import CompanyLinks from '../../components/company/company-links'
 
 export default function Company({ company }) {
   return (
@@ -16,20 +16,8 @@ export default function Company({ company }) {
           <CompanyHeading company={company} />
 
           <Box display="flex">
-
-          <Text fontSize='md' mt={4} mb={8} pr={16}>{company.companyDescription}</Text>
-
-          <UnorderedList className="company-links" styleType={'none'}>
-            <ListItem display="flex" alignItems="center">
-              <Icon as={FaGlobe} w={4} h={4} mr={2}></Icon>
-              <Link href={company.companyUrl}>{company.companyUrl}</Link>
-            </ListItem>
-            <ListItem>
-              <Icon as={FaTwitter} w={4} h={4} mr={2}></Icon>
-              <Link href={'https://www.twitter.com/' + company.twitterHandle}>{'twitter.com/' + company.twitterHandle}</Link>
-            </ListItem>
-          </UnorderedList>
-
+            <Text fontSize='md' mt={4} mb={8} pr={16}>{company.companyDescription}</Text>
+            <CompanyLinks company={company} />
           </Box>
 
         </Container>
@@ -66,7 +54,13 @@ export async function getStaticProps({ params }) {
   const res3 = res2.data;
   const company = res3[0].attributes;
 
-  console.log(company)
+  console.log(company.product_categories.data)
+
+
+  console.log(company.product_categories.data[0] != undefined ?
+    company.product_categories.data[0].attributes.categoryName :
+    "nothing")
+
 
   return {
     props: { company },

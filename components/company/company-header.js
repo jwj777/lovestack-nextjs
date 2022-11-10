@@ -2,7 +2,6 @@ import React from "react";
 import { Heading, Image, Text, Box } from '@chakra-ui/react'
 
 const CompanyHeading = ({ company }) => {
-
   return (
 
     <Box display="flex" alignItems="center" justifyContent="flex-start" mb={8}>
@@ -19,7 +18,7 @@ const CompanyHeading = ({ company }) => {
       <Box pl={8}>
         <Heading fontSize='4xl'>{company.companyName}</Heading>
         <Text>Categories: {
-          company.product_categories.data != null ?
+          company.product_categories.data[0] != undefined ?
           company.product_categories.data[0].attributes.categoryName :
           ""
         }</Text>
@@ -28,7 +27,8 @@ const CompanyHeading = ({ company }) => {
     </Box>
 
   )
-
 }
+
+
 
 export default CompanyHeading;
