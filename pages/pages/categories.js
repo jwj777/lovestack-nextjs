@@ -17,7 +17,7 @@ export default function Categories({ catPage, categories, parent_categories, cat
     <Box class="categories-container">
       {categoryObj.map((item, index) => {
         return(
-        <CategoryItem item={item} index={index} />
+        <CategoryItem item={item} key={index} />
         )
       })}
     </Box>
