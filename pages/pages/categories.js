@@ -1,37 +1,26 @@
 import { Flex, Heading, Box, LinkBox, LinkOverlay, Text, extendTheme } from '@chakra-ui/react'
 import Layout from '/components/layout/Layout'
 import Header from '/components/header/Header'
+import CategoryItemChild from '../../components/category/category-item-child';
+import CategoryItem from '../../components/category/category-item';
 
 
-export default function Categories({ catPage, categories }) {
+export default function Categories({ catPage, categories, parent_categories, categoryObj }) {
   return (
 
   <Layout>
 
     <Flex className="categories-container" flexDirection='column' maxW='container.lg'>
 
-    <Flex h={120}>
-      <Heading fontSize='6xl' mb={3}>{catPage.attributes.Headline}</Heading>
-    </Flex>
+    <Heading as='h1' mb={12}>{catPage.attributes.Headline}</Heading>
 
-    {categories.map((item, index) => {
-      return (
-
-      <Box key={item.attributes.slug} className="category-item" flex='1' mb={8}>
-        <LinkBox>
-          <LinkOverlay href={"/categories/" + item.attributes.slug}>
-            <Heading textStyle='h2' as='h2' size='lg' mb={2}>
-              {item.attributes.categoryName}
-            </Heading>
-            <Text 
-              className="subheading">{item.attributes.categoryDescription}
-            </Text>
-          </LinkOverlay>
-        </LinkBox>
-      </Box>
-
-      );
-    })}
+    <Box class="categories-container">
+      {categoryObj.map((item, index) => {
+        return(
+        <CategoryItem item={item} />
+        )
+      })}
+    </Box>
 
     </Flex>
 
@@ -49,12 +38,74 @@ export async function getStaticProps() {
   const catPage = catpagejson.data[0];
 
   // get categories from strapi
-  const rescat = await fetch(`${process.env.API_URL}/api/product-categories`);
+  const rescat = await fetch(`${process.env.API_URL}/api/product-categories?populate=*`);
   const rescatjson = await rescat.json();
   const categories = rescatjson.data;
 
+  // get parent categories from strapi
+  const resparent = await fetch(`${process.env.API_URL}/api/product-categories?populate=*&filters[child_categories][slug][$notNull]=content`);
+  const resparentjson = await resparent.json();
+  const parent_categories = resparentjson.data;
+ 
+
+  // Check if an item is an object
+  const isObject = function(val) {
+    if (val === null) {
+      return false;
+    }
+    return (typeof val === 'object');
+  }
+
+
+
+  // Try this - add the parent category filters in the fetch sectionn .  
+
+  let parentObj = []
+  // Find objects that have child categories
+  function getChildCategories(obj) {
+    let parentItem = {}
+    let childItem = {}
+    for (let val in obj) {
+      if ((isObject(obj[val])) && (obj[val] !== undefined)) {
+        let parentAttrObj = obj[val].attributes
+        // Create Parent Object Items Here
+        parentItem['categoryNameParent'] = parentAttrObj.categoryName
+        parentItem['categorySlugParent'] = parentAttrObj.slug
+        let childCategories = []
+        for (let val in parentAttrObj) {
+          if (val == 'child_categories') {
+            parentAttrObj[val].data.map((item, index) => {
+              // Create child object items
+              childItem['categoryNameChild'] = item.attributes.categoryName
+              childItem['categorySlugChild'] = item.attributes.slug
+              // Nest childCategory in parentItem
+              childCategories.push(childItem)
+              parentItem['childCategories'] = childCategories
+              childItem = {}
+            })
+            childItem['categoryNameChild'] = null
+            childItem['categorySlugChild'] = null    
+          }        
+        }
+        parentObj.push(parentItem)
+        parentItem = {}
+      }
+    }
+    return(parentObj)
+  }
+
+  // Creat variable to use in props
+  const categoryObj = getChildCategories(parent_categories)
+
+  categoryObj.map((item, index) => {
+    // console.log(item)
+    item.childCategories.map((item, index) => {
+      console.log(item.categoryNameChild)
+    })
+  })
+
   return {
-    props: { catPage, categories },
+    props: { catPage, categories, parent_categories, categoryObj },
   };
 
 }

@@ -36,3 +36,23 @@ a {
 .list-row-item {
   margin-right: 2rem;
 }
+
+h1 {
+  font-size: 56px !important;
+  line-height: 4.5rem !important;
+}
+
+h2 {
+  font-size: 32px !important;
+  font-weight: 600 !important;
+}
+
+h3 {
+  font-size: 24px !important;
+  font-weight: 600 !important;
+}
+
+.company-features, .company-links {
+  margin-right: 8rem;
+}
+

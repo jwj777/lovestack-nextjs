@@ -8,7 +8,7 @@ export default function Home({ homepage }) {
 
     <Layout>
        
-        <Heading fontSize='6xl' mb={3} maxW='960px'>{homepage.attributes.Headline}</Heading>
+        <Heading as='h1' mb={3} maxW='960px'>{homepage.attributes.Headline}</Heading>
         <Text fontSize='3xl' mb={8} maxW='960px'>{homepage.attributes.Subheading}</Text>
 
     </Layout>   

@@ -13,9 +13,9 @@ function CompanyItem({ company, index }) {
           alt={'homepage screenshot'} 
           htmlWidth={'96px'} 
           src={
-          company.attributes.webScreenshot.data != null ?
-          company.attributes.webScreenshot.data[0].attributes.formats.thumbnail.url :
-          ""
+            company.attributes.webScreenshot.data != null ?
+            company.attributes.webScreenshot.data[0].attributes.formats.thumbnail.url :
+            ""
           } />
         <Text as='h3' className={"list-row-item " + styles.listItemName}>{company.attributes.companyName}</Text>
         <Text className="list-row-item">{

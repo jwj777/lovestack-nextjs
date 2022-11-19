@@ -16,7 +16,7 @@ const CompanyHeading = ({ company }) => {
         
       />
       <Box pl={8}>
-        <Heading fontSize='4xl'>{company.companyName}</Heading>
+        <Heading as='h1'>{company.companyName}</Heading>
         <Text>Categories: {
           company.product_categories.data[0] != undefined ?
           company.product_categories.data[0].attributes.categoryName :

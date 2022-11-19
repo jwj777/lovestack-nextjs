@@ -93,28 +93,10 @@
   border-color: #0070f3;
 }
 
-.card h2 {
-  margin: 0 0 1rem 0;
-  font-size: 1.5rem;
-}
-
-.display2 {
-  font-size: 3rem;
-}
-
 .card p {
   margin: 0;
   font-size: 1.25rem;
   line-height: 1.5;
-}
-
-.logo {
-  height: 1em;
-  margin-left: 0.5rem;
-}
-
-.logo-stack {
-  font-weight: 700 ;
 }
 
 @media (max-width: 600px) {

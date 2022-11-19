@@ -13,8 +13,8 @@ const theme = extendTheme({
       letterSpacing: '-2%',
     },
     h2: {
-      fontSize: ['36px', '48px'],
-      fontWeight: 'semibold',
+      fontSize: ['32px', '48px'],
+      fontWeight: '600',
       lineHeight: '110%',
       letterSpacing: '-1%',
     },

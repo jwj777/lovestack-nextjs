@@ -8,9 +8,7 @@ export default function Insights({ articles, insightsPage }) {
 
     <Layout>
 
-    <Flex h={120}>
-      <Heading fontSize='6xl' mb={3}>{insightsPage.attributes.Headline}</Heading>
-    </Flex>
+    <Heading as='h1' mb={3}>{insightsPage.attributes.Headline}</Heading>
 
     <Flex className="articles-container" flexDirection='column' maxW='container.lg'>
       {articles.map((item, index) => {

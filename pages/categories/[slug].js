@@ -12,15 +12,17 @@ export default function Category({ category, companies }) {
 
       <Flex alignItems="center" justifyContent="center">
       <Container className="main-content" maxW={'7xl'} flex={'1 0 auto'}>
-      
-        <Heading fontSize='4xl' mb={1}>{category.attributes.categoryName}</Heading>
-        <Text fontSize='lg' mt={4} mb={8}>{category.attributes.categoryDesription}</Text>
+        <Box maxW={'4xl'}>
+          <Heading as='h1' mb={4}>{category[0].attributes.categoryName}</Heading>
+          <Text mb={12}>{category[0].attributes.categoryDescription}</Text>
+        </Box>
 
-        <Box className="row-list company-list" flex='1' mb={8}>
-        {companies.map((item, index) => {
+        <Box className="row-list company-list" flex='1' mb={16}>
+        {companies.map((company, index) => {
           return (
-            <CompanyItem key={index} company={item} />
+            <CompanyItem key={index} company={company} />
           );
+
         })}
         </Box>
 
@@ -55,11 +57,10 @@ export async function getStaticProps({ params }) {
   const { slug } = params;
 
   // get category
-  const res = await fetch(process.env.API_URL + `/api/product-categories?[slug]=${slug}`);
+  const res = await fetch(process.env.API_URL + `/api/product-categories?filters[slug]=${slug}&populate=*`);
   const res2 = await res.json();
-  const res3 = await res2.data;
-  const category = res3[0];
-  
+  const category = await res2.data;
+
   // get companies
   const rescompanies = await fetch(process.env.API_URL + `/api/companies?filters[product_categories][slug][$eq]=${slug}&populate=*`);
   const rescompaniesjson = await rescompanies.json();

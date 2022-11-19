@@ -4,7 +4,7 @@ const theme = extendTheme({
   fonts: {
     heading: 'Asap',
     body: 'Asap'
-  }
+  },
 });
 
 export default theme;

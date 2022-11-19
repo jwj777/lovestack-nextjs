@@ -7,14 +7,14 @@ export default function Header() {
   return (
 
     <Flex align='center' p={8} className={styles.headerContainer}>
-    <Container maxW="container.xl">
-    <Flex align='center'>
-      
-      <Logo />
-      <Navbar />
+      <Container maxW="container.xl">
+        <Flex align='center'>
+          
+          <Logo />
+          <Navbar />
 
-    </Flex>  
-    </Container>
+        </Flex>  
+      </Container>
     </Flex>
 
   )
