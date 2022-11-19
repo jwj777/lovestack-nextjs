@@ -11,7 +11,7 @@ function CategoryItem({ item }) {
       <CategoryItemParent item={item}>{item.categoryNameParent}</CategoryItemParent>
       {item.childCategories.map((item, index) => {
         return(
-          <CategoryItemChild item={item} />
+          <CategoryItemChild item={item} index={index} />
         )
       })}
 
