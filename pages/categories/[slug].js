@@ -36,8 +36,6 @@ export default function Category({ category, companies }) {
 }
 
 export async function getStaticPaths() {
-
-  // get category slugs
   const res = await fetch(process.env.API_URL + `/api/product-categories`);
   const resjson = await res.json();
   const categories = resjson.data;
@@ -45,6 +43,13 @@ export async function getStaticPaths() {
   const paths = categories.map((item, index) => ( {
     params: {slug: item.attributes.slug}
   }));
+
+  console.log(categories)
+
+  categories.map((item, index) => {
+    console.log(item.attributes.slug)
+  });
+ 
 
   return {
     paths,
