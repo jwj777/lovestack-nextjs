@@ -1,9 +1,10 @@
 import { Flex, Heading, Box, Image, LinkBox, LinkOverlay, Container, Text, Link } from '@chakra-ui/react'
 import Header from '/components/header/Header'
 import CompanyItem from '../../components/company-item/company-item'
+import CategoryFeatures from '../../components/category/category-features'
 
 
-export default function Category({ category, companies }) {
+export default function Category({ category, companies, features }) {
     return (
 
       <div>
@@ -16,6 +17,8 @@ export default function Category({ category, companies }) {
           <Heading as='h1' mb={4}>{category[0].attributes.categoryName}</Heading>
           <Text mb={12}>{category[0].attributes.categoryDescription}</Text>
         </Box>
+
+        <CategoryFeatures features={features} />
 
         <Box className="row-list company-list" flex='1' mb={16}>
         {companies.map((company, index) => {
@@ -44,13 +47,6 @@ export async function getStaticPaths() {
     params: {slug: item.attributes.slug}
   }));
 
-  console.log(categories)
-
-  categories.map((item, index) => {
-    console.log(item.attributes.slug)
-  });
- 
-
   return {
     paths,
     fallback: false,
@@ -70,6 +66,16 @@ export async function getStaticProps({ params }) {
   const rescompanies = await fetch(process.env.API_URL + `/api/companies?filters[product_categories][slug][$eq]=${slug}&populate=*`);
   const rescompaniesjson = await rescompanies.json();
   const companies = rescompaniesjson.data;
+
+  const resfeatures = await fetch(process.env.API_URL + `/api/features?filters[product-categories][slug][$eq]=${slug}&populate=*`);
+  const resfeaturesjson = await resfeatures.json();
+  const features = resfeaturesjson.data;
+
+  console.log(features)
+
+  // features.map((item, index) => {
+  //   console.log(item)
+  // })
 
   return {
     props: { 

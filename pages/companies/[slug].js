@@ -4,7 +4,7 @@ import CompanyHeading from '../../components/company/company-header'
 import CompanyLinks from '../../components/company/company-links'
 import CompanyFeatures from '../../components/company/company-features'
 
-export default function Company({ company }) {
+export default function Company({ company, features }) {
   return (
 
     <Box>
@@ -19,7 +19,7 @@ export default function Company({ company }) {
         <Box className="company-content-container">
             <Text fontSize='md' mt={4} mb={8} pr={16} maxW="960px">{company.companyDescription}</Text>
             <Box className="company-details" display="flex">
-              {/* <CompanyFeatures features={features} /> */}
+              <CompanyFeatures features={features} />
               <CompanyLinks company={company} />
             </Box>  
         </Box>
@@ -43,12 +43,6 @@ export async function getStaticPaths() {
     params: {slug: item.attributes.slug}
   }));
 
-  // Testing output
-  companies.map((item, index) => {
-    console.log(item.attributes.slug)
-  });
-
-  console.log('break ------------------')
  
   return {
     paths,
@@ -65,22 +59,14 @@ export async function getStaticProps({ params }) {
   const res3 = res2.data;
   const company = res3[0].attributes;
 
-  // const resfeatures = await fetch(process.env.API_URL + `/api/features?filters[companies][slug][$eq]=${slug}&populate=*`);
-  // const resfeaturesjson = await resfeatures.json();
-  // const features = resfeaturesjson.data;
-
-  // const zres = await fetch(process.env.API_URL + `/api/companies?filters[slug]=drupal`);
-  // const zres2 = await zres.json();
-  // const zres3 = zres2.data;
-  // const zcompany = zres3[0].attributes;
-
-  // console.log(zcompany)
-
+  const resfeatures = await fetch(process.env.API_URL + `/api/features?filters[companies][slug][$eq]=${slug}&populate=*`);
+  const resfeaturesjson = await resfeatures.json();
+  const features = resfeaturesjson.data;
 
   return {
     props: { 
       company,
-      // features,
+      features,
      },
     revalidate: 1, 
   };

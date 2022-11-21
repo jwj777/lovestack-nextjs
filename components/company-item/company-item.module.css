@@ -9,10 +9,6 @@
   padding: 1.2rem;
 }
 
-.listItemName {
-  min-width: 160px;
-}
-
 .itemWrapper {
   display: flex;
 }

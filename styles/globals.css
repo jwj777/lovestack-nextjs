@@ -20,6 +20,10 @@ a {
   letter-spacing: -.04rem;
 }
 
+.logo:hover {
+  text-decoration: none !important
+}
+
 .logo-stack {
   font-weight: 700;
 }

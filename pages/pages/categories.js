@@ -14,13 +14,13 @@ export default function Categories({ catPage, categories, parent_categories, cat
 
     <Heading as='h1' mb={12}>{catPage.attributes.Headline}</Heading>
 
-    <Box class="categories-container">
+    <Flex justify="space-between">
       {categoryObj.map((item, index) => {
         return(
         <CategoryItem item={item} key={index} />
         )
       })}
-    </Box>
+    </Flex>
 
     </Flex>
 
