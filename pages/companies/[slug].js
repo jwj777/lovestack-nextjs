@@ -19,7 +19,7 @@ export default function Company({ company, features }) {
         <Box className="company-content-container">
             <Text fontSize='md' mt={4} mb={8} pr={16} maxW="960px">{company.companyDescription}</Text>
             <Box className="company-details" display="flex">
-              <CompanyFeatures features={features} />
+              {/* <CompanyFeatures features={features} /> */}
               <CompanyLinks company={company} />
             </Box>  
         </Box>
@@ -43,13 +43,11 @@ export async function getStaticPaths() {
     params: {slug: item.attributes.slug}
   }));
 
- 
   return {
     paths,
     fallback: false,
   };
 }
-
 
 export async function getStaticProps({ params }) {
   const { slug } = params;

@@ -18,18 +18,11 @@ export default function Home({ homepage }) {
 
 export async function getStaticProps() {
 
-  // // get posts from strapi
-  // const resarticles = await fetch(process.env.API_URL + '/api/articles');
-  // const resarticlesjson = await resarticles.json();
-  // const articles = resarticlesjson.data;
-
   // get home page from strapi
   const reshome = await fetch(process.env.API_URL + '/api/homepages/1')
   const reshomejson = await reshome.json();
   const homepage = reshomejson.data;
-
-  console.log(reshomejson)
-  
+ 
   return {
     props: { homepage },
   };

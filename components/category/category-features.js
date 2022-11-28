@@ -1,15 +1,27 @@
-import React from "react";
-import { Box, Heading, StylesProvider, Text } from '@chakra-ui/react'
+import React, {useState, useEffect} from "react";
+import { Box, Flex, Text, Button } from '@chakra-ui/react'
 
-function CategoryFeatures({ features }) {
+
+function CategoryFeatures({ features, getSelectedFeature }) {
+
   return (
     <Box>
-      {/* <Text>Features</Text>
-      {features.map((feature, index) => {
-        return (
-          <Text key={feature.attributes.featurename + '__' + index}>{feature.attributes.featureName}</Text>
-        );
-      })} */}
+      <Flex align="center">
+        <Text fontWeight="bold" mr={4}>Features: </Text>
+        {features.map((feature, index) => {
+          return (
+            <Button 
+                mr={4}
+                size="sm"
+                key={feature.attributes.featurename + '__' + index} 
+                data-feature={feature.attributes.slug}
+                // when button is clicked, run getSelectedFeature with feature as param
+                onClick={e => getSelectedFeature(e.target.getAttribute("data-feature"))}>
+                {feature.attributes.featureName}
+            </Button>
+          );
+        })}
+      </Flex>
     </Box>
     )
   };
