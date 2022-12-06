@@ -1,0 +1,19 @@
+.logosvg {
+  z-index: 2;
+}
+
+.logosvg svg {
+  width: 240px;
+}
+
+.logost0 {
+  fill:#31B09F;
+}
+
+.logost1 {
+  fill:#41EAD4;;
+}
+
+.logost2 {
+  fill:#8DF2E5;
+}

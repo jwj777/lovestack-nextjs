@@ -1,22 +1,38 @@
-import { Flex, Container } from '@chakra-ui/react'
+import { Box, Container } from '@chakra-ui/react'
 import Header from '/components/header/Header'
+import styles from './Layout.module.css'
+import { useState } from 'react'
 
 export default function Layout({ children }) {
+
+  const [overlay, setOverlay] = useState(false)
+
+  const setOverlayFunc = () => {
+    setOverlay((prevDisplay) => !prevDisplay)
+    console.log('Header - setOverlayFunc')
+  }
+
+  const alertTest = () => {
+    console.log('alertTest')
+  }
+
   return (
 
-    <div>
+    <Box className={styles.pageContainer}>
+      <Box className={styles.overlay} style={{ backgroundColor: overlay ? "rgba(0, 0, 0, 0.6)" : "rgba(0, 0, 0, 0.0)" }}>
 
-      <div className="header-container">
-        <Header />
-      </div>
-
-      <main role="main">
+      <Box className="header-container">
+        <Header setOverlayFunc={setOverlayFunc}/>
+      </Box>
+      
+      <Box role="main">
         <Container maxW="container.xl" mt={16}>
           { children }
         </Container>
-      </main>
+      </Box>
 
-    </div>
+      </Box>
+    </Box>
 
   )
 }

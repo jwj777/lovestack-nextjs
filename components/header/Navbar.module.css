@@ -1,0 +1,27 @@
+
+.navbarContainer a {
+  font-weight: 600;
+  margin-top: 10px;
+  margin-right: 40px;
+}
+
+a.chakra-link {
+  font-weight: 800;
+}
+
+.mobileNavContainer {
+  background-color: #fff;
+}
+
+.mobileNavLogoSvg svg {
+  width: 200px !important;
+}
+
+.mobileIcon {
+  z-index: 2
+}
+
+.mobileNavLinks {
+  position: relative;
+  top: 80px;
+}

@@ -1,28 +1,20 @@
-import { Flex, Heading, Text } from '@chakra-ui/react'
-import Layout from '/components/layout/Layout'
+import React from "react";
+import { Flex } from '@chakra-ui/react'
 import CategoryItem from '../../components/category/category-item';
 
 
-export default function Categories({ catPage, categoryObj }) {
+export default function CategoryList({ categoryObj }) {
   return (
 
-  <Layout>
-    <Flex className="categories-container" flexDirection='column' maxW='container.lg'>
-      <Heading as='h1' mb={2} fontSize={{ base: '4xl', md: '6xl' }}>{catPage.attributes.Headline}</Heading>
-      <Text fontSize='2xl' mb={8} maxW='960px'>{catPage.attributes.Subheading}</Text>
+  <Flex justify="flex-start" flexWrap="wrap">
+    {categoryObj.map((item, index) => {
+      return(
+      <CategoryItem item={item} key={index} />
+      )
+    })}
+  </Flex>
 
-      <Flex justify="flex-start" flexWrap="wrap">
-        {categoryObj.map((item, index) => {
-          return(
-          <CategoryItem item={item} key={index} />
-          )
-        })}
-      </Flex>
-    </Flex>
-  </Layout>
-
-  );
-}
+  )}
 
 
 export async function getStaticProps() {
@@ -41,7 +33,7 @@ export async function getStaticProps() {
   const resparent = await fetch(`${process.env.API_URL}/api/product-categories?populate=*&filters[child_categories][slug][$notNull]=content`);
   const resparentjson = await resparent.json();
   const parent_categories = resparentjson.data;
- 
+  
 
   // Check if an item is an object
   const isObject = function(val) {
@@ -50,6 +42,10 @@ export async function getStaticProps() {
     }
     return (typeof val === 'object');
   }
+
+
+
+  // Try this - add the parent category filters in the fetch section.  
 
   let parentObj = []
   // Find objects that have child categories
@@ -64,7 +60,6 @@ export async function getStaticProps() {
         parentItem['categorySlugParent'] = parentAttrObj.slug
         if (parentAttrObj.Weight) {
           parentItem['categoryWeightParent'] = parentAttrObj.Weight
-          
         }
         let childCategories = []
         for (let val in parentAttrObj) {
@@ -89,11 +84,12 @@ export async function getStaticProps() {
     return(parentObj)
   }
 
-  // Creat variable to use in props
-  const categoryObj = getChildCategories(parent_categories)
+  categoryObj.map((item, index) => {
+    console.log(item)
+  })
 
   return {
-    props: { catPage, categories, parent_categories, categoryObj },
+    props: { catPage, categoryObj },
   };
 
 }

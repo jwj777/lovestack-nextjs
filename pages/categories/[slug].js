@@ -1,8 +1,10 @@
-import { Flex, Heading, Box, Button, Container, Text, Link, filter, useRadio } from '@chakra-ui/react'
+import { Flex, Heading, Box, Container, Text, Link, filter, useRadio } from '@chakra-ui/react'
 import React, {useState, useEffect} from 'react'
 import Header from '/components/header/Header'
 import CategoryFeatures from '../../components/category/category-features'
 import CompanyList from '../../components/company-item/company-list'
+import HeadlineMain from '../../components/headline/headline-main'
+import Layout from '../../components/layout/Layout'
 
 
 export default function Category({ category, features, companyArray }) {
@@ -15,21 +17,20 @@ export default function Category({ category, features, companyArray }) {
 
   return (
     <div>
-    <Header />
-    <Flex alignItems="center" justifyContent="center">
-      <Container className="main-content" maxW={'7xl'} flex={'1 0 auto'}>
+      <Layout>
         <Box maxW={'4xl'}>
-          <Heading as='h1' mb={4}>{category[0].attributes.categoryName}</Heading>
+          <Heading as='h1' fontSize={{ base: '4xl', md: '5xl' }} mb={4}>{category[0].attributes.categoryName}</Heading>
           <Text mb={12}>{category[0].attributes.categoryDescription}</Text>
         </Box>
+
+        <HeadlineMain item={category[0]} headlinevalue={'categoryName'} subheadvalue={'categoryDescription'} />
 
         <CategoryFeatures features={features} getSelectedFeature={getSelectedFeature} />
 
         <Box className="row-list company-list" flex='1' mt={8} mb={16}>
           <CompanyList companyArray={companyArray} selectedFeature={selectedFeature} />
         </Box>
-      </Container>
-    </Flex>
+      </Layout>  
     </div>
   )
 }
@@ -67,6 +68,32 @@ export async function getStaticProps({ params }) {
   const resfeatures = await fetch(process.env.API_URL + `/api/features?filters[product_categories][slug][$eq]=${slug}&populate=*`);
   const resfeaturesjson = await resfeatures.json();
   const features = resfeaturesjson.data;
+
+  const featuresSort = features
+
+
+  // Sort Features, First by Weight, and then by featureName
+  features.sort((f1, f2) => {
+    if (f1.attributes.Weight > f2.attributes.Weight) {
+      if (f1.attributes.featureaName > f2.attributes.featureName) {
+        return 1 
+      }
+      if (f1.attributes.featureName < f2.attributes.featureName) {
+        return -1
+      }
+      return 0
+    }
+    if (f1.attributes.Weight == null && f2.attributes.Weight == null) {
+      if (f1.attributes.featureaName > f2.attributes.featureName) {
+        return 1 
+      }
+      if (f1.attributes.featureName < f2.attributes.featureName) {
+        return -1
+      }
+      return 0
+    }  
+  })
+
 
   //
   // Transform companies object to make it easier to manage in JSX
