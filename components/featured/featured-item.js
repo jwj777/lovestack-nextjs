@@ -26,7 +26,7 @@ function Featuredcompany({ company }) {
 
                   <Text mb={4}>Product Categories: &nbsp;
                     {company.product_categories.data.map((item, index) => {
-                      return(<Text key={index} as='span' fontWeight='600'>{item.attributes.categoryName}</Text>)
+                      return(<Text key={index} mr={4} as='span' fontWeight='600'>{item.attributes.categoryName}</Text>)
                     })}
                   </Text>
                 
