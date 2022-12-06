@@ -9,7 +9,7 @@ function CompanyCategories({ company }) {
       <Box display='flex' flexDirection='column'>
         {company.product_categories.data.map((company, index) => {
           return(
-            <Link key={company.attributes.slug + '__' + index} href={company.attributes.slug} pb={1}>{company.attributes.categoryName}</Link>
+            <Link key={company.attributes.slug + '__' + index} href={'/categories/' + company.attributes.slug} pb={1}>{company.attributes.categoryName}</Link>
           )
         })}
       </Box>
