@@ -4,7 +4,7 @@ import styles from './company-features.module.css'
 
 function CompanyCategories({ company }) {
   return (
-    <Box mr={12}>
+    <Box>
       <Heading as='h3' mb={2}>Categories: </Heading>
       <Box display='flex' flexDirection='column'>
         {company.product_categories.data.map((company, index) => {

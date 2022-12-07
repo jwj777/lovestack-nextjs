@@ -1,15 +1,11 @@
 import React from "react";
-import { Heading, Box, LinkBox, LinkOverlay, Text } from '@chakra-ui/react'
+import { Heading, Box, Link, LinkOverlay, Text } from '@chakra-ui/react'
 
 
 function CategoryItemChild({ item }) {
   return (
-    <Box mb={1}>
-      <LinkBox>
-        <LinkOverlay href={"/categories/" + item.categorySlugChild}>
-          <Text fontSize="md">{item.categoryNameChild}</Text>
-        </LinkOverlay>
-      </LinkBox>
+    <Box mb={6} mr={4}>
+      <Link href={"/categories/" + item.categorySlugChild} fontSize="md"  backgroundColor='#f4f4f4' borderRadius='0rem' p={2} pr={4} pl={4}>{item.categoryNameChild}</Link>
     </Box>
   )
 };

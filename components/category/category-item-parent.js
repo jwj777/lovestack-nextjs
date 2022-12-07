@@ -4,7 +4,7 @@ import { Heading, Box, LinkBox, LinkOverlay, Text } from '@chakra-ui/react'
 
 function CategoryItemParent({ item }) {
   return (
-    <Heading as='h3' mb="1rem">{item.categoryNameParent}</Heading>
+    <Text fontSize='3xl' fontWeight='500' mb={6}>{item.categoryNameParent}</Text>
   )
 };
 

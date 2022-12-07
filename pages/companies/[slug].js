@@ -1,10 +1,10 @@
-import { Flex, Text, Box } from '@chakra-ui/react'
+import { Text, Box, StylesProvider } from '@chakra-ui/react'
 import Layout from '../../components/layout/Layout'
-import Header from '/components/header/Header'
 import CompanyHeading from '../../components/company/company-header'
 import CompanyLinks from '../../components/company/company-links'
 import CompanyFeatures from '../../components/company/company-features'
 import CompanyCategories from '../../components/company/company-categories'
+import CompanyPrice from '../../components/company/company-price'
 
 export default function Company({ company, features }) {
   return (
@@ -12,15 +12,30 @@ export default function Company({ company, features }) {
       <Box className="main-content" maxW={'6xl'} flex={'1 0 auto'}>
 
         <CompanyHeading company={company} />
-        <Box className="company-content-container">
-            <Text fontSize='md' mt={4} mb={8} pr={16} maxW="960px">{company.companyDescription}</Text>
-            <Box className="company-details" display="flex">
-              <CompanyFeatures features={features} />
-              <CompanyCategories company={company} />
-              <CompanyLinks company={company} />
+        <Box display='flex'>
+          <Box mr={16}>
+            <Text fontSize='md' mt={4} mb={12} pr={8} maxW="960px">{company.companyDescription}</Text>
+            <Box display="flex">
+              <Box mr={16}>
+                <CompanyFeatures features={features} />
+              </Box>
+              <Box mr={16}>
+                <CompanyCategories company={company} />
+              </Box>
             </Box>  
+          </Box>
+          <Box minW='320px' borderLeft='1px' borderColor='#ddd' pl={8}>
+            { company.entryPriceMonthly ?
+              <Box mr={4} mb={4}>
+                <CompanyPrice company={company} />
+              </Box> :
+              null
+            }
+            <Box>
+              <CompanyLinks company={company} />
+            </Box>
+          </Box>
         </Box>
-
       </Box>
     </Layout>
   )

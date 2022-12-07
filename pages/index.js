@@ -21,7 +21,7 @@ export default function Home({ homepage, categoryObj, companies }) {
        <FeaturedCompanies companies={companies}/>
       </Box>
       <Box>
-        <Heading as="h2">Software Categories</Heading>
+        <Heading as="h2" mb={8}>Software Categories</Heading>
         <CategoryList categoryObj={categoryObj}/>
       </Box>
     </Layout>   
@@ -46,16 +46,6 @@ export async function getStaticProps() {
   const resparentjson = await resparent.json();
   const parent_categories = resparentjson.data;
 
-  // .data[0].attributes.formats.thumbnail.url
-
-  companies.map((company, index) => {
-    console.log(company.attributes.webscreenshot)
-    let data = company.attributes.webscreenshot
-    for (let key in data) {
-      console.log(key)
-      console.log(data[key].webscreenshot)
-    }
-  })
 
   // Check if an item is an object
   const isObject = function(val) {
@@ -107,7 +97,10 @@ export async function getStaticProps() {
   const categoryObj = getChildCategories(parent_categories)
 
   return {
-    props: { homepage, categoryObj, companies },
+    props: { 
+      homepage, 
+      categoryObj, 
+      companies },
+    revalidate: 10,
   };
-
 }

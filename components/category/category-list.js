@@ -6,10 +6,10 @@ import CategoryItem from '../../components/category/category-item';
 export default function CategoryList({ categoryObj }) {
   return (
 
-  <Flex justify="flex-start" flexWrap="wrap">
+  <Flex justifyContent="flex-start" flexWrap="wrap"> 
     {categoryObj.map((item, index) => {
       return(
-      <CategoryItem item={item} key={index} />
+        <CategoryItem item={item} key={index} />
       )
     })}
   </Flex>

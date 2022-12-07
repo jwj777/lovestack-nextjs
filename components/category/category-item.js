@@ -7,16 +7,16 @@ import styles from '../../components/category/category-item.module.css'
 
 function CategoryItem({ item }) {
   return(
-    <Box className={styles.categoryItemBox} key={item.slug} mt={8} mb={8} mr={16} p={4} pl={8} minW="360">
-
-      <CategoryItemParent item={item}>{item.categoryNameParent}</CategoryItemParent>
-      {item.childCategories.map((item, index) => {
-        return(
-          <CategoryItemChild item={item} key={index} />
-        )
-      })}
-
-    </Box>
+      <Box className={styles.categoryItemBox} key={item.slug} mr={16} mb={2} p={8} pl={2} pb={6}>
+        <CategoryItemParent item={item}>{item.categoryNameParent}</CategoryItemParent>
+        <Box display='flex' flexWrap='wrap'>
+          {item.childCategories.map((item, index) => {
+            return(
+              <CategoryItemChild item={item} key={index} />
+            )
+          })}
+        </Box>  
+      </Box>
     )
 };
 

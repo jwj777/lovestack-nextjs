@@ -3,7 +3,13 @@
 }
 
 .logosvg svg {
-  width: 240px;
+  width: 200px;
+}
+
+@media screen and (min-width: 400px) {
+  .logosvg svg {
+    width: 224px;
+  }
 }
 
 .logost0 {

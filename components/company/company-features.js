@@ -4,7 +4,7 @@ import styles from './company-features.module.css'
 
 function CompanyFeatures({ features }) {
   return (
-    <Box mr={12}>
+    <Box>
       <Heading as='h3' mb={2}>Features</Heading>
       <Box display='flex' flexWrap='wrap' flexDirection='column'>
         {features.map((feature, index) => {
