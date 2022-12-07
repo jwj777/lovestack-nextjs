@@ -40,7 +40,7 @@
 }
 
 @media (max-width: 960px) {
-  .categoryItemBox:nth-child(*):before {
+  .categoryItemBox:before {
     width: 100%;
   }
 }

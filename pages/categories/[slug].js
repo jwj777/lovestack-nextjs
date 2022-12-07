@@ -72,6 +72,28 @@ export async function getStaticProps({ params }) {
   const featuresSort = features
 
 
+  // Sort Companies by Authority Rank
+  companies.sort((c1, c2) => {
+    if (c1.attributes.authorityRank === null) {
+      return 1;
+    }
+    if (c2.attributes.authorityRank === null) {
+      return -1;
+    }
+    if (c1.attributes.authorityRank === c2.attributes.authorityRank) {
+      return 0;
+    }
+
+    if (c1.attributes.authorityRank > c2.attributes.authorityRank) {
+      return 1 
+    }
+    if (c1.attributes.authorityRank < c2.attributes.authorityRank) {
+      return -1
+    }
+    return 0
+  })
+
+
   // Sort Features, First by Weight, and then by featureName
   features.sort((f1, f2) => {
     if (f1.attributes.Weight > f2.attributes.Weight) {
