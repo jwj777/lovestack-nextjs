@@ -7,7 +7,7 @@ function CompanyItem({ company, index }) {
   return (
   <Box key={company.companyName + '__' + index} className={styles.companyItem}>
     <LinkBox>
-      <LinkOverlay 
+      <LinkOverlay
       href={"/companies/" + company.slug} 
       display="flex" 
       alignItems={{ base: "center", lg: "center" }} 
@@ -27,8 +27,8 @@ function CompanyItem({ company, index }) {
             } />
         </Box>
         <Box display={{ base: "block", lg: "flex" }} alignItems='center'>
-          <Text fontSize="xl" fontWeight="600" minW="200px" className={"list-row-item "}>{company.companyName}</Text>
-          <Text className={"list-row-item"} minW="260px">
+          <Text fontSize="xl" fontWeight="600" minW="180px" className={"list-row-item "}>{company.companyName}</Text>
+          <Text className={"list-row-item"} minW={{ base: 'auto', lg: '260px'}}>
             {
               company.entryPriceMonthly ? 
               // 'Starting Monthly Price: ' + '$' + company.entryPriceMonthly : 
@@ -40,7 +40,7 @@ function CompanyItem({ company, index }) {
             }
           </Text>
           
-          <Text className="list-row-item" minW="240px">
+          <Text className="list-row-item" minW={{ base: 'auto', lg: '260px'}}>
             {
               company.freeTrial ? 
               'Free Trial ' : 
