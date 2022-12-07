@@ -1,6 +1,7 @@
 
 .categoryItemBox {
   position: relative;
+  padding-right: 0px
 }
 
 .categoryItemBox:before {
@@ -12,52 +13,36 @@
   left: -1px;
 } 
 
-/* .categoryItemBox:after {
-  content: '';
-  width: 60px;
-  height: 2px;
-  background: #000;
-  position: absolute;
-  bottom: -2px;
-  left: -2px;
-}  */
-
-.categoryItemBox:nth-child(odd):before {
-  width: 880px;
+.categoryItemBox:before {
+  width: 1160px;
 }
 
-@media (max-width: 960px) {
-  .categoryItemBox:nth-child(odd):before {
-    width: 100%;
-  }
+/* .categoryItemBox:nth-child(2):before {
+  width: 960px;
 }
 
-.categoryItemBox:nth-child(even):before {
-  width: 560px;
+.categoryItemBox:nth-child(3):before {
+  width: 800px;
 }
 
-@media (max-width: 960px) {
-  .categoryItemBox:nth-child(even):before {
-    width: 100%;
-  }
-}
-
-/* .categoryItemBox:nth-child(odd):after {
-  width: 80px;
-} */
-
-/* .categoryItemBox:nth-child(even):after {
-  width: 80px;
+.categoryItemBox:nth-child(4):before {
+  width: 960px;
 } */
 
 .categoryItemBox:last-child:after {
   content: '';
-  width: 960px;
+  width: 1160px;
   height: 1px;
   background: #999;
   position: absolute;
   bottom: -1px;
   left: -1px;
+}
+
+@media (max-width: 960px) {
+  .categoryItemBox:nth-child(*):before {
+    width: 100%;
+  }
 }
 
 @media (max-width: 960px) {
@@ -67,6 +52,7 @@
 }
 
 
+/* Category Page Links */
 
 .categoryPageLinks a {
   background-color: #fff;

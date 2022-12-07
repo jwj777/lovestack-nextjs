@@ -7,7 +7,7 @@ function FeaturedCompanies({ companies }) {
     <Box>
       <Box>
         <Heading as="h2" fontSize={{ base: '3xl', md: '4xl' }} mb={2}>Featured Companies</Heading>
-        <Text fontSize='xl' mb={12}>Our collection of lesser-known marketing software that deserves more attention.</Text>
+        <Text fontSize='xl' mb={16}>Our collection of lesser-known marketing software that deserves more attention.</Text>
       </Box>
 
       <Box>
