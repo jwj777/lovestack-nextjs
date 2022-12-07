@@ -20,8 +20,8 @@ export default function Layout({ children }) {
         <Box className="header-container">
           <Header setOverlayFunc={setOverlayFunc}/>
         </Box>
-        <Box role="main" minH='72vh'>
-          <Container maxW="container.xl" mt={16} mb={24}>
+        <Box role="main" minH='72vh' mt={16} mb={24}>
+          <Container maxW="container.xl">
             { children }
           </Container>
         </Box>
