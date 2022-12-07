@@ -6,7 +6,7 @@
 .categoryItemBox:before {
   content: '';
   height: 1px;
-  background: #000;
+  background: #999;
   position: absolute;
   top: -1px;
   left: -1px;
@@ -23,11 +23,23 @@
 }  */
 
 .categoryItemBox:nth-child(odd):before {
-  width: 840px;
+  width: 880px;
+}
+
+@media (max-width: 960px) {
+  .categoryItemBox:nth-child(odd):before {
+    width: 100%;
+  }
 }
 
 .categoryItemBox:nth-child(even):before {
-  width: 400px;
+  width: 560px;
+}
+
+@media (max-width: 960px) {
+  .categoryItemBox:nth-child(even):before {
+    width: 100%;
+  }
 }
 
 /* .categoryItemBox:nth-child(odd):after {
@@ -38,6 +50,34 @@
   width: 80px;
 } */
 
-/* .categoryItemBox:last-child:after {
-  width: 640px;
-} */
+.categoryItemBox:last-child:after {
+  content: '';
+  width: 960px;
+  height: 1px;
+  background: #999;
+  position: absolute;
+  bottom: -1px;
+  left: -1px;
+}
+
+@media (max-width: 960px) {
+  .categoryItemBox:last-child:after {
+    width: 100%;
+  }
+}
+
+
+
+.categoryPageLinks a {
+  background-color: #fff;
+  color: #000;
+  border: 1px solid #bbb;
+  font-weight: 500;
+  padding: 0.58rem 0.9rem;
+  text-decoration: none !important;
+}
+
+.categoryPageLinks a:hover {
+  background-color: #000;
+  color: #fff;
+}

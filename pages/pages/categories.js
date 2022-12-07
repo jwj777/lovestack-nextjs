@@ -9,7 +9,7 @@ export default function Categories({ catPage, categoryObj }) {
   <Layout>
     <Flex className="categories-container" flexDirection='column' maxW='container.lg'>
       <Heading as='h1' mb={2} fontSize={{ base: '4xl', md: '6xl' }}>{catPage.attributes.Headline}</Heading>
-      <Text fontSize='2xl' mb={16} maxW='960px'>{catPage.attributes.Subheading}</Text>
+      <Text fontSize='2xl' mb='4.8rem' maxW='960px'>{catPage.attributes.Subheading}</Text>
 
       <Flex justify="flex-start" flexWrap="wrap" flexDirection='column'>
         {categoryObj.map((item, index) => {
