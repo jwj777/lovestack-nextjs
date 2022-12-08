@@ -1,7 +1,5 @@
-import Head from 'next/head'
-import { Flex, Heading, Box, Text } from '@chakra-ui/react'
+import { Heading, Box, Text } from '@chakra-ui/react'
 import Layout from '../components/layout/Layout'
-import Header from '/components/header/Header'
 import CategoryList from '../components/category/category-list'
 import FeaturedCompanies from '../components/featured/featured-companies'
 

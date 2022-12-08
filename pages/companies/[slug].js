@@ -1,4 +1,4 @@
-import { Text, Box, StylesProvider } from '@chakra-ui/react'
+import { Text, Box } from '@chakra-ui/react'
 import Layout from '../../components/layout/Layout'
 import CompanyHeading from '../../components/company/company-header'
 import CompanyLinks from '../../components/company/company-links'

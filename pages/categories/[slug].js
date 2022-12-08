@@ -1,6 +1,5 @@
-import { Flex, Heading, Box, Container, Text, Link, filter, useRadio } from '@chakra-ui/react'
+import { Heading, Box, Text  } from '@chakra-ui/react'
 import React, {useState, useEffect} from 'react'
-import Header from '/components/header/Header'
 import CategoryFeatures from '../../components/category/category-features'
 import CompanyList from '../../components/company-item/company-list'
 import HeadlineMain from '../../components/headline/headline-main'
