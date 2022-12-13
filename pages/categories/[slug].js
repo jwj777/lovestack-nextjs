@@ -1,8 +1,7 @@
 import { Heading, Box, Text  } from '@chakra-ui/react'
-import React, {useState, useEffect} from 'react'
+import React, { useState } from 'react'
 import CategoryFeatures from '../../components/category/category-features'
 import CompanyList from '../../components/company-item/company-list'
-import HeadlineMain from '../../components/headline/headline-main'
 import Layout from '../../components/layout/Layout'
 
 
@@ -21,8 +20,6 @@ export default function Category({ category, features, companyArray }) {
           <Heading as='h1' fontSize={{ base: '4xl', md: '5xl' }} mb={4}>{category[0].attributes.categoryName}</Heading>
           <Text mb={12}>{category[0].attributes.categoryDescription}</Text>
         </Box>
-
-        <HeadlineMain item={category[0]} headlinevalue={'categoryName'} subheadvalue={'categoryDescription'} />
 
         <CategoryFeatures features={features} getSelectedFeature={getSelectedFeature} />
 
@@ -68,11 +65,10 @@ export async function getStaticProps({ params }) {
   const resfeaturesjson = await resfeatures.json();
   const features = resfeaturesjson.data;
 
-  const featuresSort = features
-
 
   // Sort Companies by Authority Rank
   companies.sort((c1, c2) => {
+    // handle null values and sort to bottom
     if (c1.attributes.authorityRank === null) {
       return 1;
     }
@@ -82,7 +78,7 @@ export async function getStaticProps({ params }) {
     if (c1.attributes.authorityRank === c2.attributes.authorityRank) {
       return 0;
     }
-
+    // compare non-null values
     if (c1.attributes.authorityRank > c2.attributes.authorityRank) {
       return 1 
     }
@@ -116,9 +112,7 @@ export async function getStaticProps({ params }) {
   })
 
 
-  //
   // Transform companies object to make it easier to manage in JSX
-  //
   const companyArray = []
   const companyObj = {}
   // map companies object from fetch 

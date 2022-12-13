@@ -34,7 +34,7 @@ export async function getStaticProps() {
   const reshomejson = await reshome.json();
   const homepage = reshomejson.data;
 
-  // get companies
+  // get featured companies
   const rescompanies = await fetch(process.env.API_URL + `/api/companies?filters[featured][$eq]=true&populate=*`);
   const rescompaniesjson = await rescompanies.json();
   const companies = rescompaniesjson.data;
@@ -45,50 +45,75 @@ export async function getStaticProps() {
   const parent_categories = resparentjson.data;
 
 
+  // Sort featured companies by auth rank
+  // Sort Companies by Authority Rank
+  companies.sort((c1, c2) => {
+    // handle null values and sort to bottom
+    if (c1.attributes.authorityRank === null) {
+      return 1;
+    }
+    if (c2.attributes.authorityRank === null) {
+      return -1;
+    }
+    if (c1.attributes.authorityRank === c2.attributes.authorityRank) {
+      return 0;
+    }
+    // compare non-null values
+    if (c1.attributes.authorityRank > c2.attributes.authorityRank) {
+      return 1 
+    }
+    if (c1.attributes.authorityRank < c2.attributes.authorityRank) {
+      return -1
+    }
+    return 0
+  })
+
+
   // Check if an item is an object
   const isObject = function(val) {
-  if (val === null) {
-    return false;
-  }
-  return (typeof val === 'object');
+    if (val === null) {
+      return false;
+    }
+    return (typeof val === 'object');
   }
 
   let parentObj = []
   // Find objects that have child categories
   function getChildCategories(obj) {
-  let parentItem = {}
-  let childItem = {}
-  for (let val in obj) {
-    if ((isObject(obj[val])) && (obj[val] !== undefined)) {
-      let parentAttrObj = obj[val].attributes
-      // Create Parent Object Items Here
-      parentItem['categoryNameParent'] = parentAttrObj.categoryName
-      parentItem['categorySlugParent'] = parentAttrObj.slug
-      if (parentAttrObj.Weight) {
-        parentItem['categoryWeightParent'] = parentAttrObj.Weight
-        
+    let parentItem = {}
+    let childItem = {}
+    for (let val in obj) {
+      if ((isObject(obj[val])) && (obj[val] !== undefined)) {
+        let parentAttrObj = obj[val].attributes
+        // Create Parent Object Items
+        parentItem['categoryNameParent'] = parentAttrObj.categoryName
+        parentItem['categorySlugParent'] = parentAttrObj.slug
+        if (parentAttrObj.Weight) {
+          parentItem['categoryWeightParent'] = parentAttrObj.Weight
+          
+        }
+        // Create Child Object
+        let childCategories = []
+        for (let val in parentAttrObj) {
+          if (val == 'child_categories') {
+            parentAttrObj[val].data.map((item, index) => {
+              // Create child object items
+              childItem['categoryNameChild'] = item.attributes.categoryName
+              childItem['categorySlugChild'] = item.attributes.slug
+              // Nest childCategory in parentItem
+              childCategories.push(childItem)
+              parentItem['childCategories'] = childCategories
+              childItem = {}
+            })
+            childItem['categoryNameChild'] = null
+            childItem['categorySlugChild'] = null    
+          }        
+        }
+        parentObj.push(parentItem)
+        parentItem = {}
       }
-      let childCategories = []
-      for (let val in parentAttrObj) {
-        if (val == 'child_categories') {
-          parentAttrObj[val].data.map((item, index) => {
-            // Create child object items
-            childItem['categoryNameChild'] = item.attributes.categoryName
-            childItem['categorySlugChild'] = item.attributes.slug
-            // Nest childCategory in parentItem
-            childCategories.push(childItem)
-            parentItem['childCategories'] = childCategories
-            childItem = {}
-          })
-          childItem['categoryNameChild'] = null
-          childItem['categorySlugChild'] = null    
-        }        
-      }
-      parentObj.push(parentItem)
-      parentItem = {}
     }
-  }
-  return(parentObj)
+    return(parentObj)
   }
 
   // Creat variable to use in props

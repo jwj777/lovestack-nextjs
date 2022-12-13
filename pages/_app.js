@@ -8,11 +8,11 @@ function MyApp({ Component, pageProps }) {
 
   const tagManagerArgs = {
     gtmId: 'GTM-MGFBPGM'
-}
+  }
 
-useEffect(() => {
-  TagManager.initialize(tagManagerArgs)
-}, []);
+  useEffect(() => {
+    TagManager.initialize(tagManagerArgs)
+  }, []);
 
 
   return (

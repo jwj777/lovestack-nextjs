@@ -50,9 +50,25 @@ h2 {
   font-weight: 600 !important;
 }
 
+.main-content { 
+  max-width: 960px;
+}
+
+.main-content h2 {
+  font-size: 1.6rem;
+  margin-top: 2rem;
+  margin-bottom: .5rem;
+}
+
 h3 {
   font-size: 28px !important;
   font-weight: 600 !important;
+}
+
+.main-content p {
+  color: #777;
+  font-size: 1.12rem;
+  line-height:1.88rem;
 }
 
 .company-features, .company-links {
