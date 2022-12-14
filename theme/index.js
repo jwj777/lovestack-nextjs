@@ -19,6 +19,11 @@ const theme = extendTheme({
       letterSpacing: '-1%',
     },
   },
+  sizes: {
+    container: {
+      lg: '1160px'
+    },
+  },
 });
 
 export default theme;
