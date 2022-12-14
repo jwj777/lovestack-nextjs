@@ -21,7 +21,7 @@ export default function Layout({ children }) {
           <Header setOverlayFunc={setOverlayFunc}/>
         </Box>
         <Box role="main" minH='72vh' mt={{ base: '2rem', md: '4rem'}} mb={24}>
-          <Container maxW="container.xl">
+          <Container maxW="container.lg">
             { children }
           </Container>
         </Box>

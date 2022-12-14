@@ -1,40 +1,33 @@
 import React from "react";
-import { Heading, Image, Text, Box, Link } from '@chakra-ui/react'
-import NextLink from 'next/link'
+import { Heading, Image, Text, Box } from '@chakra-ui/react'
 
 const CompanyHeading = ({ company }) => {
   return (
 
-    <Box display="flex" alignItems="center" justifyContent="flex-start" mb={8}>
-      <Image
-        htmlWidth={'220px'}
-        alt={company.companyName + ' Website Homepage'}
-        src={
-          company.webScreenshot.data != null ?
-          company.webScreenshot.data[0].attributes.url :
-          ""
-        }
-        
-      />
-      <Box pl={8}>
-        <Heading as='h1' mb={2}>{company.companyName}</Heading>
-        {/* <Box display='flex' flexWrap='wrap' alignItems='center'>
-          <Text mr={2}>Categories: </Text>
-          {company.product_categories.data.map((company, index) => {
-            return(
-              <Link href={company.attributes.slug} mr={4}>{company.attributes.categoryName}</Link>
-
-            )
-          })}
-        </Box> */}
-
+    <Box 
+      display="flex" 
+      alignItems="center" 
+      justifyContent="flex-start" 
+      flexWrap={{ base: 'wrap', lg: 'nowrap' }}
+      // flexDir={{ base: 'column', lg: 'row' }} 
+      mb={10}
+    >
+      { company.webScreenshot.data != null ?
+          <Image
+            width={{ base: '100%', lg: '200px' }}
+            alt={company.companyName + ' Website Homepage'}
+            src={ company.webScreenshot.data[0].attributes.url }
+            mb={{ base: '1rem', lg: '0' }}
+          /> :
+        null 
+      }
+      <Box ml={{ base: '0', lg: '2rem' }}>
+        <Heading as='h1' fontSize={{ base: '4xl', lg: '5xl' }}>{company.companyName}</Heading>
         <Text>Headquarters: {company.Headquarters}</Text>
       </Box>
     </Box>
 
   )
 }
-
-
 
 export default CompanyHeading;

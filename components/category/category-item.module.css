@@ -14,24 +14,12 @@
 } 
 
 .categoryItemBox:before {
-  width: 1160px;
+  width: 100%;
 }
-
-/* .categoryItemBox:nth-child(2):before {
-  width: 960px;
-}
-
-.categoryItemBox:nth-child(3):before {
-  width: 800px;
-}
-
-.categoryItemBox:nth-child(4):before {
-  width: 960px;
-} */
 
 .categoryItemBox:last-child:after {
   content: '';
-  width: 1160px;
+  width: 100%;
   height: 1px;
   background: #999;
   position: absolute;
@@ -39,7 +27,7 @@
   left: -1px;
 }
 
-@media (max-width: 960px) {
+/* @media (max-width: 960px) {
   .categoryItemBox:before {
     width: 100%;
   }
@@ -49,7 +37,7 @@
   .categoryItemBox:last-child:after {
     width: 100%;
   }
-}
+} */
 
 
 /* Category Page Links */

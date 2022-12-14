@@ -12,29 +12,35 @@ export default function Company({ company, features }) {
       <Box className="main-content" maxW={'6xl'} flex={'1 0 auto'}>
 
         <CompanyHeading company={company} />
-        <Box display='flex'>
-          <Box mr={16}>
-            <Text fontSize='md' mt={4} mb={12} pr={8} maxW="960px">{company.companyDescription}</Text>
-            <Box display="flex">
-              <Box mr={16}>
-                <CompanyFeatures features={features} />
-              </Box>
-              <Box mr={16}>
-                <CompanyCategories company={company} />
-              </Box>
-            </Box>  
-          </Box>
-          <Box minW='320px' borderLeft='1px' borderColor='#ddd' pl={8}>
-            { company.entryPriceMonthly ?
-              <Box mr={4} mb={4}>
-                <CompanyPrice company={company} />
-              </Box> :
-              null
-            }
+        <Box display='flex' flexDirection={{ base: 'column', md: 'row' }}>
+
+          <Box display={{ base: 'block', lg: 'none' }}>
+            <CompanyPrice company={company} />
             <Box>
               <CompanyLinks company={company} />
             </Box>
           </Box>
+          
+
+          <Box mr={{ base: '0', lg: '4rem' }}>
+            <Text fontSize='md' mb={12} maxW="960px">{company.companyDescription}</Text>
+            <Box display="flex" flexDir={{ base: 'column', lg: 'row' }}>
+              <Box mr={{ base: '0', lg: '4rem' }} mb={8}>
+                <CompanyFeatures features={features} />
+              </Box>
+              <Box mr={0} mb={8}>
+                <CompanyCategories company={company} />
+              </Box>
+            </Box>  
+          </Box>
+
+          <Box display={{ base: 'none', lg: 'block' }} minW='320px' borderLeft='1px' borderColor='#ddd' pl={8}>
+            <CompanyPrice company={company} />
+            <Box>
+              <CompanyLinks company={company} />
+            </Box>
+          </Box>
+
         </Box>
       </Box>
     </Layout>

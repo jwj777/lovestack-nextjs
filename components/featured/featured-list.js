@@ -7,7 +7,7 @@ function FeaturedList({ companies }) {
 
     companies.map((company, index) => {
       return (
-        <Box mb={20} key={index}>
+        <Box mb={8} key={index}>
           <FeaturedItem company={company.attributes} />
         </Box>
       )
