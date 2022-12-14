@@ -26,7 +26,7 @@ function CompanyItem({ company, index }) {
       <Text fontWeight='600' mr={4}>Features:</Text>
       <Box display='flex' flexWrap='wrap'>
         {company.featureNameArray.map((item, index) => {
-          return ( <Text fontSize='md' mr={3} mb={1}>{item}</Text> )
+          return ( <Text key={index} fontSize='md' mr={3} mb={1}>{item}</Text> )
         })}
       </Box>
     </Box>
