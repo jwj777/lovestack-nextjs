@@ -5,7 +5,7 @@ import ReactMarkdown from "react-markdown";
 function PageContent({ pagedata }) {
   return (
     <Box className="main-content">
-      <ReactMarkdown children={pagedata} />
+      <ReactMarkdown>{pagedata.attributes.Body}</ReactMarkdown>
     </Box>
   )}
 
