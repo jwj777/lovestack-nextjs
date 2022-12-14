@@ -29,10 +29,6 @@ a {
   font-weight: 700;
 }
 
-.main-content {
-  margin-top: 4rem;
-}
-
 .list-item-name {
   font-size: 1.1rem;
   font-weight: 600;
@@ -66,9 +62,7 @@ h3 {
 }
 
 .main-content p {
-  color: #777;
-  font-size: 1.12rem;
-  line-height:1.88rem;
+  line-height:1.6rem;
 }
 
 .company-features, .company-links {

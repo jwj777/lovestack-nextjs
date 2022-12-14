@@ -1,7 +1,6 @@
 import { Box } from '@chakra-ui/react'
 import Layout from '/components/layout/Layout'
 import HeroPage from '../../components/hero/hero-page';
-import ReactMarkdown from "react-markdown";
 import PageContent from '../../components/content/page-content';
 
 

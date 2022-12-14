@@ -1,5 +1,5 @@
 import React from "react";
-import { UnorderedList, ListItem, Icon, Link, Text } from '@chakra-ui/react'
+import { UnorderedList, ListItem, Icon, Link } from '@chakra-ui/react'
 import { FaGlobe, FaTwitter, FaLink } from 'react-icons/fa'
 import NextLink from 'next/link'
 

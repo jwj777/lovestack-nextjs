@@ -23,7 +23,7 @@ export default function Category({ category, features, companyArray }) {
 
         <CategoryFeatures features={features} getSelectedFeature={getSelectedFeature} />
 
-        <Box className="row-list company-list" flex='1' mt={8} mb={16}>
+        <Box className="row-list company-list" flex='1' mt={4} mb={16}>
           <CompanyList companyArray={companyArray} selectedFeature={selectedFeature} />
         </Box>
       </Layout>  
@@ -65,6 +65,10 @@ export async function getStaticProps({ params }) {
   const resfeaturesjson = await resfeatures.json();
   const features = resfeaturesjson.data;
 
+  companies.map((item, index) => {
+    console.log(item)
+  })
+
 
   // Sort Companies by Authority Rank
   companies.sort((c1, c2) => {
@@ -79,10 +83,10 @@ export async function getStaticProps({ params }) {
       return 0;
     }
     // compare non-null values
-    if (c1.attributes.authorityRank > c2.attributes.authorityRank) {
+    if (c1.attributes.authorityRank < c2.attributes.authorityRank) {
       return 1 
     }
-    if (c1.attributes.authorityRank < c2.attributes.authorityRank) {
+    if (c1.attributes.authorityRank > c2.attributes.authorityRank) {
       return -1
     }
     return 0
@@ -114,24 +118,36 @@ export async function getStaticProps({ params }) {
 
   // Transform companies object to make it easier to manage in JSX
   const companyArray = []
-  const companyObj = {}
+  const companyFeatureSlug = {}
+  const companyFeatureName = {}
   // map companies object from fetch 
   companies.map((item, index) => {
-    let companyObj = item.attributes
-    let featureArray = []
+    let companyFeatureSlug = item.attributes
+    let companyFeatureName = item.attributes
+    let featuresSlugArray = []
+    let featuresNameArray = []
     let featureAttr = item.attributes.features.data
     // iterate through individual features
     for (let val in featureAttr) {
-      let featureSlugs = featureAttr[val].attributes
-      featureArray.push(featureSlugs.slug)
+      let featureData = featureAttr[val].attributes
+      featuresSlugArray.push(featureData.slug)
+      featuresNameArray.push(featureData.featureName)
     }
-    featureArray.push('all')
-    // add feature array to individual company object
-    companyObj['features'] = featureArray
+    // add 'all' feature by default 
+    featuresSlugArray.push('all')
+    // create objects from arrays
+    companyFeatureSlug['features'] = featuresSlugArray
+    companyFeatureName['featureNameArray'] = featuresNameArray
+    console.log(companyFeatureSlug.features)
+    console.log(companyFeatureName.featureNameArray)
     // push individual company object to company array
-    companyArray.push(companyObj)
-    // console.log(companyArray)
+    companyArray.push(companyFeatureSlug)
   })
+
+  companies.map((item, index) => {
+    console.log(item)
+  })
+
 
   return {
     props: { 

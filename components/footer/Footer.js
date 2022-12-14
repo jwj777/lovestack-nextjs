@@ -5,7 +5,7 @@ import styles from './Footer.module.css'
 function Footer() {
   return (
     <Box className={styles.footerContainer}>
-      <Container maxW="container.xl">
+      <Container maxW="container.lg">
         <Box pt={10} pb={10} display='flex' alignItems='center' flexWrap='wrap'>
           <Logo />
           <Box 

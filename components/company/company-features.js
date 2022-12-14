@@ -1,6 +1,5 @@
 import React from "react";
-import { Box, Heading, StylesProvider, Text } from '@chakra-ui/react'
-import styles from './company-features.module.css'
+import { Box, Heading, Text } from '@chakra-ui/react'
 
 function CompanyFeatures({ features }) {
   return (
