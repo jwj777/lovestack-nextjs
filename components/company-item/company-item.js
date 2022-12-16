@@ -14,7 +14,7 @@ function CompanyItem({ company, index }) {
         </Link>
         <Box>
           <Link href={"/companies/" + company.slug}>
-            <Text fontSize="2xl" fontWeight="600" minW="00px" width='100%' className={"list-row-item "}>{company.companyName}</Text>
+            <Text fontSize="1.6rem" fontWeight="600" minW="00px" width='100%' className={"list-row-item "}>{company.companyName}</Text>
           </Link>
           <Text>dRank: <Text as='span' color='orange.300' fontWeight='700'>{company.authorityRank}</Text></Text>
         </Box>
@@ -26,7 +26,9 @@ function CompanyItem({ company, index }) {
       <Text fontWeight='600' mr={4}>Features:</Text>
       <Box display='flex' flexWrap='wrap'>
         {company.featureNameArray.map((item, index) => {
-          return ( <Text key={index} fontSize='md' mr={3} mb={1}>{item}</Text> )
+          return ( 
+          <Text key={index} fontSize='md' mr={2} mb={1}>{item}<Text as='span'>, </Text></Text>
+          )
         })}
       </Box>
     </Box>

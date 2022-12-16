@@ -6,7 +6,7 @@ import { Flex, Container, Button } from '@chakra-ui/react'
 import MobileNav from './mobile-nav'
 import {useState} from 'react'
 
-export default function Header({ setOverlayFunc, alertTest }) {
+export default function Header({ setOverlayFunc }) {
 
   const [mobileOpen, setMobileOpen] = useState(false)
 
@@ -16,8 +16,8 @@ export default function Header({ setOverlayFunc, alertTest }) {
   }
 
   return (
-    <Flex align='center' pt={8} pb={8} className={styles.headerContainer}>
-      <Container maxW="container.lg">
+    <Flex align='center'  className={styles.headerContainer}>
+      <Container maxW="container.2xl" borderBottom='1px' borderColor='gray.200' pt={8} pb={8}>
         <Flex align='center' >
 
           {mobileOpen && <MobileNav toggleMobile={toggleMobile} />}

@@ -65,10 +65,6 @@ export async function getStaticProps({ params }) {
   const resfeaturesjson = await resfeatures.json();
   const features = resfeaturesjson.data;
 
-  companies.map((item, index) => {
-    console.log(item)
-  })
-
 
   // Sort Companies by Authority Rank
   companies.sort((c1, c2) => {
@@ -138,14 +134,8 @@ export async function getStaticProps({ params }) {
     // create objects from arrays
     companyFeatureSlug['features'] = featuresSlugArray
     companyFeatureName['featureNameArray'] = featuresNameArray
-    console.log(companyFeatureSlug.features)
-    console.log(companyFeatureName.featureNameArray)
     // push individual company object to company array
     companyArray.push(companyFeatureSlug)
-  })
-
-  companies.map((item, index) => {
-    console.log(item)
   })
 
 

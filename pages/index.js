@@ -1,27 +1,39 @@
-import { Heading, Box, Text } from '@chakra-ui/react'
+import { Container, Heading, Box, Text } from '@chakra-ui/react'
 import Layout from '../components/layout/Layout'
 import CategoryList from '../components/category/category-list'
 import FeaturedCompanies from '../components/featured/featured-companies'
+import DisplayLong1 from '../components/content/display-long';
 
 export default function Home({ homepage, categoryObj, companies }) {
   return (
 
     <Layout>
-      <Box mb={28}>
-        <Heading as='h1' mb={3} fontSize={{ base: '4xl', md: '6xl' }} maxW='960px'>
+      <Box mb={{ base: '0', md: '4rem' }} pb={4}>
+        <Heading as='h1' mb={3} fontSize={{ base: '5xl', md: '7xl' }} maxW='800px'>
             {homepage.attributes.Headline}
         </Heading>
-        <Text className="subheading1" fontSize={{ base: 'xl', md: '3xl' }} maxW='960px'>
+        {/* <Text className="subheading1" fontSize={{ base: 'xl', md: '3xl' }} maxW='960px'>
           {homepage.attributes.Subheading}
-        </Text>
+        </Text> */}
       </Box>
+      <Container maxW="container.xl" p={0}>
+        <Box 
+          className='softwareContainerBg' 
+          backgroundColor={{ base: '#fff', md: 'gray.50' }} 
+          borderTop={{ base: '0', md: '1px' }}
+          borderColor={{ base: 'gray.200', md: 'gray.300' }}
+          p={{ base: '0', md: '4rem' }} 
+          pt={{ base: '0', md: '3rem' }}  
+          mb={{ base: '0', md: '4rem' }} 
+        >
+          <DisplayLong1 text={'Discover exciting new marketing software, gaps in your current marketing stack, and less expensive alternatives.'}></DisplayLong1>
+          <CategoryList categoryObj={categoryObj}/>
+        </Box>
+      </Container>
       <Box mb={24}>
        <FeaturedCompanies companies={companies}/>
       </Box>
-      <Box>
-        <Heading as="h2" mb={8}>Software Categories</Heading>
-        <CategoryList categoryObj={categoryObj}/>
-      </Box>
+
     </Layout>   
 
   );
@@ -85,14 +97,14 @@ export async function getStaticProps() {
     for (let val in obj) {
       if ((isObject(obj[val])) && (obj[val] !== undefined)) {
         let parentAttrObj = obj[val].attributes
-        // Create Parent Object Items
+        // Create Parent Object Items Here
         parentItem['categoryNameParent'] = parentAttrObj.categoryName
         parentItem['categorySlugParent'] = parentAttrObj.slug
+        parentItem['categorySubheadingParent'] = parentAttrObj.Subheading
         if (parentAttrObj.Weight) {
           parentItem['categoryWeightParent'] = parentAttrObj.Weight
           
         }
-        // Create Child Object
         let childCategories = []
         for (let val in parentAttrObj) {
           if (val == 'child_categories') {
@@ -118,6 +130,36 @@ export async function getStaticProps() {
 
   // Creat variable to use in props
   const categoryObj = getChildCategories(parent_categories)
+
+
+  // Sort Parent Categories
+  categoryObj.sort((c1, c2) => {
+    // handle null values and sort to bottom
+    if (c1.categoryWeightParent === null) {
+      return 1;
+    }
+    if (c2.categoryWeightParent === null) {
+      return -1;
+    }
+    if (c1.categoryWeightParent === c2.categoryWeightParent) {
+      return 0;
+    }
+    // compare non-null values
+    if (c1.categoryWeightParent > c2.categoryWeightParent) {
+      return 1 
+    }
+    if (c1.categoryWeightParent < c2.categoryWeightParent) {
+      return -1
+    }
+    return 0
+  })
+
+
+  // Sort Child Categories
+  categoryObj.map((parentCat, index) => {
+    parentCat.childCategories.sort((a, b) => a.categoryNameChild.localeCompare(b.categoryNameChild))
+  })
+
 
   return {
     props: { 

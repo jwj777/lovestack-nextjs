@@ -1,8 +1,7 @@
 import { Box } from '@chakra-ui/react'
 import Layout from '/components/layout/Layout'
 import HeroPage from '../../components/hero/hero-page';
-import PageContent from '../../components/content/page-content';
-
+import BodyContent from '../../components/content/body-content';
 
 
 export default function Categories({ pagedata }) {
@@ -10,9 +9,8 @@ export default function Categories({ pagedata }) {
 
     <Layout>
       <HeroPage pagedata={pagedata}/>
-      <PageContent pagedata={pagedata} />
+      <BodyContent pagedata={pagedata} />
     </Layout>
-
 
   );
 }
@@ -24,8 +22,6 @@ export async function getStaticProps() {
   const res = await fetch(`${process.env.API_URL}/api/pages?filters[slug]=about`);
   const rjson = await res.json();
   const pagedata = rjson.data[0];
-
-  console.log(pagedata)
 
   return {
     props: { pagedata },

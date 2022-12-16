@@ -2,11 +2,11 @@ import React from "react";
 import { Box } from '@chakra-ui/react'
 import ReactMarkdown from "react-markdown";
 
-function PageContent({ pagedata }) {
+function BodyContent({ pagedata }) {
   return (
-    <Box className="main-content">
+    <Box className="bodyContent">
       <ReactMarkdown>{pagedata.attributes.Body}</ReactMarkdown>
     </Box>
   )}
 
-export default PageContent;
+export default BodyContent;

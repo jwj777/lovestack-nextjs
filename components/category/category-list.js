@@ -1,18 +1,18 @@
 import React from "react";
-import { Flex } from '@chakra-ui/react'
+import { Box } from '@chakra-ui/react'
 import CategoryItem from '../../components/category/category-item';
 
 
 export default function CategoryList({ categoryObj }) {
   return (
 
-  <Flex justifyContent="flex-start" flexWrap="wrap"> 
+  <Box> 
     {categoryObj.map((item, index) => {
       return(
         <CategoryItem item={item} key={index} />
       )
     })}
-  </Flex>
+  </Box>
 
   )}
 
@@ -44,9 +44,6 @@ export async function getStaticProps() {
   }
 
 
-
-  // Try this - add the parent category filters in the fetch section.  
-
   let parentObj = []
   // Find objects that have child categories
   function getChildCategories(obj) {
@@ -58,6 +55,7 @@ export async function getStaticProps() {
         // Create Parent Object Items Here
         parentItem['categoryNameParent'] = parentAttrObj.categoryName
         parentItem['categorySlugParent'] = parentAttrObj.slug
+        parentItem['categorySubheadingParent'] = parentAttrObj.Subheading
         if (parentAttrObj.Weight) {
           parentItem['categoryWeightParent'] = parentAttrObj.Weight
         }
@@ -83,10 +81,6 @@ export async function getStaticProps() {
     }
     return(parentObj)
   }
-
-  categoryObj.map((item, index) => {
-    console.log(item)
-  })
 
   return {
     props: { catPage, categoryObj },

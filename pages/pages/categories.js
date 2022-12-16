@@ -1,24 +1,29 @@
-import { Flex, Heading, Text } from '@chakra-ui/react'
+import { Container, Flex, Heading, Text } from '@chakra-ui/react'
 import Layout from '/components/layout/Layout'
 import CategoryItem from '../../components/category/category-item';
+import HeroPage from '../../components/hero/hero-page';
 
 
 export default function Categories({ catPage, categoryObj }) {
   return (
 
   <Layout>
-    <Flex className="categories-container" flexDirection='column' maxW='container.lg'>
-      <Heading as='h1' mb={2} fontSize={{ base: '4xl', md: '6xl' }}>{catPage.attributes.Headline}</Heading>
-      <Text fontSize='2xl' mb='4.8rem' maxW='960px'>{catPage.attributes.Subheading}</Text>
+    <Container maxW='container.lg'>
+      <Flex className="categories-container" flexDirection='column' maxW='container.lg'>
+        {/* <Heading as='h1' mb={2} fontSize={{ base: '4xl', md: '6xl' }}>{catPage.attributes.Headline}</Heading>
+        <Text fontSize='2xl' maxW='960px'>{catPage.attributes.Subheading}</Text> */}
 
-      <Flex justify="flex-start" flexWrap="wrap" flexDirection='column'>
-        {categoryObj.map((item, index) => {
-          return(
-          <CategoryItem item={item} key={index} />
-          )
-        })}
+        <HeroPage pagedata={catPage} />
+
+        <Flex justify="flex-start" flexWrap="wrap" flexDirection='column'>
+          {categoryObj.map((item, index) => {
+            return(
+            <CategoryItem item={item} key={index} />
+            )
+          })}
+        </Flex>
       </Flex>
-    </Flex>
+    </Container>
   </Layout>
 
   );
@@ -62,6 +67,7 @@ export async function getStaticProps() {
         // Create Parent Object Items Here
         parentItem['categoryNameParent'] = parentAttrObj.categoryName
         parentItem['categorySlugParent'] = parentAttrObj.slug
+        parentItem['categorySubheadingParent'] = parentAttrObj.Subheading
         if (parentAttrObj.Weight) {
           parentItem['categoryWeightParent'] = parentAttrObj.Weight
           
@@ -91,6 +97,36 @@ export async function getStaticProps() {
 
   // Creat variable to use in props
   const categoryObj = getChildCategories(parent_categories)
+
+
+  // Sort Parent Categories
+  categoryObj.sort((c1, c2) => {
+    // handle null values and sort to bottom
+    if (c1.categoryWeightParent === null) {
+      return 1;
+    }
+    if (c2.categoryWeightParent === null) {
+      return -1;
+    }
+    if (c1.categoryWeightParent === c2.categoryWeightParent) {
+      return 0;
+    }
+    // compare non-null values
+    if (c1.categoryWeightParent > c2.categoryWeightParent) {
+      return 1 
+    }
+    if (c1.categoryWeightParent < c2.categoryWeightParent) {
+      return -1
+    }
+    return 0
+  })
+
+
+  // Sort Child Categories
+  categoryObj.map((parentCat, index) => {
+    parentCat.childCategories.sort((a, b) => a.categoryNameChild.localeCompare(b.categoryNameChild))
+  })
+
 
   return {
     props: { catPage, categories, parent_categories, categoryObj },

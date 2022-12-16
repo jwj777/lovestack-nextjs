@@ -39,12 +39,18 @@ a {
 }
 
 h1 {
-  font-weight: 600 !important;
+  font-weight: 500 !important;
 }
 
 h2 {
   font-weight: 600 !important;
 }
+
+/* .displayLong1 {
+  font-size: 2.6rem !important;
+  font-weight: 500 !important;
+  line-height: 3.4rem !important;
+} */
 
 .main-content { 
   max-width: 960px;

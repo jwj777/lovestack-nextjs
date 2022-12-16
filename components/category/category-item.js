@@ -1,5 +1,5 @@
 import React from "react";
-import { Heading, Box, LinkBox, LinkOverlay, Text } from '@chakra-ui/react'
+import { Box } from '@chakra-ui/react'
 import CategoryItemChild from '../../components/category/category-item-child';
 import CategoryItemParent from '../../components/category/category-item-parent';
 import styles from '../../components/category/category-item.module.css'
@@ -7,9 +7,16 @@ import styles from '../../components/category/category-item.module.css'
 
 function CategoryItem({ item }) {
   return(
-      <Box className={styles.categoryItemBox} key={item.slug} display='flex' flexDirection={{ base: 'column', md: 'row'}} mr={0} mb={0} pt={12} pl={2} pb={8}>
-        <CategoryItemParent item={item}>{item.categoryNameParent}</CategoryItemParent>
-        <Box display='flex' flexWrap='wrap' alignItems='center'>
+      <Box 
+      className={styles.categoryItemBox} 
+      key={item.slug} 
+      display='flex' 
+      flexDir={{ base: 'column', md: 'row' }}
+      mb={12} pl={0} pb={8}
+      
+      >
+        <CategoryItemParent item={item} />
+        <Box width='100%'>
           {item.childCategories.map((item, index) => {
             return(
               <CategoryItemChild item={item} key={index} />
