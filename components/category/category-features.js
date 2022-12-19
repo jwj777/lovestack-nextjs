@@ -7,7 +7,7 @@ function CategoryFeatures({ features, getSelectedFeature }) {
   return (
     <Box>
       <Box>
-        <Text fontWeight="bold" mr={4} mb={3}>Features: </Text>
+        <Text fontWeight="bold" mr={4} mb={3}>Filter by Feature: </Text>
         <Box display='flex' flexWrap='wrap'>
           {features.map((feature, index) => {
             return (

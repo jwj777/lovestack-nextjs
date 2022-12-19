@@ -15,7 +15,8 @@ function Footer() {
             mt={{ base: '2rem', lg: '0.4rem' }}
             fontSize='lg' 
             fontWeight='600'>
-            <Link href="/pages/categories">Software Categories</Link>
+              <Link mr={12} href="/pages/categories">Software Categories</Link>
+              <Link href="/pages/about">About</Link>
           </Box>
         </Box>  
       </Container>

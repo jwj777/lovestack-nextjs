@@ -16,8 +16,8 @@ export default function Header({ setOverlayFunc }) {
   }
 
   return (
-    <Flex align='center'  className={styles.headerContainer}>
-      <Container maxW="container.2xl" borderBottom='1px' borderColor='gray.200' pt={8} pb={8}>
+    <Flex align='center' className={styles.headerContainer} borderBottom='1px' borderColor='gray.200'>
+      <Container maxW="container.2xl">
         <Flex align='center' >
 
           {mobileOpen && <MobileNav toggleMobile={toggleMobile} />}

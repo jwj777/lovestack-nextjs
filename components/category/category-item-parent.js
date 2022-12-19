@@ -8,7 +8,7 @@ function CategoryItemParent({ item }) {
     <Box 
       mb={{ base: '1.2rem', md: '0' }} 
       borderTop={{ base: '2px', md: '1px' }}
-      maxW={{ base: '240px;', sm: '480px', md: '100%'}}
+      maxW={{ base: '100%;', sm: '480px', md: '100%'}}
       mr={{ base: '0', md: '3.2rem' }}
     >
       <Text 

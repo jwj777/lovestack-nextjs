@@ -4,7 +4,7 @@ import ReactMarkdown from "react-markdown";
 
 function BodyContent({ pagedata }) {
   return (
-    <Box className="bodyContent">
+    <Box className="bodyContent" maxW='5xl'>
       <ReactMarkdown>{pagedata.attributes.Body}</ReactMarkdown>
     </Box>
   )}

@@ -3,23 +3,23 @@
 }
 
 .logosvg svg {
-  width: 200px;
+  width: 188px;
 }
 
 @media screen and (min-width: 400px) {
   .logosvg svg {
-    width: 224px;
+    width: 188px;
   }
 }
 
-.logost0 {
-  fill:#31B09F;
+.bar1 {
+  fill:#000 !important;
 }
 
-.logost1 {
-  fill:#41EAD4;;
+.bar2 {
+  fill: #000;
 }
 
-.logost2 {
-  fill:#8DF2E5;
+.logosvg path {
+  fill: #000;
 }

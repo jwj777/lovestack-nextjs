@@ -6,14 +6,19 @@ import { HiArrowRight } from 'react-icons/hi'
 
 function CategoryItemChild({ item }) {
   return (
-    <Box className={styles.categoryChildLinks} display='flex' alignItems='center' justifyContent='space-between'>
+    <Box 
+      className={styles.categoryChildLinks} 
+      display='flex' 
+      alignItems='center' 
+      justifyContent='space-between'
+    >
       <Link 
         href={"/categories/" + item.categorySlugChild} 
         pt={4}
+        pr={8}
         pb={4}
-        pl={0}
+        pl={{ base: '0', md: '1rem' }}
         m={0}
-
         display='block' 
         fontSize={{ base: 'md', md: 'lg'}}
         fontWeight='600'
@@ -21,11 +26,11 @@ function CategoryItemChild({ item }) {
         {item.categoryNameChild}
       </Link>
       <Icon 
-        display={{ base: 'none', sm: 'block' }}
+        display={{ base: 'block', sm: 'block' }}
         position='relative' 
-        right='32px' 
+        right={{ base: '1rem', md: '2rem' }}
         as={HiArrowRight} 
-        w={4} h={4} mr={2}
+        w={4} h={4} mr={0}
       >
       </Icon>
     </Box>

@@ -1,16 +1,21 @@
 
-.categoryChildLinks a {
+.categoryChildLinks {
   width: 100%;
   border-top: 1px solid #000;
 }
 
 .categoryChildLinks:last-child {
-  width: 100%;
   border-bottom: 1px solid #000;
+}
+
+.categoryChildLinks a {
+  width: 100%;
 }
 
 .categoryChildLinks a:hover {
   background-color: #000;
   color: #fff;
   text-decoration: none;
+  transition: background-color 0.12s, color 0.12s;
+  transition-timing-function: ease-in;
 }

@@ -4,7 +4,7 @@ import styles from './Layout.module.css'
 import { useState } from 'react'
 import Footer from './footer/Footer'
 
-export default function Layout({ children }) {
+export default function LayoutFluid({ children }) {
 
   const [overlay, setOverlay] = useState(false)
 
@@ -19,10 +19,10 @@ export default function Layout({ children }) {
         <Box className="header-container">
           <Header setOverlayFunc={setOverlayFunc}/>
         </Box>
-        <Box role="main" minH='72vh' mt={{ base: '3rem', md: '4rem'}} mb={32}>
-          <Container maxW="container.xl">
+        <Box role="main" minH='72vh' mb={32}>
+
             { children }
-          </Container>
+
         </Box>
         <Footer />
       </Box>

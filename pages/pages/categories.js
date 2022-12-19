@@ -1,7 +1,7 @@
 import { Container, Flex, Heading, Text } from '@chakra-ui/react'
 import Layout from '/components/layout/Layout'
 import CategoryItem from '../../components/category/category-item';
-import HeroPage from '../../components/hero/hero-page';
+import HeroPage from '../../components/content/hero/hero-page';
 
 
 export default function Categories({ catPage, categoryObj }) {

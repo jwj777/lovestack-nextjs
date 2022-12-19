@@ -24,6 +24,15 @@ const theme = extendTheme({
       lg: '1160px'
     },
   },
+  colors: {
+    teal: {
+      500: '#00CCC0'
+    },
+    gray: {
+      500: '#747F7F'
+      
+    }
+  }
 });
 
 export default theme;

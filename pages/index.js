@@ -2,39 +2,42 @@ import { Container, Heading, Box, Text } from '@chakra-ui/react'
 import Layout from '../components/layout/Layout'
 import CategoryList from '../components/category/category-list'
 import FeaturedCompanies from '../components/featured/featured-companies'
-import DisplayLong1 from '../components/content/display-long';
+import DisplayLong1 from '../components/content/typography/display-long';
+import LayoutFluid from '../components/layout/Layout-fluid';
+import Headline1 from '../components/content/typography/headline1';
+import Subheading1 from '../components/content/typography/subheading1';
+import Overline from '../components/content/typography/overline';
+import HeroPageHome from '../components/content/hero/hero-page-home';
 
 export default function Home({ homepage, categoryObj, companies }) {
   return (
 
-    <Layout>
-      <Box mb={{ base: '0', md: '4rem' }} pb={4}>
-        <Heading as='h1' mb={3} fontSize={{ base: '5xl', md: '7xl' }} maxW='800px'>
-            {homepage.attributes.Headline}
-        </Heading>
-        {/* <Text className="subheading1" fontSize={{ base: 'xl', md: '3xl' }} maxW='960px'>
-          {homepage.attributes.Subheading}
-        </Text> */}
-      </Box>
-      <Container maxW="container.xl" p={0}>
+    <LayoutFluid>
+
+      <HeroPageHome homepage={homepage} />
+
+      <Container maxW="container.xl" p={{base: '1rem', md: '0' }}>
         <Box 
           className='softwareContainerBg' 
           backgroundColor={{ base: '#fff', md: 'gray.50' }} 
           borderTop={{ base: '0', md: '1px' }}
           borderColor={{ base: 'gray.200', md: 'gray.300' }}
           p={{ base: '0', md: '4rem' }} 
-          pt={{ base: '0', md: '3rem' }}  
+          pt={{ base: '2rem', md: '3rem' }}  
           mb={{ base: '0', md: '4rem' }} 
         >
-          <DisplayLong1 text={'Discover exciting new marketing software, gaps in your current marketing stack, and less expensive alternatives.'}></DisplayLong1>
+          <DisplayLong1 text={'Find best in class tools for data, segmentation, content and promotion.'}></DisplayLong1>
           <CategoryList categoryObj={categoryObj}/>
         </Box>
       </Container>
+
       <Box mb={24}>
-       <FeaturedCompanies companies={companies}/>
+        <Container maxW='container.xl'>
+          <FeaturedCompanies companies={companies}/>
+        </Container>
       </Box>
 
-    </Layout>   
+    </LayoutFluid>   
 
   );
 }
