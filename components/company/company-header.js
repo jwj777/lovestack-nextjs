@@ -9,8 +9,8 @@ const CompanyHeading = ({ company }) => {
       alignItems="center" 
       justifyContent="flex-start" 
       flexWrap={{ base: 'wrap', lg: 'nowrap' }}
-      // flexDir={{ base: 'column', lg: 'row' }} 
-      mb={10}
+      mt='16'
+      mb='8'
     >
       { company.webScreenshot.data != null ?
           <Image
