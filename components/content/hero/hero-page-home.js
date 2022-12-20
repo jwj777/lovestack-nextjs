@@ -6,11 +6,11 @@ import Subheading1 from "../typography/subheading1";
 function HeroPageHome({ homepage }) {
 
   return (
-    <Box pb={{ base: '2rem', md: '6rem '}} pt={{ base: '2rem', md: '4rem '}}>
-      <Container maxW='container.xl'>
+    <Box pb={{ base: '12', md: '20 '}} pt={{ base: '12', md: '20'}}>
+      <Box maxW='container.xl'>
         <Headline1 text={homepage.attributes.Headline}></Headline1>
         <Subheading1 text={homepage.attributes.Subheading}></Subheading1>
-      </Container>
+      </Box>
     </Box>
   )}
 

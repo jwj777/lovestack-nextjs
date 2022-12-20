@@ -1,14 +1,4 @@
 
-.navbarContainer a {
-  font-weight: 600;
-  margin-top: 8px;
-  margin-right: 40px;
-}
-
-a.chakra-link {
-  font-weight: 800;
-}
-
 .mobileNavContainer {
   background-color: #fff;
 }

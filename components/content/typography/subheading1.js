@@ -9,7 +9,7 @@ function Subheading1({ text }) {
       lineHeight={{ base: '2rem', md: '2.8rem' }}
       fontWeight='400'
       maxW='960px' 
-      color='gray.600'
+      color='black'
     >{text}</Text>
   )
 }

@@ -10,8 +10,6 @@ export default function Categories({ catPage, categoryObj }) {
   <Layout>
     <Container maxW='container.lg'>
       <Flex className="categories-container" flexDirection='column' maxW='container.lg'>
-        {/* <Heading as='h1' mb={2} fontSize={{ base: '4xl', md: '6xl' }}>{catPage.attributes.Headline}</Heading>
-        <Text fontSize='2xl' maxW='960px'>{catPage.attributes.Subheading}</Text> */}
 
         <HeroPage pagedata={catPage} />
 

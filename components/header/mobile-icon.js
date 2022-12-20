@@ -8,7 +8,7 @@ function MobileIcon({ toggleMobile, setOverlayFunc }) {
       <Icon
         onClick={() => toggleMobile()} 
         display={{base: 'flex', md: 'none'}} 
-        as={RiMenu2Line} w={8} h={8} mr={8}>
+        as={RiMenu2Line} w={8} h={8} mr='7'>
       </Icon>
     </Link>
   )

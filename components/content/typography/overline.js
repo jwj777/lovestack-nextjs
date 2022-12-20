@@ -5,11 +5,13 @@ function Overline({ text }) {
   return (
     <Text 
       className="overline"
-      fontFamily='IBM Plex Mono'
-      fontSize={{ base: 'lg', md: 'xl' }}
+      // fontFamily='Roboto Mono'
+      fontSize={{ base: '0.9rem', md: '1rem' }}
       fontWeight='500'
-      color='teal.500'
-      mb={{ base: '1.4rem', md: '1.6rem' }}
+      color='gray.600'
+      mb={{ base: '0.5rem', md: '1rem' }}
+      textTransform='uppercase'
+      letterSpacing='1px'
     >{text}</Text>
   )
 }

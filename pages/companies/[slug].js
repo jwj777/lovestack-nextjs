@@ -23,7 +23,7 @@ export default function Company({ company, features }) {
           
 
           <Box mr={{ base: '0', lg: '4rem' }}>
-            <Text fontSize='md' mb={12} maxW="960px">{company.companyDescription}</Text>
+            <Text fontSize='md' mt={{ base: '3rem', md: '0' }} mb={12} maxW="960px">{company.companyDescription}</Text>
             <Box display="flex" flexDir={{ base: 'column', lg: 'row' }}>
               <Box mr={{ base: '0', lg: '4rem' }} mb={8}>
                 <CompanyFeatures features={features} />

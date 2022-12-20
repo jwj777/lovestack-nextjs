@@ -1,43 +1,43 @@
 import { Container, Heading, Box, Text } from '@chakra-ui/react'
-import Layout from '../components/layout/Layout'
 import CategoryList from '../components/category/category-list'
-import FeaturedCompanies from '../components/featured/featured-companies'
 import DisplayLong1 from '../components/content/typography/display-long';
-import LayoutFluid from '../components/layout/Layout-fluid';
-import Headline1 from '../components/content/typography/headline1';
-import Subheading1 from '../components/content/typography/subheading1';
-import Overline from '../components/content/typography/overline';
+import Layout from '../components/layout/Layout';
 import HeroPageHome from '../components/content/hero/hero-page-home';
+import CompanyListFeatured from '../components/company-lists/company-list-featured';
+import Overline from '../components/content/typography/overline';
 
-export default function Home({ homepage, categoryObj, companies }) {
+export default function Home({ homepage, categoryObj, companies, companyArray }) {
   return (
 
-    <LayoutFluid>
+    <Layout>
 
       <HeroPageHome homepage={homepage} />
 
-      <Container maxW="container.xl" p={{base: '1rem', md: '0' }}>
+      <Box maxW="container.xl" mb={24}>
         <Box 
           className='softwareContainerBg' 
-          backgroundColor={{ base: '#fff', md: 'gray.50' }} 
-          borderTop={{ base: '0', md: '1px' }}
-          borderColor={{ base: 'gray.200', md: 'gray.300' }}
-          p={{ base: '0', md: '4rem' }} 
-          pt={{ base: '2rem', md: '3rem' }}  
+          pt={{ base: '8', md: '16' }}
           mb={{ base: '0', md: '4rem' }} 
         >
-          <DisplayLong1 text={'Find best in class tools for data, segmentation, content and promotion.'}></DisplayLong1>
+          <Box mb='14'>
+            <Overline text={'Software Categories'}></Overline>
+            <DisplayLong1 text={'Find best in class tools for data, segmentation, content and promotion.'}></DisplayLong1>
+          </Box>
           <CategoryList categoryObj={categoryObj}/>
         </Box>
-      </Container>
-
-      <Box mb={24}>
-        <Container maxW='container.xl'>
-          <FeaturedCompanies companies={companies}/>
-        </Container>
       </Box>
 
-    </LayoutFluid>   
+      <Box mb={24}>
+        <Box maxW='container.xl' mb='12'>
+          <Overline text={'Featured Companies'}></Overline>
+          <DisplayLong1 text='Great marketing software that deserves more attention'></DisplayLong1>
+        </Box>
+        <Box maxW='container.xl'>
+          <CompanyListFeatured companyArray={companyArray} />
+        </Box>
+      </Box>
+
+    </Layout>   
 
   );
 }
@@ -58,6 +58,13 @@ export async function getStaticProps() {
   const resparent = await fetch(`${process.env.API_URL}/api/product-categories?populate=*&filters[child_categories][slug][$notNull]=content`);
   const resparentjson = await resparent.json();
   const parent_categories = resparentjson.data;
+
+  companies.map((item) => {
+    console.log(item.attributes.features)
+    for (let val in item.attributes.features.data) {
+      console.log(item.attributes.features.data[val].attributes.featureName)
+    }
+  })
 
 
   // Sort featured companies by auth rank
@@ -164,11 +171,44 @@ export async function getStaticProps() {
   })
 
 
+
+  // Transform companies object to make it easier to manage in JSX
+  const companyArray = []
+  const companyFeatureSlug = {}
+  const companyFeatureName = {}
+  // map companies object from fetch 
+  companies.map((item, index) => {
+    let companyFeatureSlug = item.attributes
+    let companyFeatureName = item.attributes
+    let featuresSlugArray = []
+    let featuresNameArray = []
+    let featureAttr = item.attributes.features.data
+    // iterate through individual features
+    for (let val in featureAttr) {
+      let featureData = featureAttr[val].attributes
+      featuresSlugArray.push(featureData.slug)
+      featuresNameArray.push(featureData.featureName)
+    }
+    // add 'all' feature by default 
+    featuresSlugArray.push('all')
+    // create objects from arrays
+    companyFeatureSlug['features'] = featuresSlugArray
+    companyFeatureName['featureNameArray'] = featuresNameArray
+    // push individual company object to company array
+    companyArray.push(companyFeatureSlug)
+  })
+
+  companyArray.map((item) => {
+    console.log(item)
+  })
+
   return {
     props: { 
       homepage, 
       categoryObj, 
-      companies },
+      companies,
+      companyArray 
+    },
     revalidate: 10,
   };
 }

@@ -24,7 +24,7 @@ function CategoryItemParent({ item }) {
       </Text>
       <Text 
         maxW={{ base: '360px', md: '232px' }}
-        color='gray.500' 
+        color='gray.600' 
         fontSize='0.95rem' 
         lineHeight='1.7rem' 
       >

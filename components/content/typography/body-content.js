@@ -2,10 +2,10 @@ import React from "react";
 import { Box } from '@chakra-ui/react'
 import ReactMarkdown from "react-markdown";
 
-function BodyContent({ pagedata }) {
+function BodyContent({ text }) {
   return (
     <Box className="bodyContent" maxW='5xl'>
-      <ReactMarkdown>{pagedata.attributes.Body}</ReactMarkdown>
+      <ReactMarkdown>{text}</ReactMarkdown>
     </Box>
   )}
 
