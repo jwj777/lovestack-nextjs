@@ -9,7 +9,7 @@ export default function Categories({ pagedata }) {
 
     <Layout>
       <HeroPage pagedata={pagedata}/>
-      <BodyContent pagedata={pagedata} />
+      <BodyContent text={pagedata.attributes.Body} />
     </Layout>
 
   );
@@ -22,6 +22,10 @@ export async function getStaticProps() {
   const res = await fetch(`${process.env.API_URL}/api/pages?filters[slug]=about`);
   const rjson = await res.json();
   const pagedata = rjson.data[0];
+
+  console.log(pagedata.attributes.Body)
+
+
 
   return {
     props: { pagedata },
