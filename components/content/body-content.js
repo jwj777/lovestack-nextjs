@@ -4,8 +4,8 @@ import ReactMarkdown from "react-markdown";
 
 function BodyContent({ text }) {
   return (
-    <Box className="bodyContent" maxW='5xl'>
-      <ReactMarkdown>{text}</ReactMarkdown>
+    <Box maxW='4xl' className='bodyContent'>
+      <Box dangerouslySetInnerHTML={{ __html: text }}></Box>
     </Box>
   )}
 

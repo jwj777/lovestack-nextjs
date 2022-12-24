@@ -5,6 +5,11 @@ import CompanyLinks from '../../components/company/company-links'
 import CompanyFeatures from '../../components/company/company-features'
 import CompanyCategories from '../../components/company/company-categories'
 import CompanyPrice from '../../components/company/company-price'
+import ReactMarkdown from "react-markdown";
+
+const createMarkup = () => {
+  return { __html: this.state.content };
+}
 
 export default function Company({ company, features }) {
   return (
@@ -23,7 +28,10 @@ export default function Company({ company, features }) {
           
 
           <Box mr={{ base: '0', lg: '4rem' }}>
-            <Text fontSize='md' mt={{ base: '3rem', md: '0' }} mb={12} maxW="960px">{company.companyDescription}</Text>
+            <Box className='ck-content' fontSize='md' mt={{ base: '3rem', md: '0' }} mb={12} maxW="960px">
+              <ReactMarkdown children={company.companyDescription}/>
+              <Box dangerouslySetInnerHTML={{ __html: company.companyDescriptionCk }}></Box>
+              </Box>
             <Box display="flex" flexDir={{ base: 'column', lg: 'row' }}>
               <Box mr={{ base: '0', lg: '4rem' }} mb={8}>
                 <CompanyFeatures features={features} />

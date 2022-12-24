@@ -9,7 +9,7 @@ export default function Categories({ pagedata }) {
 
     <Layout>
       <HeroPage pagedata={pagedata}/>
-      <BodyContent text={pagedata.attributes.Body} />
+      <BodyContent text={pagedata.attributes.bodyCk} />
     </Layout>
 
   );
