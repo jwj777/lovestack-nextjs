@@ -29,7 +29,7 @@ export default function Company({ company, features }) {
 
           <Box mr={{ base: '0', lg: '4rem' }}>
             <Box className='ck-content' fontSize='md' mt={{ base: '3rem', md: '0' }} mb={12} maxW="960px">
-              <ReactMarkdown children={company.companyDescription}/>
+              <ReactMarkdown source={company.companyDescription}/>
               <Box dangerouslySetInnerHTML={{ __html: company.companyDescriptionCk }}></Box>
               </Box>
             <Box display="flex" flexDir={{ base: 'column', lg: 'row' }}>
