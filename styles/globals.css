@@ -43,6 +43,12 @@ h2 {
   font-weight: 600 !important;
 }
 
+/** body content **/
+
+.bodyContent { 
+  max-width: 960px;
+}
+
 .bodyContent h2 {
   font-size: 1.8rem;
   line-height: 2.4rem;
@@ -51,29 +57,29 @@ h2 {
 }
 
 .bodyContent p {
-  font-size: 1.2rem;
-  line-height: 2.1rem;
+  font-size: 1.16rem;
+  line-height: 2rem;
   margin-bottom: 1.6rem;
   color: var(--chakra-colors-gray-700) !important;
 }
 
-.main-content { 
-  max-width: 960px;
+.bodyContent ul {
+  padding-left: 1.2rem;
 }
 
-.main-content h2 {
-  font-size: 1.6rem;
-  margin-top: 2rem;
-  margin-bottom: .5rem;
+.bodyContent li {
+  font-size: 1.16rem;
+  line-height: 1.8rem;
+  margin-bottom: 0.6rem;
+  color: var(--chakra-colors-gray-700) !important;
 }
+
+
+
 
 h3 {
   font-size: 28px !important;
   font-weight: 600 !important;
-}
-
-.main-content p {
-  line-height:1.6rem;
 }
 
 .company-features, .company-links {
