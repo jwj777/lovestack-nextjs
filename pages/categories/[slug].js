@@ -140,6 +140,12 @@ export async function getStaticProps({ params }) {
     companyArray.push(companyFeatureSlug)
   })
 
+  companyArray.map((item) => {
+    // console.log(item)
+    item.featureNameArray.map((item2) => {
+      console.log(item2 + ' - instance')
+    })
+  })
 
   return {
     props: { 
