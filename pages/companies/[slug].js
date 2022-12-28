@@ -1,54 +1,25 @@
-import { Text, Box } from '@chakra-ui/react'
+import { Box } from '@chakra-ui/react'
 import Layout from '../../components/layout/Layout'
 import CompanyHeading from '../../components/company/company-header'
-import CompanyLinks from '../../components/company/company-links'
+import CompanyLinks from '../../components/company/company-links/company-links'
 import CompanyFeatures from '../../components/company/company-features'
-import CompanyCategories from '../../components/company/company-categories'
-import CompanyPrice from '../../components/company/company-price'
-import ReactMarkdown from "react-markdown";
+import CompanyPlans from '../../components/company/company-plans/company-plans'
+import CompanyBody from '../../components/company/company-body'
+import CompanySubsidiaries from '../../components/company/company-hierarchy/company-subsidiaries'
 
-const createMarkup = () => {
-  return { __html: this.state.content };
-}
-
-export default function Company({ company, features }) {
+export default function Company({ company, features, hasPlan, hasSubsidiary, hasCategory }) {
   return (
     <Layout>
       <Box className="main-content" maxW={'6xl'} flex={'1 0 auto'}>
-
-        <CompanyHeading company={company} />
-        <Box display='flex' flexDirection={{ base: 'column', md: 'row' }}>
-
-          <Box display={{ base: 'block', lg: 'none' }}>
-            <CompanyPrice company={company} />
-            <Box>
-              <CompanyLinks company={company} />
-            </Box>
-          </Box>
-          
-
+        <CompanyHeading company={company} hasCategory={hasCategory} />
+        <Box>
+          <CompanyLinks company={company} />
           <Box mr={{ base: '0', lg: '4rem' }}>
-            <Box className='ck-content' fontSize='md' mt={{ base: '3rem', md: '0' }} mb={12} maxW="960px">
-              <ReactMarkdown source={company.companyDescription}/>
-              <Box className='bodyContent' dangerouslySetInnerHTML={{ __html: company.companyDescriptionCk }}></Box>
-              </Box>
-            <Box display="flex" flexDir={{ base: 'column', lg: 'row' }}>
-              <Box mr={{ base: '0', lg: '4rem' }} mb={8}>
-                <CompanyFeatures features={features} />
-              </Box>
-              <Box mr={0} mb={8}>
-                <CompanyCategories company={company} />
-              </Box>
-            </Box>  
+            <CompanyBody company={company} />
+            <CompanySubsidiaries company={company} hasSubsidiary={hasSubsidiary} />
+            <CompanyFeatures features={features} company={company} />
+            <CompanyPlans plans={company.companyPlan} hasPlan={hasPlan} />
           </Box>
-
-          <Box display={{ base: 'none', lg: 'block' }} minW='320px' borderLeft='1px' borderColor='#ddd' pl={8}>
-            <CompanyPrice company={company} />
-            <Box>
-              <CompanyLinks company={company} />
-            </Box>
-          </Box>
-
         </Box>
       </Box>
     </Layout>
@@ -73,19 +44,43 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }) {
   const { slug } = params;
 
-  const res = await fetch(process.env.API_URL + `/api/companies?filters[slug]=${slug}&populate=*`);
-  const res2 = await res.json();
-  const res3 = res2.data;
+  let res = await fetch(process.env.API_URL + `/api/companies?filters[slug]=${slug}&populate[0]=product_categories
+    &populate[1]=features
+    &populate[2]=parentCompany
+    &populate[3]=subsidiaries
+    &populate[4]=subsidiaries.features
+    &populate[5]=subsidiaries.companyPlan
+    &populate[6]=webScreenshot
+    &populate[7]=companyPlan`);
+  let res2 = await res.json();
+  let res3 = res2.data;
   const company = res3[0].attributes;
 
   const resfeatures = await fetch(process.env.API_URL + `/api/features?filters[companies][slug][$eq]=${slug}&populate=*`);
   const resfeaturesjson = await resfeatures.json();
   const features = resfeaturesjson.data;
 
+
+  // check if company has categories
+  let hasCategory = ''
+  Object.keys(company.product_categories.data).length == 0 ? hasCategory = false : hasCategory = true
+
+  // check if company has pricing plans
+  let hasPlan = ''
+  company.companyPlan.length == 0 ? hasPlan = false : hasPlan = true
+
+  // check if company has subsidiaries
+  let hasSubsidiary = ''
+  Object.keys(company.subsidiaries.data).length != 0 ? hasSubsidiary = true : hasSubsidiary = false
+
+  
   return {
     props: {
       company,
       features,
+      hasPlan,
+      hasSubsidiary,
+      hasCategory,
      },
     revalidate: 1, 
   };

@@ -22,7 +22,7 @@ function CompanyItemPrice({ company, index }) {
       {
         company.freeTrial ? 
           <Box display='flex' alignItems='center' minW='180px'>
-            <Icon as={FaRegCheckCircle} w={4} h={4} mr={1} color='cyan.500'></Icon>
+            <Icon as={FaRegCheckCircle} w={4} h={4} mr={1} color='blue.500'></Icon>
             <Text fontSize='md'>Free Trial</Text> 
           </Box> :
         null

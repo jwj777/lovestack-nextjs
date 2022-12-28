@@ -11,14 +11,28 @@ const theme = extendTheme({
     Button: {
       // 1. We can update the base styles
       baseStyle: {
-        fontWeight: '600',
+        fontWeight: '500',
       },
       variants: {
-        sm: {
+        gray50: {
           bg: 'gray.50',
           color: 'black',
           _hover: {
             bg: 'gray.200',
+          },
+        },
+        blue50: {
+          bg: 'blue.50',
+          color: 'black',
+          _hover: {
+            bg: 'blue.200',
+          },
+        },
+        blue500: {
+          bg: 'blue.600',
+          color: 'white',
+          _hover: {
+            bg: 'blue.700',
           },
         },
       },
@@ -78,16 +92,16 @@ const theme = extendTheme({
       900: '#001914', 
     },
     blue: {
-      50: '#aaaaaa',  
-      100: '#aaaaaa',
-      200: '#92dfee', 
-      300: '#6dd4e9',
-      400: '#49c9e3',
-      500: '#00b4d8',
-      600: '#0096b4',
-      700: '#007890',
-      800: '#005a6c',
-      900: '#003c48',
+      50: '#e3eefa',  
+      100: '#b6d9ff',
+      200: '#92c6ff', 
+      300: '#49a1ff',
+      400: '#248eff',
+      500: '#007bff',
+      600: '#0066d4',
+      700: '#0052aa',
+      800: '#003e80',
+      900: '#001f40',
     },
     mdblue: {
       50: '#dff6ff',  

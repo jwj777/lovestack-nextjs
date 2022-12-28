@@ -18,7 +18,7 @@ export default function Category({ category, features, companyArray }) {
   return (
     <div>
       <Layout>
-        <Box maxW={'5xl'} mb='14' mt='16'>
+        <Box maxW={'5xl'} mb={{ base: '10', md: '16' }} mt={{ base: '12', md: '16' }}>
           <Headline1B text={category[0].attributes.categoryName}></Headline1B>
           <DisplayLong2 text={category[0].attributes.categoryDescription}></DisplayLong2>
         </Box>

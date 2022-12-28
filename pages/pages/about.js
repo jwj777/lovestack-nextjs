@@ -23,10 +23,6 @@ export async function getStaticProps() {
   const rjson = await res.json();
   const pagedata = rjson.data[0];
 
-  console.log(pagedata.attributes.Body)
-
-
-
   return {
     props: { pagedata },
     revalidate: 10,

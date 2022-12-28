@@ -1,5 +1,5 @@
 import React from "react";
-import { Heading, Box, Image, LinkBox, LinkOverlay, Text } from '@chakra-ui/react'
+import { Text } from '@chakra-ui/react'
 import CompanyItem from "./company-item";
 
 

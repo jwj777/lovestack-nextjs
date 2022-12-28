@@ -5,8 +5,8 @@ function DisplayLong2({ text }) {
   return (
     <Text 
       className="displayLong2"
-      fontSize={{ base: '1.1rem', md: '1.32rem' }}
-      lineHeight={{ base: '1.65rem', md: '2rem' }}
+      fontSize={{ base: '1rem', md: '1.32rem' }}
+      lineHeight={{ base: '1.56rem', md: '2rem' }}
       color='gray.600'
       fontWeight='400'
       maxW='8xl' 

@@ -59,37 +59,18 @@ export async function getStaticProps() {
   const resparentjson = await resparent.json();
   const parent_categories = resparentjson.data;
 
-  companies.map((item) => {
-    console.log(item.attributes.features)
-    for (let val in item.attributes.features.data) {
-      console.log(item.attributes.features.data[val].attributes.featureName)
-    }
-  })
 
-
-  // Sort featured companies by auth rank
   // Sort Companies by Authority Rank
   companies.sort((c1, c2) => {
     // handle null values and sort to bottom
-    if (c1.attributes.authorityRank === null) {
-      return 1;
-    }
-    if (c2.attributes.authorityRank === null) {
-      return -1;
-    }
-    if (c1.attributes.authorityRank === c2.attributes.authorityRank) {
-      return 0;
-    }
+    if (c1.attributes.authorityRank === null) { return 1; }
+    if (c2.attributes.authorityRank === null) { return -1; }
+    if (c1.attributes.authorityRank === c2.attributes.authorityRank) { return 0; }
     // compare non-null values
-    if (c1.attributes.authorityRank > c2.attributes.authorityRank) {
-      return 1 
-    }
-    if (c1.attributes.authorityRank < c2.attributes.authorityRank) {
-      return -1
-    }
+    if (c1.attributes.authorityRank > c2.attributes.authorityRank) { return 1 }
+    if (c1.attributes.authorityRank < c2.attributes.authorityRank) { return -1 }
     return 0
   })
-
 
   // Check if an item is an object
   const isObject = function(val) {
@@ -137,6 +118,8 @@ export async function getStaticProps() {
     }
     return(parentObj)
   }
+
+
 
   // Creat variable to use in props
   const categoryObj = getChildCategories(parent_categories)
@@ -196,6 +179,19 @@ export async function getStaticProps() {
     companyFeatureName['featureNameArray'] = featuresNameArray
     // push individual company object to company array
     companyArray.push(companyFeatureSlug)
+  })
+
+
+  // Sort featured companies by auth rank
+  companyArray.sort((c1, c2) => {
+    // handle null values and sort to bottom
+    if (c1.authorityRank === null) { return 1; }
+    if (c2.authorityRank === null) { return -1; }
+    if (c1.authorityRank === c2.authorityRank) { return 0; }
+    // compare non-null values
+    if (c1.authorityRank < c2.authorityRank) { return 1 }
+    if (c1.authorityRank > c2.authorityRank) { return -1 }
+    return 0
   })
   
 

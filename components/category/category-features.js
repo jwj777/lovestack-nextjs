@@ -12,9 +12,10 @@ function CategoryFeatures({ features, getSelectedFeature }) {
           {features.map((feature, index) => {
             return (
               <Button 
-                mr={3}
-                mb={4}
+                mr='3'
+                mb='4'
                 size="sm"
+                variant='blue50'
                 lineHeight='0'
                 key={feature.attributes.featurename + '__' + index} 
                 data-feature={feature.attributes.slug}

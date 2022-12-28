@@ -11,7 +11,10 @@ function Rank({ rank }) {
       width='min-content'
     >
       <Text alignSelf='flex-start' color='black' mr='1' fontWeight='500'>stackRank:</Text> 
-      <Text alignSelf='flex-start' color='blue.400' fontWeight='600'>{rank.toFixed(2)}</Text>
+      { rank ?
+          <Text alignSelf='flex-start' color='blue.500' fontWeight='600'>{rank.toFixed(2)}</Text> :
+        null
+      }
     </Box>
   )
 }

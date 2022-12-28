@@ -9,7 +9,7 @@ function CompanyItemImg({ company }) {
     alt={'homepage screenshot'} 
     // display={{ base: 'none', md: 'block' }}
     maxW={{ base: '72px', md: '144px' }}
-    height={{ base: '64px', md: 'auto'}}
+    maxH={{ base: '64px', md: 'auto'}}
     objectFit='cover'
     mr={{ base: 5, md: 6 }}
     boxShadow='md'

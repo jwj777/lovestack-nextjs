@@ -11,6 +11,7 @@ function CategoryItemChild({ item }) {
       display='flex' 
       alignItems='center' 
       justifyContent='space-between'
+      _hover={{ background: 'blue.50' }}
     >
       <Link 
         href={"/categories/" + item.categorySlugChild} 
