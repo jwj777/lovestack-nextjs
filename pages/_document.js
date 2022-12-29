@@ -1,5 +1,4 @@
 import Document, { Html, Head, Main, NextScript } from "next/document";
-import { GTM_ID } from '../lib/gtm'
 
 class MyDocument extends Document {
   render() {

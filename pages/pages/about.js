@@ -7,7 +7,7 @@ import BodyContent from '../../components/content/body-content';
 export default function Categories({ pagedata }) {
   return (
 
-    <Layout>
+    <Layout pagedata={pagedata.attributes}>
       <HeroPage pagedata={pagedata}/>
       <BodyContent text={pagedata.attributes.bodyCk} />
     </Layout>

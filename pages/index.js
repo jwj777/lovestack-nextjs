@@ -6,10 +6,10 @@ import HeroPageHome from '../components/content/hero/hero-page-home';
 import CompanyListFeatured from '../components/company-lists/company-list-featured';
 import Overline from '../components/content/typography/overline';
 
-export default function Home({ homepage, categoryObj, companies, companyArray }) {
+export default function Home({ homepage, categoryObj, companyArray }) {
   return (
 
-    <Layout>
+    <Layout pagedata={homepage.attributes}>
 
       <HeroPageHome homepage={homepage} />
 
@@ -180,6 +180,14 @@ export async function getStaticProps() {
     // push individual company object to company array
     companyArray.push(companyFeatureSlug)
   })
+
+  console.log(homepage)
+
+  // companyArray.map((item) => {
+  //   if (item.Headline = 'Modernize Your Marketing Technology Stack') {
+  //     console.log(item.companyName)
+  //   }
+  // })
 
 
   // Sort featured companies by auth rank

@@ -5,16 +5,18 @@ import { FaRegCheckCircle } from 'react-icons/fa'
 const CompanyPlan = ({ plan, index }) => {
   return (
     <Box 
-      mr='6' mb={{ base: '2', md: '0' }} p='4' pt='3' pr='12' pb='2' pl='4' 
-      backgroundColor='blue.50'
-      borderColor='gray.100'
-      minW={{ base: '90%', md: 'auto' }}
+      mr='8' mb={{ base: '4', md: '0' }} 
+      pt='3' pr='12' pb='3' pl='4' 
+      borderTop='1px'
+      borderBottom={{ base: '0', md: '1px' }}
+      borderColor={{ base: 'gray.200', md: 'gray.200' }}
+      maxW={{ base: '100%', md: '320px' }}
     >
-      <Text fontWeight='600'>{plan.planName}</Text>
+      <Text fontWeight='600' mb='0'>{plan.planName}</Text>
       {
         !plan.planPrice ?
         <Button href={plan.planSalesUrl} variant='blue500' size='sm' mt='2' mb='2'>{plan.planSalesCta}</Button> :
-        <Text fontWeight='500' fontSize='3xl'>{'$' + plan.planPrice}
+        <Text fontWeight='500' fontSize='2xl'>{'$' + plan.planPrice}
           {
             !plan.paymentPeriod ?
             '' :

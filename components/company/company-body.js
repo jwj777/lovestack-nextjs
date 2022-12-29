@@ -6,7 +6,6 @@ const CompanyBody = ({ company }) => {
   return (
   <Box 
     className='ck-content' 
-    fontSize='md' 
     mt={{ base: '3rem', md: '0' }} 
     mb='12'
     maxW='4xl'
@@ -14,7 +13,7 @@ const CompanyBody = ({ company }) => {
     borderBottom='1px'
     borderColor='gray.100'
   >
-    <Box className='bodyContent' dangerouslySetInnerHTML={{ __html: company.companyDescriptionCk }}></Box>
+    <Box className='bodyContentCompany' dangerouslySetInnerHTML={{ __html: company.companyDescriptionCk }}></Box>
   </Box>
   )
 }

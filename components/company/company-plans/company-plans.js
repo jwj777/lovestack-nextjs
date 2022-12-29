@@ -8,7 +8,7 @@ const CompanyPlans = ({ plans, hasPlan }) => {
     hasPlan ?
       <Box>
         <SectionHeading text='Available Plans'></SectionHeading>
-        <Box display='flex' flexWrap='wrap'>
+        <Box className='planContainer' display='flex' flexWrap='wrap'>
           {
             plans.map((item, index) => {
               return (

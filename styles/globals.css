@@ -80,6 +80,24 @@ h2 {
   text-decoration: underline;
 }
 
+.bodyContentCompany p {
+  font-size: 1.05rem;
+  line-height: 1.8rem;
+  margin-bottom: 1.2rem;
+}
+
+.bodyContent ul {
+  padding-left: 1.2rem;
+  margin-bottom: 2rem;
+}
+
+.bodyContent li {
+  font-size: 1.14rem;
+  line-height: 1.7rem;
+  margin-bottom: 0.6rem;
+  color: var(--chakra-colors-gray-700) !important;
+}
+
 .company-features, .company-links {
   margin-right: 8rem;
 }

@@ -6,10 +6,12 @@ import CompanyFeatures from '../../components/company/company-features'
 import CompanyPlans from '../../components/company/company-plans/company-plans'
 import CompanyBody from '../../components/company/company-body'
 import CompanySubsidiaries from '../../components/company/company-hierarchy/company-subsidiaries'
+import SeoCompany from '../../components/seo/seo-company'
 
 export default function Company({ company, features, hasPlan, hasSubsidiary, hasCategory }) {
   return (
     <Layout>
+      <SeoCompany pagedata={company} />
       <Box className="main-content" maxW={'6xl'} flex={'1 0 auto'}>
         <CompanyHeading company={company} hasCategory={hasCategory} />
         <Box>
@@ -73,7 +75,19 @@ export async function getStaticProps({ params }) {
   let hasSubsidiary = ''
   Object.keys(company.subsidiaries.data).length != 0 ? hasSubsidiary = true : hasSubsidiary = false
 
-  
+
+  // Sort Features, First by Weight, and then by featureName
+  // company.sort((f1, f2) => {
+  //   if (f1.attributes.featureaName < f2.attributes.featureName) {
+  //     return 1 
+  //   }
+  //   if (f1.attributes.featureName > f2.attributes.featureName) {
+  //     return -1
+  //   }
+  //   return 0
+  // })
+
+
   return {
     props: {
       company,

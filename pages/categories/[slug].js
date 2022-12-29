@@ -1,10 +1,11 @@
-import { Box } from '@chakra-ui/react'
+import { Box, Text } from '@chakra-ui/react'
 import React, { useState } from 'react'
 import CategoryFeatures from '../../components/category/category-features'
 import CompanyList from '../../components/company-lists/company-list'
 import DisplayLong2 from '../../components/content/typography/display-long2'
 import Headline1B from '../../components/content/typography/headline-1b'
 import Layout from '../../components/layout/Layout'
+import SeoCategories from '../../components/seo/seo-categories'
 
 
 export default function Category({ category, features, companyArray }) {
@@ -18,6 +19,7 @@ export default function Category({ category, features, companyArray }) {
   return (
     <div>
       <Layout>
+      <SeoCategories pagedata={category} />
         <Box maxW={'5xl'} mb={{ base: '10', md: '16' }} mt={{ base: '12', md: '16' }}>
           <Headline1B text={category[0].attributes.categoryName}></Headline1B>
           <DisplayLong2 text={category[0].attributes.categoryDescription}></DisplayLong2>
@@ -140,13 +142,7 @@ export async function getStaticProps({ params }) {
     companyArray.push(companyFeatureSlug)
   })
 
-  companyArray.map((item) => {
-    // console.log(item)
-    item.featureNameArray.map((item2) => {
-      console.log(item2 + ' - instance')
-    })
-  })
-
+  
   return {
     props: { 
       companies, 

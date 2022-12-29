@@ -5,12 +5,14 @@ import { FaRegCheckCircle } from 'react-icons/fa'
 const CompanyItemPlan = ({ plan }) => {
   return (
     <Box 
-      mt='2' 
-      mr='4' 
+      mt='1' 
+      mr='8' 
       mb={{ base: '2', md: '8' }}
       pt='3' pr='4' pb='0.6rem' pl='4' 
       minW={{ base: '14rem', md: '10rem' }}
-      backgroundColor='blue.50'
+      borderTop='1px'
+      borderBottom={{ base: '0', md: '1px' }}
+      borderColor={{ base: 'gray.200', md: 'gray.200' }}
     >
       <Text fontSize='sm' fontWeight='500' lineHeight='1rem'>{plan.planName}</Text>
       {

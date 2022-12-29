@@ -7,7 +7,7 @@ import HeroPage from '../../components/content/hero/hero-page';
 export default function Categories({ catPage, categoryObj }) {
   return (
 
-  <Layout>
+  <Layout pagedata={catPage.attributes}>
     <Container maxW='container.lg'>
       <Flex className="categories-container" flexDirection='column' maxW='container.lg'>
 
