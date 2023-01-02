@@ -101,3 +101,8 @@ h2 {
 .company-features, .company-links {
   margin-right: 8rem;
 }
+
+.companyItemFeatures {
+  column-count: 2;
+  column-gap: 0rem;
+}

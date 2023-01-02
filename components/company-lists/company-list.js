@@ -1,7 +1,5 @@
 import React from "react";
-import { Text } from '@chakra-ui/react'
 import CompanyItem from "./company-item";
-
 
 function CompanyList({ companyArray, selectedFeature }) {
   return (  

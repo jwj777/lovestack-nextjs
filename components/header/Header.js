@@ -1,33 +1,30 @@
+import React from 'react'
 import Logo from '/components/header/branding/Logo'
 import Navbar from '/components/header/Navbar'
-import styles from './Header.module.css'
-import MobileIcon from './mobile-icon'
-import { Flex, Container, Button } from '@chakra-ui/react'
-import MobileNav from './mobile-nav'
-import {useState} from 'react'
+import MobileIcon from './mobile-nav/mobile-icon'
+import { Flex, Container, Button, Drawer, DrawerOverlay } from '@chakra-ui/react'
+import { useDisclosure } from '@chakra-ui/react'
+import DsDrawerContent from './mobile-nav/drawer-content'
 
-export default function Header({ setOverlayFunc }) {
+export default function Header({ }) {
 
-  const [mobileOpen, setMobileOpen] = useState(false)
-
-  const toggleMobile = () => {
-    setMobileOpen(!mobileOpen)
-    setOverlayFunc()
-  }
+  let { isOpen, onOpen, onClose } = useDisclosure()
+  let btnRef = React.useRef()
 
   return (
-    <Flex align='center' className={styles.headerContainer} borderBottom='1px' borderColor='gray.200'>
-      <Container maxW="container.2xl">
-        <Flex align='center' >
+    <Flex align='center' height='80px' zIndex='1' position='relative' background='black'>
 
-          {mobileOpen && <MobileNav toggleMobile={toggleMobile} />}
-          <MobileIcon toggleMobile={toggleMobile} />   
-      
+      <Drawer isOpen={isOpen} placement='left' onClose={onClose} finalFocusRef={btnRef}>
+        <DrawerOverlay />
+        <DsDrawerContent />
+      </Drawer>
+      <Container maxW="container.2xl">
+        <Flex align='center'>
+          <Button ref={btnRef} colorScheme='blue' onClick={onOpen} pl='0' pr='0' display={{ base: 'block', md: 'none' }}>
+            <MobileIcon />
+          </Button>
           <Logo />
           <Navbar display={{base: 'none', md: 'flex'}} />
-
-          {/* <Button onClick={toggleMobile}>test</Button> */}
-
         </Flex>  
       </Container>
     </Flex>

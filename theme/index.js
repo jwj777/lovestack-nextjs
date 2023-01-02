@@ -29,10 +29,21 @@ const theme = extendTheme({
           },
         },
         blue500: {
-          bg: 'blue.600',
+          bg: 'blue.500',
           color: 'white',
+          borderRadius: '100',
           _hover: {
             bg: 'blue.700',
+          },
+        },
+        blue500ol: {
+          bg: 'none',
+          border: '2px',
+          borderColor: 'blue.500',
+          color: 'white',
+          borderRadius: '100',
+          _hover: {
+            bg: 'blue.500',
           },
         },
       },
@@ -68,7 +79,7 @@ const theme = extendTheme({
   },
   colors: {
     gray: {
-      50: '#e9eaea',
+      50: '#f2f2f2',
       100: '#d3d5d5',
       200: '#bdc0c0',
       300: '#a6abac',

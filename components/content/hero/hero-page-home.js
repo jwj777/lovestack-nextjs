@@ -1,16 +1,30 @@
 import React from "react";
-import { Box, Container } from '@chakra-ui/react'
-import Headline1 from "../typography/headline1";
-import Subheading1 from "../typography/subheading1";
+import { Box, Container, Button } from '@chakra-ui/react'
+import Headline1White from "../typography/headline1-white";
+import Subheading1White from "../typography/subheading1-white";
 
-function HeroPageHome({ homepage }) {
+function HeroPageHome({ pagedata }) {
 
   return (
-    <Box pb={{ base: '12', md: '20 '}} pt={{ base: '12', md: '20'}}>
-      <Box maxW='container.xl'>
-        <Headline1 text={homepage.attributes.Headline}></Headline1>
-        <Subheading1 text={homepage.attributes.Subheading}></Subheading1>
-      </Box>
+    <Box pt={{ base: '8', md: '28'}} pb={{ base: '24', md: '40' }} 
+      backgroundColor='black' 
+      bgImage={{ base: 'none', 'xl': 'https://lovestack.nyc3.digitaloceanspaces.com/dsbg4_66c05af1db.png?'}} 
+      backgroundRepeat='no-repeat'
+      backgroundPosition={{ base: '20% 40%', '2xl': '60% 40%' }}
+    >
+      <Container maxW='container.2xl'>
+        <Box display='flex' justifyContent='space-between'>
+          <Box ml={{ base: '0', xl: '16' }}>
+            <Box mb='8'>
+              <Headline1White text={pagedata.Headline}></Headline1White>
+            </Box>
+            <Subheading1White text={pagedata.Subheading}></Subheading1White>
+            <Button variant='blue500ol' mt='10'>Browse Software</Button>
+          </Box>
+          <Box mr={{ base: 0, xl: '12'}} display={{ base: 'none', '2xl': 'block' }}>
+          </Box>
+        </Box>
+      </Container>
     </Box>
   )}
 

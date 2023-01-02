@@ -26,7 +26,7 @@ const CompanyHeading = ({ company, hasCategory }) => {
         null 
       }
       <Box ml={{ base: '0', lg: '2rem' }}>
-        <Heading as='h1' fontSize={{ base: '4xl', lg: '5xl' }}>{company.companyName}</Heading>
+        <Heading as='h1' fontSize={{ base: '3xl', lg: '4xl' }}>{company.companyName}</Heading>
         <Text mb={{ base: '4', md: '0' }}><Text as='span' fontWeight='600'>Headquarters:</Text> {company.Headquarters}</Text>
         { hasCategory ? <CompanyCategories company={company} /> : null }
       </Box>

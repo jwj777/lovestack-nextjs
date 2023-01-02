@@ -5,8 +5,9 @@ import { useState } from 'react'
 import Footer from './footer/Footer'
 import Seo from '../seo/seo'
 import Hero from './hero'
+import HeroPageHome from '../content/hero/hero-page-home'
 
-export default function Layout({ children, pagedata }) {
+export default function LayoutHome({ children, pagedata }) {
 
   const [overlay, setOverlay] = useState(false)
 
@@ -23,6 +24,7 @@ export default function Layout({ children, pagedata }) {
           <Header setOverlayFunc={setOverlayFunc}/>
         </Box>
         <Box role="main" minH='72vh' mb={24}>
+          <HeroPageHome pagedata={pagedata} />
           <Container maxW="container.xl">
             { children }
           </Container>

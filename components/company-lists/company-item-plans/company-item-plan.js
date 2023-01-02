@@ -6,13 +6,16 @@ const CompanyItemPlan = ({ plan }) => {
   return (
     <Box 
       mt='1' 
-      mr='8' 
+      mr='4' 
       mb={{ base: '2', md: '8' }}
       pt='3' pr='4' pb='0.6rem' pl='4' 
-      minW={{ base: '14rem', md: '10rem' }}
-      borderTop='1px'
-      borderBottom={{ base: '0', md: '1px' }}
-      borderColor={{ base: 'gray.200', md: 'gray.200' }}
+      minW={{ base: '12rem', md: '10rem' }}
+      // borderTop='1px'
+      // borderBottom={{ base: '0', md: '1px' }}
+      // borderColor={{ base: 'gray.200', md: 'gray.200' }}
+      // border='1px'
+      borderColor='gray.200'
+      backgroundColor='gray.50'
     >
       <Text fontSize='sm' fontWeight='500' lineHeight='1rem'>{plan.planName}</Text>
       {

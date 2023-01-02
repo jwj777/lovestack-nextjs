@@ -5,21 +5,19 @@ import Layout from '../components/layout/Layout';
 import HeroPageHome from '../components/content/hero/hero-page-home';
 import CompanyListFeatured from '../components/company-lists/company-list-featured';
 import Overline from '../components/content/typography/overline';
+import LayoutHome from '../components/layout/layout-home';
 
 export default function Home({ homepage, categoryObj, companyArray }) {
   return (
 
-    <Layout pagedata={homepage.attributes}>
-
-      <HeroPageHome homepage={homepage} />
-
-      <Box maxW="container.xl" mb={24}>
+    <LayoutHome pagedata={homepage.attributes}>
+      <Box mb={24}>
         <Box 
           className='softwareContainerBg' 
           pt={{ base: '8', md: '16' }}
           mb={{ base: '0', md: '4rem' }} 
         >
-          <Box mb='14'>
+          <Box mt='8' mb='14'>
             <Overline text={'Software Categories'}></Overline>
             <DisplayLong1 text={'Find best in class tools for data, segmentation, content and promotion.'}></DisplayLong1>
           </Box>
@@ -36,8 +34,7 @@ export default function Home({ homepage, categoryObj, companyArray }) {
           <CompanyListFeatured companyArray={companyArray} />
         </Box>
       </Box>
-
-    </Layout>   
+    </LayoutHome>   
 
   );
 }

@@ -1,15 +1,13 @@
 import React from "react";
 import { Image } from '@chakra-ui/react'
-import styles from './company-item.module.css'
 
 function CompanyItemImg({ company }) {
   return (
     <Image 
-    className={styles.companyItemListImage}
     alt={'homepage screenshot'} 
     // display={{ base: 'none', md: 'block' }}
     maxW={{ base: '72px', md: '144px' }}
-    maxH={{ base: '64px', md: 'auto'}}
+    maxH={{ base: '72px', md: 'auto'}}
     objectFit='cover'
     mr={{ base: 5, md: 6 }}
     boxShadow='md'

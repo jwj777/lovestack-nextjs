@@ -1,22 +1,21 @@
 import Logo from '/components/header/branding/Logo'
 import { Container, Box, Link } from '@chakra-ui/react'
-import styles from './Footer.module.css'
+
 
 function Footer() {
   return (
-    <Box className={styles.footerContainer}>
+    <Box backgroundColor='black'>
       <Container maxW="container.lg">
         <Box pt={10} pb={10} display='flex' alignItems='center' flexWrap='wrap'>
           <Logo />
           <Box 
-            className={styles.footerNav} 
             display='flex' 
             alignItems='center' 
             mt={{ base: '2rem', lg: '0.4rem' }}
             fontSize='lg' 
             fontWeight='600'>
-              <Link mr={12} href="/pages/categories">Software Categories</Link>
-              <Link href="/pages/about">About</Link>
+              <Link mr={12} color='white' href="/pages/categories">Software Categories</Link>
+              <Link color='white' href="/pages/about">About</Link>
           </Box>
         </Box>  
       </Container>

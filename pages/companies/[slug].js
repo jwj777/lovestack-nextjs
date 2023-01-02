@@ -7,6 +7,7 @@ import CompanyPlans from '../../components/company/company-plans/company-plans'
 import CompanyBody from '../../components/company/company-body'
 import CompanySubsidiaries from '../../components/company/company-hierarchy/company-subsidiaries'
 import SeoCompany from '../../components/seo/seo-company'
+import CompanyPlanTable from '../../components/company/company-plan-table/plan-table'
 
 export default function Company({ company, features, hasPlan, hasSubsidiary, hasCategory }) {
   return (
