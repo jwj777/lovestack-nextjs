@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Container, Button } from '@chakra-ui/react'
+import { Box, Container, Button, Link } from '@chakra-ui/react'
 import Headline1White from "../typography/headline1-white";
 import Subheading1White from "../typography/subheading1-white";
 
@@ -19,7 +19,9 @@ function HeroPageHome({ pagedata }) {
               <Headline1White text={pagedata.Headline}></Headline1White>
             </Box>
             <Subheading1White text={pagedata.Subheading}></Subheading1White>
-            <Button variant='blue500ol' mt='10'>Browse Software</Button>
+            <Link href='/pages/categories'>
+              <Button  variant='blue500ol' mt='10'>Browse Software</Button>
+            </Link>
           </Box>
           <Box mr={{ base: 0, xl: '12'}} display={{ base: 'none', '2xl': 'block' }}>
           </Box>
