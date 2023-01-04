@@ -20,7 +20,7 @@ function StackCategory({ stacks, stackCategory, background, flexDir }) {
             stacks[0].attributes.stackItem.map((item, index) => {
               return(
               item.Category == stackCategory ?
-                <StackItem company={item.companyRef.data.attributes} /> :
+                <StackItem key={index} company={item.companyRef.data.attributes} /> :
                 ''
               )
     

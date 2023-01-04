@@ -68,6 +68,8 @@ export async function getStaticProps({ params }) {
   const resfeaturesjson = await resfeatures.json();
   const features = resfeaturesjson.data;
 
+  // console.log(company.features.data.length)
+
 
   // Check if company has categories
   let hasCategory = ''

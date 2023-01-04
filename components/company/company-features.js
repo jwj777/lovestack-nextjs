@@ -7,7 +7,7 @@ function CompanyFeatures({ features, company }) {
   return (
     <Box>
       <Box mb='12' maxW='4xl'>  
-        <Text fontSize='xl' fontWeight='600' mb='4'>{ features[0].attributes.featureName.length == 1 ? null : company.companyName + ' Features' }</Text>
+        <Text fontSize='xl' fontWeight='600' mb='4'>{ company.features.data.length == 0 ? null : company.companyName + ' Features' }</Text>
         <Box display='flex' flexWrap='wrap' flexDir={{ base: 'column', lg: 'column' }} maxH='108px'>
           {features.map((feature, index) => {
             return (
