@@ -1,6 +1,5 @@
 import { extendTheme } from "@chakra-ui/react";
 
-
 const theme = extendTheme({
   components: {
     Link: {
@@ -36,7 +35,7 @@ const theme = extendTheme({
             bg: 'blue.700',
           },
         },
-        blue500ol: {
+        blueOutline: {
           bg: 'none',
           border: '2px',
           borderColor: 'blue.500',
@@ -114,17 +113,17 @@ const theme = extendTheme({
       800: '#003e80',
       900: '#001f40',
     },
-    mdblue: {
-      50: '#dff6ff',  
-      100: '#b9e0f8',
-      200: '#90caed', 
-      300: '#67b5e4',
-      400: '#3ea0db',
-      500: '#2486c1',
-      600: '#176997',
-      700: '#0a4b6d',
-      800: '#002e44',
-      900: '#00111c',
+    purple: {
+      50: '#edd6ee',  
+      100: '#e4c2e6',
+      200: '#dbaddd', 
+      300: '#d299d5',
+      400: '#c070c4',
+      500: '#ae47b3',
+      600: '#983e9c',
+      700: '#823686',
+      800: '#6c2d70',
+      900: '#572459',
     },
   }
 });

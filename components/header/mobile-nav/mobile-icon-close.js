@@ -1,7 +1,7 @@
 import { Icon, Link } from '@chakra-ui/react'
 import { RiMenu2Line } from 'react-icons/ri'
 
-function MobileIcon() {
+function MobileIconClose() {
   return (
     <Link className='noSelect' href="#">
       <Icon
@@ -16,4 +16,4 @@ function MobileIcon() {
     </Link>
   )
 }
-export default MobileIcon;
+export default MobileIconClose;

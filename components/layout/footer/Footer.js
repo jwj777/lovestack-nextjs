@@ -10,11 +10,13 @@ function Footer() {
           <Logo />
           <Box 
             display='flex' 
-            alignItems='center' 
-            mt={{ base: '2rem', lg: '0.4rem' }}
+            flexDir={{ base: 'column', md: 'row' }}
+            justifyContent='flex-start'
+            mt={{ base: '2rem', lg: '1.2rem' }}
             fontSize='lg' 
-            fontWeight='600'>
-              <Link mr={12} color='white' href="/pages/categories">Software Categories</Link>
+            fontWeight='400'>
+              <Link mr={{ base: '0', md: '12' }} mb='4' color='white' href="/pages/categories">Software Categories</Link>
+              <Link mr={{ base: '0', md: '12' }} mb='4' color='white' href="/pages/resources">Resources</Link>
               <Link color='white' href="/pages/about">About</Link>
           </Box>
         </Box>  

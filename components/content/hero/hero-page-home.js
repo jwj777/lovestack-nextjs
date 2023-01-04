@@ -20,7 +20,7 @@ function HeroPageHome({ pagedata }) {
             </Box>
             <Subheading1White text={pagedata.Subheading}></Subheading1White>
             <Link href='/pages/categories'>
-              <Button  variant='blue500ol' mt='10'>Browse Software</Button>
+              <Button variant='blueOutline' mt='10'>Browse Software</Button>
             </Link>
           </Box>
           <Box mr={{ base: 0, xl: '12'}} display={{ base: 'none', '2xl': 'block' }}>

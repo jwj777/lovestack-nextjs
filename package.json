@@ -18,6 +18,7 @@
     "@nivo/pie": "^0.79.1",
     "@nivo/sunburst": "^0.79.1",
     "framer-motion": "^6.2.8",
+    "moment": "^2.29.4",
     "next": "^12.1.0",
     "nookies": "^2.5.2",
     "plotly.js": "^2.11.1",
