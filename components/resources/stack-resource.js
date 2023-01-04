@@ -6,7 +6,7 @@ const StackResource = ({ item, index }) => {
     <Box 
       key={index} 
       mb='8'
-      p='8'
+      p={{ base: '6', md: '8' }}
       boxShadow='lg'
       borderRadius='1rem'
       borderTop='1px'
@@ -19,10 +19,10 @@ const StackResource = ({ item, index }) => {
             mb='4'
             alt={item.attributes.stackName + ' icon'}
           />
-          <Text fontSize='3xl' fontWeight='700' mb='2'>
+          <Text fontSize='2xl' fontWeight='700' mb='2'>
             {item.attributes.stackName}
           </Text>
-          <Box className="subheading" dangerouslySetInnerHTML={{ __html: item.attributes.stackDescription}}></Box>
+          <Box dangerouslySetInnerHTML={{ __html: item.attributes.stackDescription}}></Box>
         </LinkOverlay>
       </LinkBox>
     </Box>

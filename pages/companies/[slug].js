@@ -7,9 +7,8 @@ import CompanyPlans from '../../components/company/company-plans/company-plans'
 import CompanyBody from '../../components/company/company-body'
 import CompanySubsidiaries from '../../components/company/company-hierarchy/company-subsidiaries'
 import SeoCompany from '../../components/seo/seo-company'
-import CompanyPlanTable from '../../components/company/company-plan-table/plan-table'
 
-export default function Company({ company, features, hasPlan, hasSubsidiary, hasCategory }) {
+export default function Company({ company, features, hasSubsidiary, hasCategory, hasPlan }) {
   return (
     <Layout>
       <SeoCompany pagedata={company} />
@@ -29,6 +28,9 @@ export default function Company({ company, features, hasPlan, hasSubsidiary, has
   )
 }
 
+
+// Get Static Paths
+
 export async function getStaticPaths() {
   const res = await fetch(process.env.API_URL + '/api/companies');
   const resjson = await res.json();
@@ -40,9 +42,12 @@ export async function getStaticPaths() {
 
   return {
     paths,
-    fallback: true,
+    fallback: false,
   };
 }
+
+
+// Get Static Props
 
 export async function getStaticProps({ params }) {
   const { slug } = params;
@@ -64,7 +69,7 @@ export async function getStaticProps({ params }) {
   const features = resfeaturesjson.data;
 
 
-  // check if company has categories
+  // Check if company has categories
   let hasCategory = ''
   Object.keys(company.product_categories.data).length == 0 ? hasCategory = false : hasCategory = true
 
@@ -77,25 +82,13 @@ export async function getStaticProps({ params }) {
   Object.keys(company.subsidiaries.data).length != 0 ? hasSubsidiary = true : hasSubsidiary = false
 
 
-  // Sort Features, First by Weight, and then by featureName
-  // company.sort((f1, f2) => {
-  //   if (f1.attributes.featureaName < f2.attributes.featureName) {
-  //     return 1 
-  //   }
-  //   if (f1.attributes.featureName > f2.attributes.featureName) {
-  //     return -1
-  //   }
-  //   return 0
-  // })
-
-
   return {
     props: {
       company,
       features,
-      hasPlan,
       hasSubsidiary,
       hasCategory,
+      hasPlan,
      },
     revalidate: 1, 
   };

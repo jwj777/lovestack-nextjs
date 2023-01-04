@@ -12,8 +12,8 @@ const CompanyItemPlans = ({ plans }) => {
           plans.map((item, index) => {
             if (index <= 1 && item.planPrice) {
               return (
-                <Box>
-                  <Box key={index} display={{ base: 'none', md: 'block' }}>
+                <Box key={index}>
+                  <Box display={{ base: 'none', md: 'block' }}>
                     <CompanyItemPlan plan={item} />
                   </Box>
                   <Box key={index} display={{ base: 'block', md: 'none' }}>

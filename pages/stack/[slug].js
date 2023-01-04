@@ -1,17 +1,12 @@
 import { Box, Text } from '@chakra-ui/react'
-import DisplayLong2 from '../../components/content/typography/display-long2'
 import Headline1B from '../../components/content/typography/headline-1b'
 import Layout from '../../components/layout/Layout'
 import StackItem from '../../components/stacks/stack-item'
 import SeoCategories from '../../components/seo/seo-categories'
 import StackCategories from '../../components/stacks/stack-categories'
-import SectionHeading from '../../components/content/typography/section-headling'
 
-export default function Category({ stacks }) {
-
-
+export default function Stack({ stacks }) {
   return (
-    <div>
       <Layout>
         <Box maxW={'5xl'} mb={{ base: '10', md: '16' }} mt={{ base: '12', md: '16' }}>
           <Headline1B text={stacks[0].attributes.stackName}></Headline1B>
@@ -23,17 +18,15 @@ export default function Category({ stacks }) {
         </Box>
 
         <Box mt='16' maxW='4xl'>
-          <Box className='ckContent' fontSize='lg' dangerouslySetInnerHTML={{ __html:stacks[0].attributes.stackAnalysis}}>
-          </Box>
+          <Box className='ckContent' fontSize='lg' dangerouslySetInnerHTML={{ __html:stacks[0].attributes.stackAnalysis}}></Box>
         </Box>
 
       </Layout>  
-    </div>
   )
 }
 
 export async function getStaticPaths() {
-  const res = await fetch(process.env.API_URL + `/api/product-categories`);
+  const res = await fetch(process.env.API_URL + `/api/stacks`);
   const resjson = await res.json();
   const categories = resjson.data;
 
@@ -43,7 +36,7 @@ export async function getStaticPaths() {
 
   return {
     paths,
-    fallback: 'blocking',
+    fallback: false,
   };
 
 }
@@ -63,7 +56,7 @@ export async function getStaticProps({ params }) {
   const res2 = await res.json();
   const stacks = await res2.data;
 
-  console.log(stacks[0].attributes.stackDescription)
+  console.log(stacks)
 
   return {
     props: { 

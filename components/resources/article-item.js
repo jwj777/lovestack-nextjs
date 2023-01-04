@@ -16,7 +16,7 @@ const ArticleItem = ({ item, index }) => {
     >
       <LinkBox>
         <LinkOverlay href={"/articles/" + item.attributes.slug}>
-          <Text fontSize='3xl' fontWeight='700' mb='2'>
+          <Text fontSize='2xl' fontWeight='700' mb='2'>
             {item.attributes.Headline}
           </Text>
           <Text className="subheading">{item.attributes.Subheading}</Text>

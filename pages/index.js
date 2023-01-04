@@ -178,15 +178,6 @@ export async function getStaticProps() {
     companyArray.push(companyFeatureSlug)
   })
 
-  console.log(homepage)
-
-  // companyArray.map((item) => {
-  //   if (item.Headline = 'Modernize Your Marketing Technology Stack') {
-  //     console.log(item.companyName)
-  //   }
-  // })
-
-
   // Sort featured companies by auth rank
   companyArray.sort((c1, c2) => {
     // handle null values and sort to bottom

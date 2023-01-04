@@ -12,7 +12,7 @@ export default function Insights({ articles, resourcesPage, stacks }) {
     <Layout>
       <Container maxW='container.xl'>
         <HeroPage pagedata={resourcesPage} />
-        <Box display='flex' flexWrap='wrap'>
+        <Box display='flex' flexDir={{ base: 'column', md: 'row' }}>
           <Box mr={{ base: '0', md: '8' }} mb='8' maxW='xl'>
             {
             stacks.map((item, index) => {
@@ -47,10 +47,6 @@ export async function getStaticProps() {
   const resstacks = await fetch(process.env.API_URL + '/api/stacks?populate=*');
   const resstacksjson = await resstacks.json();
   const stacks = resstacksjson.data;
-
-  stacks.map((item) => {
-    console.log(item)
-  })
 
   // get home page from strapi
   const res = await fetch(process.env.API_URL + '/api/pages/6')
