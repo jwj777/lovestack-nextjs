@@ -13,7 +13,8 @@ function CompanyFeaturesStructured({ features, company, companyFeatureObj }) {
           {companyFeatureObj.map((item, index) => {
             return (
               <Box mb='5' key={index}>
-                <Link href={item.categoryUrl} mr='2' textDecor='underline' fontWeight='600'>
+                <Text>{item.categoryUrl}</Text>
+                <Link href={'/categories/' + item.categoryUrl} mr='2' textDecor='underline' fontWeight='600'>
                   {item.category}
                 </Link>
                 <Box mt='2'>
