@@ -7,8 +7,10 @@ import CompanyPlans from '../../components/company/company-plans/company-plans'
 import CompanyBody from '../../components/company/company-body'
 import CompanySubsidiaries from '../../components/company/company-hierarchy/company-subsidiaries'
 import SeoCompany from '../../components/seo/seo-company'
+import { FaCommentsDollar } from 'react-icons/fa'
+import CompanyFeaturesStructured from '../../components/company/company-features-structured'
 
-export default function Company({ company, features, hasSubsidiary, hasCategory, hasPlan }) {
+export default function Company({ company, features, hasSubsidiary, hasCategory, hasPlan, companyFeatureObj }) {
   return (
     <Layout>
       <SeoCompany pagedata={company} />
@@ -19,7 +21,7 @@ export default function Company({ company, features, hasSubsidiary, hasCategory,
           <Box mr={{ base: '0', lg: '4rem' }}>
             <CompanyBody company={company} />
             <CompanySubsidiaries company={company} hasSubsidiary={hasSubsidiary} />
-            <CompanyFeatures features={features} company={company} />
+            <CompanyFeaturesStructured features={features} company={company} companyFeatureObj={companyFeatureObj} />
             <CompanyPlans plans={company.companyPlan} hasPlan={hasPlan} />
           </Box>
         </Box>
@@ -68,8 +70,10 @@ export async function getStaticProps({ params }) {
   const resfeaturesjson = await resfeatures.json();
   const features = resfeaturesjson.data;
 
-  // console.log(company.features.data.length)
-
+  // get category
+  const resCat = await fetch(process.env.API_URL + `/api/product-categories?filters[companies][slug][$eq]=${slug}&populate=*`);
+  const resCatJson = await resCat.json();
+  const categories = await resCatJson.data;
 
   // Check if company has categories
   let hasCategory = ''
@@ -83,6 +87,72 @@ export async function getStaticProps({ params }) {
   let hasSubsidiary = ''
   Object.keys(company.subsidiaries.data).length != 0 ? hasSubsidiary = true : hasSubsidiary = false
 
+  // sort features alphabetically
+  features.sort((f1, f2) => {
+    if (f1.attributes.featureaName > f2.attributes.featureName) {
+      return 1 
+    }
+    if (f1.attributes.featureName < f2.attributes.featureName) {
+      return -1
+    }
+    return 0
+  })
+
+
+  //
+  // Create Feature / Product Categories Object
+  //
+
+  let companyFeatureObj = []
+
+  // Create Array of Companies Categories and add to Object
+  // create array for later comparison
+  let catCompareArray = []
+  
+  company.product_categories.data.map((item) => {
+    let companyCategoryItem = {}
+    catCompareArray.push(item.attributes.categoryName)
+    // create first level of main object
+    companyCategoryItem['category'] = item.attributes.categoryName
+    companyCategoryItem['categoryUrl'] = item.attributes.slug
+    companyFeatureObj.push(companyCategoryItem)
+  })
+
+  // Structure features and categories, and filter for the company
+  let featureObj = []
+  features.map((item) => {
+    let featureItem = {}
+    let catItems = []
+    featureItem['featureName'] = item.attributes.featureName
+    featureObj.push(featureItem)
+    // get product categories
+    item.attributes.product_categories.data.map((prodCat) => {
+      // compare feature categories to company's category array
+      if (catCompareArray.includes(prodCat.attributes.categoryName)) {
+        catItems.push(prodCat.attributes.categoryName)
+      }
+      featureItem['categories'] = catItems
+    })
+  })
+
+  // merge matching companies categories with features/category obj
+  for (let val in companyFeatureObj) {
+    let featureItems = []
+    let compareCat = companyFeatureObj[val].category
+    for (let val in featureObj) {
+      let featureItem = []
+      featureObj[val].categories.map((catItem) => {
+        if (catItem == compareCat) {
+          if (featureObj[val].featureName.length != null) { 
+            featureItems.push(featureObj[val].featureName) 
+          }
+        }
+      })
+    }
+    companyFeatureObj[val]['features'] = featureItems
+  }
+
+  console.log(companyFeatureObj)
 
   return {
     props: {
@@ -91,6 +161,7 @@ export async function getStaticProps({ params }) {
       hasSubsidiary,
       hasCategory,
       hasPlan,
+      companyFeatureObj,
      },
     revalidate: 1, 
   };

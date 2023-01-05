@@ -38,7 +38,15 @@ function StackItem({ company, index }) {
             >
               {company.companyName}
             </Text>
-            <Text fontSize={{ base: 'sm', md: 'md' }} fontWeight='500'>{company.product_categories.data[0].attributes.categoryName}</Text>
+            <Box display='flex'>
+              {
+                company.product_categories.data.map((item) => {
+                  return(
+                  <Text mr='4'>{item.attributes.categoryName}</Text>
+                  )
+                })
+              }
+            </Box>
           </Box>
         </Box>
       </Link>

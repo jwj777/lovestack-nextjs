@@ -2,13 +2,14 @@ import React from "react";
 import { Box, Text, Icon } from '@chakra-ui/react'
 import { FaCaretRight } from "react-icons/fa";
 import SectionHeading from "../content/typography/section-headling";
+import SectionHeadingSm from "../content/typography/section-headling-sm";
 
 function CompanyFeatures({ features, company }) {
   return (
     <Box>
       <Box mb='12' maxW='4xl'>  
-        <Text fontSize='xl' fontWeight='600' mb='4'>{ company.features.data.length == 0 ? null : company.companyName + ' Features' }</Text>
-        <Box display='flex' flexWrap='wrap' flexDir={{ base: 'column', lg: 'column' }} maxH='108px'>
+      <SectionHeadingSm>{ company.features.data.length == 0 ? null : company.companyName + ' Features' }</SectionHeadingSm>
+        <Box display='flex' flexWrap='wrap' flexDir={{ base: 'column', lg: 'column' }} maxH={{ base: 'auto', md:'128px' }}>
           {features.map((feature, index) => {
             return (
               <Text mr='2' mb='1' fontWeight='500' key={feature.attributes.featureName + '__' + index}>

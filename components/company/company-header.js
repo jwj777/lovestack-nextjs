@@ -1,6 +1,7 @@
 import React from "react";
 import { Heading, Image, Text, Box } from '@chakra-ui/react'
 import CompanyCategories from "./company-categories";
+import Rank from "../company-lists/rank";
 
 const CompanyHeading = ({ company, hasCategory }) => {
   return (
@@ -26,9 +27,9 @@ const CompanyHeading = ({ company, hasCategory }) => {
         null 
       }
       <Box ml={{ base: '0', lg: '2rem' }}>
-        <Heading as='h1' fontSize={{ base: '3xl', lg: '4xl' }}>{company.companyName}</Heading>
-        <Text mb={{ base: '4', md: '0' }}><Text as='span' fontWeight='600'>Headquarters:</Text> {company.Headquarters}</Text>
-        { hasCategory ? <CompanyCategories company={company} /> : null }
+        <Heading as='h1' mb='2' fontSize={{ base: '3xl', lg: '4xl' }}>{company.companyName}</Heading>
+        <Text mb={{ base: '0', md: '0' }}><Text as='span' fontWeight='600'>Headquarters:</Text> {company.Headquarters}</Text>
+          <Rank rank={company.authorityRank} />
       </Box>
     </Box>
 

@@ -5,18 +5,20 @@ import { FaRegCheckCircle } from 'react-icons/fa'
 const CompanyPlan = ({ plan, index }) => {
   return (
     <Box 
-      mr='8' mb={{ base: '4', md: '0' }} 
-      pt='3' pr='12' pb='3' pl='4' 
-      borderTop='1px'
-      borderBottom={{ base: '0', md: '1px' }}
-      borderColor={{ base: 'gray.200', md: 'gray.200' }}
-      maxW={{ base: '100%', md: '320px' }}
+      mr={{ base: '0', md: '6' }} 
+      mb={{ base: '4', md: '0' }} 
+      pt='4' pr='6' pb='6' pl='4' 
+      backgroundColor='gray.50'
+      width={{ base: '100%', md: 'auto' }}
+      maxW={{ base: '100%', md: '240px' }}
+      borderRadius='md'
+      boxShadow='md'
     >
-      <Text fontWeight='600' mb='0'>{plan.planName}</Text>
+      <Text fontWeight='600' mb='2'>{plan.planName}</Text>
       {
         !plan.planPrice ?
-        <Button href={plan.planSalesUrl} variant='blue500' size='sm' mt='2' mb='2'>{plan.planSalesCta}</Button> :
-        <Text fontWeight='500' fontSize='2xl'>{'$' + plan.planPrice}
+        null :
+        <Text fontWeight='500' fontSize='2xl' lineHeight='1.6rem'>{'$' + plan.planPrice}
           {
             !plan.paymentPeriod ?
             '' :
@@ -26,8 +28,13 @@ const CompanyPlan = ({ plan, index }) => {
       }
       {
         plan.planDescription ?
-        <Text fontSize='sm' mb='3'>{plan.planDescription}</Text> :
+        <Text fontSize='sm' mt='1' mb='3'>{plan.planDescription}</Text> :
         null
+      }
+      {
+        !plan.planSalesCta ?
+        null :
+        <Button href={plan.planSalesUrl} variant='blue500' size='sm' mt='2' mb='2'>{plan.planSalesCta}</Button>
       }
       {
         plan.planFreeTrial ? 
