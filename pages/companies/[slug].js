@@ -54,7 +54,7 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }) {
   const { slug } = params;
 
-  let res = await fetch(process.env.API_URL + `/api/companies?filters[slug]=${slug}&populate[0]=product_categories
+  let res = await fetch(process.env.API_URL + `/api/companies?filters[slug]=${slug}&publicationState=live&populate[0]=product_categories
     &populate[1]=features
     &populate[2]=parentCompany
     &populate[3]=subsidiaries
@@ -97,6 +97,9 @@ export async function getStaticProps({ params }) {
     }
     return 0
   })
+
+
+  console.log(company)
 
 
   //
@@ -151,8 +154,6 @@ export async function getStaticProps({ params }) {
     }
     companyFeatureObj[val]['features'] = featureItems
   }
-
-  console.log(companyFeatureObj)
 
   return {
     props: {

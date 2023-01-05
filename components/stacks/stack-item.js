@@ -42,7 +42,7 @@ function StackItem({ company, index }) {
               {
                 company.product_categories.data.map((item) => {
                   return(
-                  <Text mr='4'>{item.attributes.categoryName}</Text>
+                  <Text mr='4' key={index}>{item.attributes.categoryName}</Text>
                   )
                 })
               }

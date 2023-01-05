@@ -12,8 +12,8 @@ function CompanyFeaturesStructured({ features, company, companyFeatureObj }) {
         <Box display='flex' flexWrap='wrap' mt='6' flexDir={{ base: 'column', lg: 'column' }} maxH={{ base: 'auto', md:'128px' }}>
           {companyFeatureObj.map((item, index) => {
             return (
-              <Box mb='5'>
-                <Link href={item.categoryUrl} mr='2' textDecor='underline' fontWeight='600' key={index}>
+              <Box mb='5' key={index}>
+                <Link href={item.categoryUrl} mr='2' textDecor='underline' fontWeight='600'>
                   {item.category}
                 </Link>
                 <Box mt='2'>
