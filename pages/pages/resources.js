@@ -11,7 +11,7 @@ export default function Insights({ articles, resourcesPage, stacks }) {
       <Container maxW='container.xl'>
         <HeroPage pagedata={resourcesPage} />
         <Box display='flex' flexDir={{ base: 'column', md: 'row' }}>
-          <Box mr={{ base: '0', md: '8' }} mb='8' maxW='xl'>
+          <Box mr={{ base: '0', md: '8' }} mb='4' maxW='xl'>
             {
             stacks.map((item, index) => {
               return (

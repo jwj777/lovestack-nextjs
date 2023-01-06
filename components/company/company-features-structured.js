@@ -7,12 +7,14 @@ import SectionHeadingSm from "../content/typography/section-headling-sm";
 function CompanyFeaturesStructured({ features, company, companyFeatureObj }) {
   return (
     <Box>
-      <Box mb='16' maxW='4xl'>  
-      <SectionHeadingSm>{ company.features.data.length == 0 ? null : company.companyName + ' Software Categories and Features' }</SectionHeadingSm>
-        <Box display='flex' flexWrap='wrap' mt='6' flexDir={{ base: 'column', lg: 'column' }} maxH={{ base: 'auto', md:'128px' }}>
+      <Box mb='10' maxW='4xl'>  
+      <Box maxW={{ base: '300px', md: '100%' }}>
+        <SectionHeadingSm>{ company.features.data.length == 0 ? null : company.companyName + ' Software Categories and Features' }</SectionHeadingSm>
+      </Box>  
+        <Box display='flex' flexWrap='wrap' mt='6'>
           {companyFeatureObj.map((item, index) => {
             return (
-              <Box mb='5' key={index}>
+              <Box mb='5' mr={{ base: '0', md: '16' }} key={index}>
                 <Link href={'/categories/' + item.categoryUrl} mr='2' textDecor='underline' fontWeight='600'>
                   {item.category}
                 </Link>

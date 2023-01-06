@@ -7,8 +7,8 @@ const StackResource = ({ item, index }) => {
       key={index} 
       mb='8'
       p={{ base: '6', md: '8' }}
-      boxShadow='lg'
-      borderRadius='1rem'
+      boxShadow={{ base: 'md', md: 'lg' }}
+      borderRadius={{ base: '0.4rem', md: '1rem' }}
       borderTop='1px'
       borderColor='gray.50'
       >

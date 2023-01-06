@@ -66,6 +66,9 @@ export async function getStaticProps({ params }) {
   let res3 = res2.data;
   const company = res3[0].attributes;
 
+
+  console.log(company.webScreenshot.data[0].attributes.formats)
+
   const resfeatures = await fetch(process.env.API_URL + `/api/features?filters[companies][slug][$eq]=${slug}&populate=*`);
   const resfeaturesjson = await resfeatures.json();
   const features = resfeaturesjson.data;

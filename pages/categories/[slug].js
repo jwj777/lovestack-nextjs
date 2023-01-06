@@ -96,7 +96,7 @@ export async function getStaticProps({ params }) {
   // Sort Features, First by Weight, and then by featureName
   features.sort((f1, f2) => {
     if (f1.attributes.Weight > f2.attributes.Weight) {
-      if (f1.attributes.featureaName > f2.attributes.featureName) {
+      if (f1.attributes.featureaName > f2.attributes.featureName) {  
         return 1 
       }
       if (f1.attributes.featureName < f2.attributes.featureName) {
@@ -118,12 +118,11 @@ export async function getStaticProps({ params }) {
 
   // Transform companies object to make it easier to manage in JSX
   const companyArray = []
-  const companyFeatureSlug = {}
-  const companyFeatureName = {}
-  // map companies object from fetch 
+  // map companies object
   companies.map((item, index) => {
     let companyFeatureSlug = item.attributes
     let companyFeatureName = item.attributes
+    console.log(item.attributes.companyPlan.length)
     let featuresSlugArray = []
     let featuresNameArray = []
     let featureAttr = item.attributes.features.data
@@ -142,6 +141,7 @@ export async function getStaticProps({ params }) {
     companyArray.push(companyFeatureSlug)
   })
 
+  console.log(companyArray)
 
   return {
     props: { 

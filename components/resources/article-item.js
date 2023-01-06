@@ -7,10 +7,9 @@ const ArticleItem = ({ item, index }) => {
       key={index} 
       className="articleItem"
       mb='8'
-      p='8'
-      pt='6'
-      boxShadow='lg'
-      borderRadius='1rem'
+      p={{ base: '6', md: '8' }}
+      boxShadow={{ base: 'md', md: 'lg' }}
+      borderRadius={{ base: '0.4rem', md: '1rem' }}
       borderTop='1px'
       borderColor='gray.50'
     >

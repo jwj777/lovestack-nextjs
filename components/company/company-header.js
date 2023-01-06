@@ -18,7 +18,7 @@ const CompanyHeading = ({ company, hasCategory }) => {
           <Image
             width={{ base: '100%', lg: '200px' }}
             alt={company.companyName + ' Website Homepage'}
-            src={ company.webScreenshot.data[0].attributes.url }
+            src={ company.webScreenshot.data[0].attributes.formats.small.url }
             mb={{ base: '2rem', lg: '0' }}
             boxShadow='md'
             display={{ base: 'none', md: 'block' }}

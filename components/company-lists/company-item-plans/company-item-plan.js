@@ -10,10 +10,6 @@ const CompanyItemPlan = ({ plan }) => {
       mb={{ base: '2', md: '8' }}
       pt='3' pr='4' pb='0.6rem' pl='4' 
       minW={{ base: '12rem', md: '10rem' }}
-      // borderTop='1px'
-      // borderBottom={{ base: '0', md: '1px' }}
-      // borderColor={{ base: 'gray.200', md: 'gray.200' }}
-      // border='1px'
       borderColor='gray.200'
       backgroundColor='gray.50'
     >
@@ -21,11 +17,11 @@ const CompanyItemPlan = ({ plan }) => {
       {
         !plan.planPrice ?
         <Button href={plan.planSalesUrl} variant='sm2' size='sm' colorScheme='blue.500' mt='2' mb='2'>{plan.planSalesCta}</Button> :
-        <Text fontWeight='600' fontSize='2xl' color='black'>{'$' + plan.planPrice}
+        <Text fontWeight='600' fontSize='xl' color='black'>{'$' + plan.planPrice}
           {
             !plan.paymentPeriod ?
             '' :
-            <Text as='span' fontSize='sm' ml='0.2rem' fontWeight='400'>{'/' + plan.paymentPeriod}</Text>
+            <Text as='span' fontSize='xs' ml='0.2rem' fontWeight='400'>{'/' + plan.paymentPeriod}</Text>
           }
         </Text>
       }

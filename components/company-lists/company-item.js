@@ -13,9 +13,10 @@ function CompanyItem({ company, index }) {
     justifyContent='space-between'
     flexDir={{ base: 'column', md: 'row' }}
     alignItems='flex-start'
-    pt='8' pb='16'
+    pt='10' pb='12'
+    backgroundColor='white'
     borderTop='1px'
-    borderColor='black'
+    borderColor='gray.200'
     // _last={{ borderBottom: '1px' }}
   >
     <Box>
@@ -25,7 +26,7 @@ function CompanyItem({ company, index }) {
         </Link>
         <Box>
           <Link href={"/companies/" + company.slug}>
-            <Text fontSize={{ base: '1.6rem', md: '2rem' }} lineHeight={{ base: '2.1rem', md: '2.7rem' }} fontWeight="700" mb='0' _hover = {{ textDecoration: 'none' }}>
+            <Text fontSize={{ base: '2rem', md: '2rem' }} lineHeight={{ base: '2.7rem', md: '2.7rem' }} fontWeight="700" mb='0' _hover = {{ textDecoration: 'none' }}>
               {company.companyName}
             </Text>
           </Link>

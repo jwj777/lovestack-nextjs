@@ -9,7 +9,7 @@ module.exports = {
   reactStrictMode: true,
   images: {
     loader: "default",
-    domains: ["localhost"],
+    domains: ["localhost", 'lovestack.nyc3.digitaloceanspaces.com'],
   },
   env: {
     GTM_ID: process.env.NEXT_PUBLIC_GOOGLE_TAG_MANAGER_ID,

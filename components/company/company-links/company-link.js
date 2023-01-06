@@ -13,7 +13,7 @@ function CompanyLink({ icon, url, label }) {
       variant='blue50'
     >
       <Icon as={icon} w={4} h={4} mr={2}></Icon>
-      <Link lineHeight='0' href={'https://' + url}>{label}</Link>
+      <Link lineHeight='0' href={url}>{label}</Link>
     </Button>
   )
 };

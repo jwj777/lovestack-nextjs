@@ -15,9 +15,18 @@ function CompanyLinks({ company }) {
       borderColor='gray.100'
       maxW='5xl'  
     >
-      <CompanyLink company={company} icon={FaGlobe} url={company.companyUrl} label={company.companyUrl}/>
-      <CompanyLink company={company} icon={FaTwitter} url={company.twitterHandle} label={'twitter.com/' + company.twitterHandle}/>
-      <CompanyLink company={company} icon={FaLink} url={'https://' + company.integrationsPage} label={'Integrations'}/>
+      <CompanyLink company={company} icon={FaGlobe} url={'https://' + company.companyUrl} label={company.companyUrl}/>
+      <CompanyLink company={company} icon={FaTwitter} url={'https://www.twitter.com/' + company.twitterHandle} label={'twitter.com/' + company.twitterHandle}/>
+      <Box>
+      { company.integrationsPage ? 
+      <CompanyLink 
+        company={company} 
+        icon={FaLink} 
+        url={company.integrationsPage} 
+        label={'Integrations'}
+      /> : null
+      }
+      </Box>
     </Box>
   )
 };
