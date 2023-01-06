@@ -5,14 +5,13 @@ function CompanyItemImg({ company }) {
   return (
     <Image 
     alt={'homepage screenshot'} 
-    // display={{ base: 'none', md: 'block' }}
-    maxW={{ base: '72px', md: '144px' }}
-    maxH={{ base: '72px', md: 'auto'}}
+    display={{ base: 'none', md: 'block' }}
+    maxW='144px'
+    htmlWidth='144px'
+    htmlHeight='72px'
     objectFit='cover'
     mr={{ base: 5, md: 6 }}
     boxShadow='md'
-    // border ='1px'
-    // borderColor='gray.200'
     src={
       company.webScreenshot.data != null ?
       company.webScreenshot.data[0].attributes.formats.thumbnail.url :

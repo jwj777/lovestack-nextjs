@@ -2,13 +2,11 @@ import { Box } from '@chakra-ui/react'
 import Layout from '../../components/layout/Layout'
 import CompanyHeading from '../../components/company/company-header'
 import CompanyLinks from '../../components/company/company-links/company-links'
-import CompanyFeatures from '../../components/company/company-features'
 import CompanyPlans from '../../components/company/company-plans/company-plans'
-import CompanyBody from '../../components/company/company-body'
 import CompanySubsidiaries from '../../components/company/company-hierarchy/company-subsidiaries'
 import SeoCompany from '../../components/seo/seo-company'
-import { FaCommentsDollar } from 'react-icons/fa'
 import CompanyFeaturesStructured from '../../components/company/company-features-structured'
+import BodyContent from '../../components/content/body-content'
 
 export default function Company({ company, features, hasSubsidiary, hasCategory, hasPlan, companyFeatureObj }) {
   return (
@@ -19,7 +17,9 @@ export default function Company({ company, features, hasSubsidiary, hasCategory,
         <Box>
           <CompanyLinks company={company} />
           <Box mr={{ base: '0', lg: '4rem' }}>
-            <CompanyBody company={company} />
+            <Box borderBottom='1px' borderColor='gray.100' pb='1' mb='12'>
+              <BodyContent text={company.companyDescriptionCk} />
+            </Box>
             <CompanySubsidiaries company={company} hasSubsidiary={hasSubsidiary} />
             <CompanyFeaturesStructured features={features} company={company} companyFeatureObj={companyFeatureObj} />
             <CompanyPlans plans={company.companyPlan} hasPlan={hasPlan} />

@@ -9,14 +9,14 @@ export default function Home({ homepage, categoryObj, companyArray }) {
   return (
 
     <LayoutHome pagedata={homepage.attributes}>
-      <Box mb={24}>
+      <Box mb='16'>
         <Box 
           className='softwareContainerBg' 
           pt={{ base: '8', md: '16' }}
           mb={{ base: '0', md: '4rem' }} 
         >
-          <Box mt='8' mb='14'>
-            <Overline text={'Software Categories'}></Overline>
+          <Box mt='8' mb='12'>
+            <Overline>Software Categories</Overline>
             <DisplayLong1 text={'Find best in class tools for data, segmentation, content and promotion.'}></DisplayLong1>
           </Box>
           <CategoryList categoryObj={categoryObj}/>
@@ -25,7 +25,7 @@ export default function Home({ homepage, categoryObj, companyArray }) {
 
       <Box mb={24}>
         <Box maxW='container.xl' mb='12'>
-          <Overline text={'Featured Companies'}></Overline>
+          <Overline>Featured Companies</Overline>
           <DisplayLong1 text='Great marketing software that deserves more attention'></DisplayLong1>
         </Box>
         <Box maxW='container.xl'>

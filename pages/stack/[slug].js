@@ -1,4 +1,5 @@
 import { Box } from '@chakra-ui/react'
+import BodyContent from '../../components/content/body-content'
 import Headline1B from '../../components/content/typography/headline-1b'
 import Layout from '../../components/layout/Layout'
 import StackCategories from '../../components/stacks/stack-categories'
@@ -14,7 +15,7 @@ export default function Stack({ stacks }) {
           <StackCategories stacks={stacks} />
         </Box>
         <Box mt='16' maxW='4xl'>
-          <Box className='ckContent' fontSize='lg' dangerouslySetInnerHTML={{ __html:stacks[0].attributes.stackAnalysis}}></Box>
+          <BodyContent text={stacks[0].attributes.stackAnalysis} />
         </Box>
       </Layout>  
   )
@@ -51,8 +52,6 @@ export async function getStaticProps({ params }) {
   &populate[7]=stackAnalysis`);
   const res2 = await res.json();
   const stacks = await res2.data;
-
-  console.log(stacks[0].attributes.pageTitle)
   
 
   return {
