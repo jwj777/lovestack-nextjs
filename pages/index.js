@@ -1,8 +1,6 @@
-import { Container, Heading, Box, Text } from '@chakra-ui/react'
+import { Box } from '@chakra-ui/react'
 import CategoryList from '../components/category/category-list'
 import DisplayLong1 from '../components/content/typography/display-long';
-import Layout from '../components/layout/Layout';
-import HeroPageHome from '../components/content/hero/hero-page-home';
 import CompanyListFeatured from '../components/company-lists/company-list-featured';
 import Overline from '../components/content/typography/overline';
 import LayoutHome from '../components/layout/layout-home';

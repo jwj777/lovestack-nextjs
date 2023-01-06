@@ -1,26 +1,21 @@
-import { Box, Text } from '@chakra-ui/react'
+import { Box } from '@chakra-ui/react'
 import Headline1B from '../../components/content/typography/headline-1b'
 import Layout from '../../components/layout/Layout'
-import StackItem from '../../components/stacks/stack-item'
-import SeoCategories from '../../components/seo/seo-categories'
 import StackCategories from '../../components/stacks/stack-categories'
 
 export default function Stack({ stacks }) {
   return (
-      <Layout>
+      <Layout pagedata={stacks[0].attributes}>
         <Box maxW={'5xl'} mb={{ base: '10', md: '16' }} mt={{ base: '12', md: '16' }}>
           <Headline1B text={stacks[0].attributes.stackName}></Headline1B>
           <Box dangerouslySetInnerHTML={{ __html:stacks[0].attributes.stackDescription}} fontSize={{ base: 'lg', md: '2xl' }}></Box>
         </Box>
-
         <Box>
           <StackCategories stacks={stacks} />
         </Box>
-
         <Box mt='16' maxW='4xl'>
           <Box className='ckContent' fontSize='lg' dangerouslySetInnerHTML={{ __html:stacks[0].attributes.stackAnalysis}}></Box>
         </Box>
-
       </Layout>  
   )
 }
@@ -44,6 +39,7 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }) {
   const { slug } = params;
 
+
   // get stacks
   const res = await fetch(process.env.API_URL + `/api/stacks?filters[slug]=${slug}&populate[0]=stackName
   &populate[1]=stackDescription
@@ -56,7 +52,8 @@ export async function getStaticProps({ params }) {
   const res2 = await res.json();
   const stacks = await res2.data;
 
-  console.log(stacks)
+  console.log(stacks[0].attributes.pageTitle)
+  
 
   return {
     props: { 

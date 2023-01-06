@@ -1,3 +1,6 @@
+// Included in Layout.js (default layout). 
+// Requires inputing title and meta description manually
+
 import React from "react";
 import Head from 'next/head'
 

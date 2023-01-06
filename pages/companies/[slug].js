@@ -99,9 +99,6 @@ export async function getStaticProps({ params }) {
   })
 
 
-  console.log(company)
-
-
   //
   // Create Feature / Product Categories Object
   //

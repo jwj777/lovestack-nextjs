@@ -1,15 +1,13 @@
-import { Container, Heading, Box, Text, LinkBox, LinkOverlay } from '@chakra-ui/react'
+import { Container, Box } from '@chakra-ui/react'
 import Layout from '/components/layout/Layout'
 import HeroPage from '../../components/content/hero/hero-page';
 import ArticleItem from '../../components/resources/article-item';
-import SectionHeading from '../../components/content/typography/section-headling';
 import StackResource from '../../components/resources/stack-resource';
-import Overline from '../../components/content/typography/overline';
 
 export default function Insights({ articles, resourcesPage, stacks }) {
   return (
 
-    <Layout>
+    <Layout pagedata={resourcesPage.attributes}>
       <Container maxW='container.xl'>
         <HeroPage pagedata={resourcesPage} />
         <Box display='flex' flexDir={{ base: 'column', md: 'row' }}>

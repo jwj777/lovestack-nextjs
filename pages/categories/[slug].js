@@ -1,4 +1,4 @@
-import { Box, Text } from '@chakra-ui/react'
+import { Box } from '@chakra-ui/react'
 import React, { useState } from 'react'
 import CategoryFeatures from '../../components/category/category-features'
 import CompanyList from '../../components/company-lists/company-list'
@@ -142,7 +142,7 @@ export async function getStaticProps({ params }) {
     companyArray.push(companyFeatureSlug)
   })
 
-  
+
   return {
     props: { 
       companies, 
