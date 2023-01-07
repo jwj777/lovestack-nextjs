@@ -141,7 +141,6 @@ export async function getStaticProps({ params }) {
     companyArray.push(companyFeatureSlug)
   })
 
-  console.log(companyArray)
 
   return {
     props: { 

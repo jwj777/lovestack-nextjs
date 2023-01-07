@@ -75,6 +75,7 @@ export async function getStaticProps({ params }) {
   const resCatJson = await resCat.json();
   const categories = await resCatJson.data;
 
+
   // Check if company has categories
   let hasCategory = ''
   Object.keys(company.product_categories.data).length == 0 ? hasCategory = false : hasCategory = true

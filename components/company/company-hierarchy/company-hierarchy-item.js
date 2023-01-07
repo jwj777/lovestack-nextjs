@@ -1,32 +1,34 @@
 import React from "react";
 import { Box, Text, Link } from '@chakra-ui/react'
 import CompanyItemFeatures2 from "./company-item-features";
-import CompanyPlans from "../company-plans/company-plans";
-
-
 
 function CompanyHierarchyItem({ company, index }) {
   return(
 
     <Box 
-    key={company.companyName + '__' + index}
-    pt='8' pb='8'
-    borderTop='1px'
-    borderColor='black'
-    _last={{ borderBottom: '1px' }}
-  >
+      key={company.companyName + '__' + index}
+      p='8'
+      pr='14'
+      mr='8'
+      borderRadius='0.6rem'
+      boxShadow='lg'
+      borderTop='1px'
+      borderColor='gray.50'
+    >
     <Box>
       <Box mb='2'>
-          <Link href={"/companies/" + company.slug}>
-            <Text 
-              fontSize={{ base: '1.6rem', md: '1.8rem' }}
-              fontWeight="600" 
-              mb='0'
-              _hover = {{ textDecoration: 'none' }}
-            >
-              {company.companyName}
-            </Text>
-          </Link>
+        <Link href={"/companies/" + company.slug}>
+          <Text 
+            fontSize={{ base: 'xl', md: 'xl' }}
+            fontWeight="600" 
+            mb='0'
+            color='blue.500'
+            _hover = {{ textDecoration: 'none' }}
+          >
+            {company.companyName}
+          </Text>
+        </Link>
+        <Text mb={{ base: '0', md: '0' }}><Text as='span' fontWeight='600'>Founded:</Text> {company.yearFounded}</Text>
       </Box>
       <CompanyItemFeatures2 company={company} />
     </Box>
