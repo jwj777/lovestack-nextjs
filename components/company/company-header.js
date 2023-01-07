@@ -1,5 +1,6 @@
 import React from "react";
-import { Heading, Image, Text, Box } from '@chakra-ui/react'
+import { Heading, Text, Box } from '@chakra-ui/react'
+import Image from 'next/image'
 import CompanyCategories from "./company-categories";
 import Rank from "../company-lists/rank";
 
@@ -8,28 +9,31 @@ const CompanyHeading = ({ company, hasCategory }) => {
 
     <Box 
       display="flex" 
-      alignItems="center" 
       justifyContent="flex-start" 
-      flexWrap={{ base: 'wrap', lg: 'nowrap' }}
       mb='8'
       mt={{ base: '10', md: '14' }}
     >
       { company.webScreenshot.data != null ?
+        <Box className='companyScreenshot' display={{ base: 'none', md: 'block' }}>
           <Image
-            width={{ base: '100%', lg: '200px' }}
+            display={{ base: 'none', md: 'block' }}
+            width='200px'
+            height='120px'
             alt={company.companyName + ' Website Homepage'}
             src={ company.webScreenshot.data[0].attributes.formats.small.url }
-            mb={{ base: '2rem', lg: '0' }}
-            boxShadow='md'
-            display={{ base: 'none', md: 'block' }}
-
-          /> :
+            // objectFit='cover'
+            // boxShadow='md'
+          />
+        </Box>   :
         null 
       }
       <Box ml={{ base: '0', lg: '2rem' }}>
-        <Heading as='h1' mb='2' fontSize={{ base: '3xl', lg: '4xl' }}>{company.companyName}</Heading>
-        <Text mb={{ base: '0', md: '0' }}><Text as='span' fontWeight='600'>Headquarters:</Text> {company.Headquarters}</Text>
-          <Rank rank={company.authorityRank} />
+        <Box>
+          <Heading as='h1' mb='1' fontSize={{ base: '3xl', lg: '4xl' }}>{company.companyName}</Heading>
+          <Text mb={{ base: '0', md: '0' }}><Text as='span' fontWeight='600'>Headquarters:</Text> {company.Headquarters}</Text>
+          <Text mb={{ base: '0', md: '0' }}><Text as='span' fontWeight='600'>Founded:</Text> {company.yearFounded}</Text>
+        </Box>
+        <Rank rank={company.authorityRank} />
       </Box>
     </Box>
 

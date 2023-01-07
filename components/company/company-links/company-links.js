@@ -17,7 +17,6 @@ function CompanyLinks({ company }) {
     >
       <CompanyLink company={company} icon={FaGlobe} url={'https://' + company.companyUrl} label={company.companyUrl}/>
       <CompanyLink company={company} icon={FaTwitter} url={'https://www.twitter.com/' + company.twitterHandle} label={'twitter.com/' + company.twitterHandle}/>
-      <Box>
       { company.integrationsPage ? 
       <CompanyLink 
         company={company} 
@@ -26,7 +25,6 @@ function CompanyLinks({ company }) {
         label={'Integrations'}
       /> : null
       }
-      </Box>
     </Box>
   )
 };

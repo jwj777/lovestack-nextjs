@@ -143,3 +143,14 @@ h2 {
 .companyListScreenshot img {
   border-radius: 0.2rem;
 }
+
+/* company screenshot image */
+
+.companyScreenshot {
+  box-shadow: 0 2px 10px -3px rgba(0, 0, 0, 0.18), 0 2px 5px -2px rgba(0, 0, 0, 0.1);
+  border-radius: 0.4rem;
+}
+
+.companyScreenshot img {
+  border-radius: 2rem;
+}

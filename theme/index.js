@@ -30,7 +30,7 @@ const theme = extendTheme({
         blue500: {
           bg: 'blue.500',
           color: 'white',
-          borderRadius: '100',
+          borderRadius: '10rem',
           _hover: {
             bg: 'blue.700',
           },
@@ -40,7 +40,17 @@ const theme = extendTheme({
           border: '2px',
           borderColor: 'blue.500',
           color: 'white',
-          borderRadius: '100',
+          borderRadius: '10rem',
+          _hover: {
+            bg: 'blue.500',
+          },
+        },
+        blueOutlineBc: {
+          bg: 'none',
+          border: '2px',
+          borderColor: 'blue.500',
+          color: 'blue',
+          borderRadius: '10rem',
           _hover: {
             bg: 'blue.500',
           },
@@ -50,6 +60,7 @@ const theme = extendTheme({
       defaultProps: {
         size: 'lg', // default is md
         variant: 'sm', // default is solid
+        borderRadius: '10rem'
       },
     },
   },
@@ -78,6 +89,7 @@ const theme = extendTheme({
   },
   colors: {
     gray: {
+      10: '#f6f6f6',
       50: '#f2f2f2',
       100: '#d3d5d5',
       200: '#bdc0c0',
@@ -114,7 +126,7 @@ const theme = extendTheme({
       900: '#001f40',
     },
     purple: {
-      50: '#edd6ee',  
+      50: '#f3e4f4',  
       100: '#e4c2e6',
       200: '#dbaddd', 
       300: '#d299d5',

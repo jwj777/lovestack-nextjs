@@ -18,7 +18,7 @@ function CompanyItemFeatures({ company }) {
       {company.featureNameArray.map((item, index) => {
         return ( 
         <Text key={index} fontSize={{ base: 'sm', md: 'md' }} fontWeight='500' mr={{ base: '0', md: '8' }} mb='2' ml='4'>
-          <Icon as={FaCaretRight} w={4} h={4} mr='0' pt='1' ml='-4'></Icon>
+          <Icon as={FaCaretRight} w={4} h={4} color='gray.200' mr='0' pt='1' ml='-4'></Icon>
           {item}
         </Text>
         )

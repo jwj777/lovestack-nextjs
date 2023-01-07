@@ -8,7 +8,7 @@ const CompanyPlan = ({ plan, index }) => {
       mr={{ base: '0', md: '6' }} 
       mb={{ base: '4', md: '0' }} 
       pt='4' pr='6' pb='6' pl='4' 
-      backgroundColor='gray.50'
+      backgroundColor='gray.10'
       width={{ base: '100%', md: 'auto' }}
       maxW={{ base: '100%', md: '240px' }}
       borderRadius='md'

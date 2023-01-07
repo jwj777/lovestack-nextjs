@@ -1,29 +1,38 @@
 import React from "react";
-import { Box, Text, Icon, Link } from '@chakra-ui/react'
+import { Box, Text, Icon } from '@chakra-ui/react'
 import { FaCaretRight } from "react-icons/fa";
-import SectionHeading from "../content/typography/section-headling";
 import SectionHeadingSm from "../content/typography/section-headling-sm";
 
 function CompanyFeaturesStructured({ features, company, companyFeatureObj }) {
   return (
-    <Box>
-      <Box mb='10' maxW='4xl'>  
+    <Box  mb='16'>
+      <Box maxW='6xl'>  
       <Box maxW={{ base: '300px', md: '100%' }}>
-        <SectionHeadingSm>{ company.features.data.length == 0 ? null : company.companyName + ' Software Categories and Features' }</SectionHeadingSm>
+        <SectionHeadingSm>{ company.features.data.length == 0 ? null : company.companyName + ' Categories and Features' }</SectionHeadingSm>
       </Box>  
-        <Box display='flex' flexWrap='wrap' mt='6'>
+        <Box display='flex' flexWrap='wrap' mt='6' alignItems='stretch' >
           {companyFeatureObj.map((item, index) => {
             return (
-              <Box mb='5' mr={{ base: '0', md: '16' }} key={index}>
-                <Link href={'/categories/' + item.categoryUrl} mr='2' textDecor='underline' fontWeight='600'>
-                  {item.category}
-                </Link>
-                <Box mt='2'>
+              <Box 
+                key={index}
+                mb='5' 
+                mr={{ base: '0', md: '6' }} 
+                width={{ base: '100%', md: 'auto' }}
+                backgroundColor='white' 
+                boxShadow={{ base: 'md', md: 'lg' }}
+                borderTop='1px'
+                borderColor='gray.50'
+                p='6' 
+                pr='8'
+                borderRadius='0.5rem'
+              >
+                <Text fontWeight='600' fontSize='1.1rem'>{item.category + ' Features'}</Text>
+                <Box mt='3'>
                   {
                     item.features.map((item, index) => {
                       return(
-                        <Text key={index}>
-                          <Icon as={FaCaretRight} w='4' h='4' mr='0' pt='1' color='blue.500'></Icon>
+                        <Text key={index} mb='2' display='flex' alignItems='center'>
+                          <Icon as={FaCaretRight} w='3' h='3' mr='1' color='blue.300'></Icon>
                           {item}
                         </Text>
                       )
