@@ -24,6 +24,7 @@ function CategoryItemSm({ item }) {
                 _hover={{ color: 'blue.500' }}
               >
                 <Link 
+                  href={'/categories/' + item.categorySlugChild}
                   py='0.9rem'
                   pr='8px'
                   display='block' 
