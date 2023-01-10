@@ -40,7 +40,6 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }) {
   const { slug } = params;
 
-
   // get stacks
   const res = await fetch(process.env.API_URL + `/api/stacks?filters[slug]=${slug}&populate[0]=stackName
   &populate[1]=stackDescription
@@ -53,7 +52,6 @@ export async function getStaticProps({ params }) {
   const res2 = await res.json();
   const stacks = await res2.data;
   
-
   return {
     props: { 
       stacks,

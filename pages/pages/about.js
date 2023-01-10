@@ -2,8 +2,6 @@ import Layout from '/components/layout/Layout'
 import HeroPage from '../../components/content/hero/hero-page';
 import BodyContent from '../../components/content/body-content';
 
-
-
 export default function Categories({ pagedata }) {
   return (
 
@@ -14,7 +12,6 @@ export default function Categories({ pagedata }) {
 
   );
 }
-
 
 export async function getStaticProps() {
 

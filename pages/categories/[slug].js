@@ -122,7 +122,6 @@ export async function getStaticProps({ params }) {
   companies.map((item, index) => {
     let companyFeatureSlug = item.attributes
     let companyFeatureName = item.attributes
-    console.log(item.attributes.companyPlan.length)
     let featuresSlugArray = []
     let featuresNameArray = []
     let featureAttr = item.attributes.features.data

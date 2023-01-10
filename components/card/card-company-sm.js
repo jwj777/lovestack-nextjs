@@ -1,11 +1,11 @@
 import React from "react";
 import { Box, Text } from '@chakra-ui/react'
 import CardCompanyLink from "./card-company-link";
-import Rank from "../company-lists/rank";
 import CompanyIcon from "../company/company-icon";
 import CardHeader from "./card-header";
 import CardBody from "./card-body";
 import CardRankSm from "./card-rank-sm";
+import styles from './card.module.css'
 
 function CardCompanySm({ company }) {
   return(
@@ -22,16 +22,17 @@ function CardCompanySm({ company }) {
         </CardHeader>
         <CardBody>
           <Box mb='3'>
-            <Text fontSize='sm' color='gray.500'>Categories:</Text>
+            <Text fontSize='sm' fontWeight='600'>Categories</Text>
             {
               company.product_categories.data.map((item, index) => {
                 return(
-                  <Text key={index} fontWeight='500'>{item.attributes.categoryName}</Text>
+                  <Text key={index} fontSize='sm' className={styles.cardSmCategories}>{item.attributes.categoryName}</Text>
                 )
               })
             }
           </Box>  
-          <Text><Text as='span' fontWeight='600'>Founded:</Text> {company.yearFounded}</Text>
+          <Text fontSize='sm'><Text as='span' fontSize='sm' fontWeight='600'>Founded:</Text> {company.yearFounded}</Text>
+          <Text fontSize='sm'><Text as='span' fontSize='sm' fontWeight='600'>Headquarters:</Text> {company.Headquarters}</Text>
         </CardBody>
       </CardCompanyLink>
     </Box>

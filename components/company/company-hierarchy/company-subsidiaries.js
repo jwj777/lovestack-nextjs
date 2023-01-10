@@ -12,7 +12,7 @@ function CompanySubsidiaries({ company, hasSubsidiary }) {
       <Box display='flex' flexWrap='wrap' mt='6' alignItems='stretch'>
         {company.subsidiaries.data.map((company, index) => {
           return (
-            <CardCompanySubsidiary company={company.attributes}></CardCompanySubsidiary>
+            <CardCompanySubsidiary key={index} company={company.attributes}></CardCompanySubsidiary>
           );
         })}
       </Box>

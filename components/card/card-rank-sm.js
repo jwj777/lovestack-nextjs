@@ -9,9 +9,9 @@ function CardRankSm({ rank }) {
       fontSize='md' 
       width='min-content'
     >
-      <Text alignSelf='flex-start' color='gray.600' mr='1'>stackRank:</Text> 
+      <Text alignSelf='flex-start' color='gray.600' fontSize='sm' mr='1'>stackRank:</Text> 
       { rank ?
-          <Text alignSelf='flex-start' color='blue.400' fontSize='0.96rem' fontWeight='600'>{rank.toFixed(2)}</Text> :
+          <Text alignSelf='flex-start' color='blue.400' fontSize='sm' fontWeight='600'>{rank.toFixed(2)}</Text> :
         null
       }
     </Box>

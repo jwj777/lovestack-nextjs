@@ -2,53 +2,45 @@ import React from "react";
 import { Box, Link, Text, Icon } from '@chakra-ui/react'
 import { HiArrowRight } from "react-icons/hi";
 import Overline from "../../content/typography/overline";
+import CardOutline from "../../card/card-outline";
+import CardHeader from "../../card/card-header";
+import CardHeaderOutline from "../../card/card-header-outline";
+import CardBody from "../../card/card-body";
 
 
 function CategoryItemSm({ item }) {
   return(
-      <Box key={item.slug} >
-        <Overline
-          fontSize='lg' 
-          fontWeight='600' 
-          minW={{base: 'auto', md: '264px'}}
-        >
-          {item.categoryNameParent}
-        </Overline>
-        <Box mr='8'>
+    <Box mr='6' mb='6' width={{ base: '100%', sm: 'auto' }}>
+    <CardOutline>
+        <CardHeaderOutline>
+          <Text fontSize='lg' fontWeight='600'>{item.categoryNameParent}</Text>
+        </CardHeaderOutline>
+        <CardBody padding={'sm'}>
           {item.childCategories.map((item, index) => {
             return(
               <Box 
-                display='flex' 
-                alignItems='center' 
-                justifyContent='space-between'
-                _last={{ borderBottom: '1px' }}
+                key={index}
+                borderTop='1px'
+                borderColor='gray.100'
+                width='100%'
+                _first={{ borderTop: '0' }}
+                _hover={{ color: 'blue.500' }}
               >
                 <Link 
-                  pt='4' pr='8' pb='4'
-                  pl={{ base: '0', md: '1rem' }}
+                  py='0.9rem'
+                  pr='8px'
                   display='block' 
-                  fontSize='sm'
-                  fontWeight='600'
-                  borderTop='1px'
-                  width='100%'
-                  minW='280px'
-                  _hover={{ background: 'blue.50' }}
-                  
+                  fontSize='0.9rem'
+                  fontWeight='500'
+                  minW='226px'
                 >
                   {item.categoryNameChild}
                 </Link>
-                <Icon 
-                  display={{ base: 'block', sm: 'block' }}
-                  position='relative' 
-                  right={{ base: '1rem', md: '2rem' }}
-                  as={HiArrowRight} 
-                  w='0.9rem' h='0.9rem'
-                >
-                </Icon>
               </Box>
             )
           })}
-        </Box>  
+        </CardBody>  
+      </CardOutline>
       </Box>
     )
 };

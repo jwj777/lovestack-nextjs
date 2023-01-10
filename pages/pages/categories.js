@@ -96,7 +96,6 @@ export async function getStaticProps() {
   // Creat variable to use in props
   const categoryObj = getChildCategories(parent_categories)
 
-
   // Sort Parent Categories
   categoryObj.sort((c1, c2) => {
     // handle null values and sort to bottom
@@ -119,12 +118,10 @@ export async function getStaticProps() {
     return 0
   })
 
-
   // Sort Child Categories
   categoryObj.map((parentCat, index) => {
     parentCat.childCategories.sort((a, b) => a.categoryNameChild.localeCompare(b.categoryNameChild))
   })
-
 
   return {
     props: { catPage, categories, parent_categories, categoryObj },

@@ -10,7 +10,7 @@ function Overline({ children }) {
       color='gray.600'
       mb={{ base: '0.5rem', md: '1rem' }}
       textTransform='uppercase'
-      letterSpacing='1px'
+      letterSpacing='1.4px'
     >{ children }</Text>
   )
 }

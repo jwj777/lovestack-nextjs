@@ -20,7 +20,6 @@ export default function Home({ homepage, categoryObj, companyArray }) {
             <Overline>Software Categories</Overline>
             <DisplayLong1 text={'Find best in class tools for data, segmentation, content and promotion.'}></DisplayLong1>
           </Box>
-          <CategoryList categoryObj={categoryObj}/>
           <CategoryListSm categoryObj={categoryObj}/>
         </Box>
       </Box>
@@ -57,8 +56,6 @@ export async function getStaticProps() {
   const parent_categories = resparentjson.data;
 
  
-
-
   // Sort Companies by Authority Rank
   companies.sort((c1, c2) => {
     // handle null values and sort to bottom
@@ -118,11 +115,8 @@ export async function getStaticProps() {
     return(parentObj)
   }
 
-
-
   // Creat variable to use in props
   const categoryObj = getChildCategories(parent_categories)
-
 
   // Sort Parent Categories
   categoryObj.sort((c1, c2) => {
@@ -140,13 +134,10 @@ export async function getStaticProps() {
     return 0
   })
 
-
   // Sort Child Categories
   categoryObj.map((parentCat, index) => {
     parentCat.childCategories.sort((a, b) => a.categoryNameChild.localeCompare(b.categoryNameChild))
   })
-
-
 
   // Transform companies object to make it easier to manage in JSX
   const companyArray = []
@@ -186,7 +177,6 @@ export async function getStaticProps() {
     return 0
   })
   
-
   return {
     props: { 
       homepage, 
