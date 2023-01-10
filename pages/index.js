@@ -4,6 +4,7 @@ import DisplayLong1 from '../components/content/typography/display-long';
 import CompanyListFeatured from '../components/company-lists/company-list-featured';
 import Overline from '../components/content/typography/overline';
 import LayoutHome from '../components/layout/layout-home';
+import CategoryListSm from '../components/category/category-sm/category-list-sm';
 
 export default function Home({ homepage, categoryObj, companyArray }) {
   return (
@@ -20,6 +21,7 @@ export default function Home({ homepage, categoryObj, companyArray }) {
             <DisplayLong1 text={'Find best in class tools for data, segmentation, content and promotion.'}></DisplayLong1>
           </Box>
           <CategoryList categoryObj={categoryObj}/>
+          <CategoryListSm categoryObj={categoryObj}/>
         </Box>
       </Box>
 
@@ -53,6 +55,8 @@ export async function getStaticProps() {
   const resparent = await fetch(`${process.env.API_URL}/api/product-categories?populate=*&filters[child_categories][slug][$notNull]=content`);
   const resparentjson = await resparent.json();
   const parent_categories = resparentjson.data;
+
+  companyArray.map
 
 
   // Sort Companies by Authority Rank
@@ -123,15 +127,9 @@ export async function getStaticProps() {
   // Sort Parent Categories
   categoryObj.sort((c1, c2) => {
     // handle null values and sort to bottom
-    if (c1.categoryWeightParent === null) {
-      return 1;
-    }
-    if (c2.categoryWeightParent === null) {
-      return -1;
-    }
-    if (c1.categoryWeightParent === c2.categoryWeightParent) {
-      return 0;
-    }
+    if (c1.categoryWeightParent === null) { return 1; }
+    if (c2.categoryWeightParent === null) { return -1; }
+    if (c1.categoryWeightParent === c2.categoryWeightParent) { return 0; }
     // compare non-null values
     if (c1.categoryWeightParent > c2.categoryWeightParent) {
       return 1 

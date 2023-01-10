@@ -5,6 +5,7 @@ import Rank from "../company-lists/rank";
 import CompanyIcon from "../company/company-icon";
 import CardHeader from "./card-header";
 import CardBody from "./card-body";
+import CardRankSm from "./card-rank-sm";
 
 function CardCompanySm({ company }) {
   return(
@@ -14,8 +15,8 @@ function CardCompanySm({ company }) {
           <Box display='flex' alignItems='center'>
             <CompanyIcon company={company} />
             <Box>
-              <Text fontSize='1.4rem' fontWeight='600' mb='-3px'>{company.companyName}</Text>
-              <Rank rank={company.authorityRank} />
+              <Text fontSize='1.2rem' fontWeight='600' mb='-1px'>{company.companyName}</Text>
+              <CardRankSm rank={company.authorityRank} />
             </Box>
           </Box>
         </CardHeader>
