@@ -56,7 +56,7 @@ export async function getStaticProps() {
   const resparentjson = await resparent.json();
   const parent_categories = resparentjson.data;
 
-  companyArray.map
+ 
 
 
   // Sort Companies by Authority Rank
