@@ -6,11 +6,11 @@ const CompanyPlan = ({ plan, index }) => {
   return (
     <Box 
       mr={{ base: '0', md: '6' }} 
-      mb={{ base: '4', md: '0' }} 
+      mb={{ base: '4', md: '6' }} 
       pt='4' pr='6' pb='6' pl='4' 
       backgroundColor='gray.10'
-      width={{ base: '100%', md: 'auto' }}
-      maxW={{ base: '100%', md: '240px' }}
+      width={{ base: '100%', sm: 'auto' }}
+      maxW={{ base: '100%', sm: '240px' }}
       borderRadius='md'
       boxShadow='md'
     >

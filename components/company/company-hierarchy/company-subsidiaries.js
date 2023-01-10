@@ -1,21 +1,18 @@
 import React from "react";
-import { Box, Heading, Text } from '@chakra-ui/react'
-import CompanyHierarchyItem from "./company-hierarchy-item";
-import Overline from "../../content/typography/overline";
+import { Box, Text } from '@chakra-ui/react'
 import SectionHeading from "../../content/typography/section-headling";
+import CardCompanySubsidiary from "../../card/card-company-subsidiary";
 
 function CompanySubsidiaries({ company, hasSubsidiary }) {
   return (
     hasSubsidiary ?
     <Box>  
-      <Overline text={'More From ' + company.companyName}></Overline>
-      <SectionHeading as='h2' fontWeight='600'>{company.companyName} Products and Subsidiaries</SectionHeading>
-      <Box display='flex' flexWrap='wrap' mt='6'>
+      <SectionHeading as='h2' fontWeight='600'>Subsidiaries</SectionHeading>
+      <Text fontSize='lg'>More products and services from the {company.companyName} marketing ecosystem.</Text>
+      <Box display='flex' flexWrap='wrap' mt='6' alignItems='stretch'>
         {company.subsidiaries.data.map((company, index) => {
           return (
-            <Box key={index + '__' + company.companyName} mb='8'>
-              <CompanyHierarchyItem company={company.attributes} index={index} />
-            </Box>
+            <CardCompanySubsidiary company={company.attributes}></CardCompanySubsidiary>
           );
         })}
       </Box>

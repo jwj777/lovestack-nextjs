@@ -60,8 +60,11 @@ export async function getStaticProps({ params }) {
     &populate[3]=subsidiaries
     &populate[4]=subsidiaries.features
     &populate[5]=subsidiaries.companyPlan
-    &populate[6]=webScreenshot
-    &populate[7]=companyPlan`);
+    &populate[6]=subsidiaries.companyIcon
+    &populate[7]=subsidiaries.rank
+    &populate[8]=subsidiaries.product_categories
+    &populate[9]=webScreenshot
+    &populate[10]=companyPlan`);
   let res2 = await res.json();
   let res3 = res2.data;
   const company = res3[0].attributes;
@@ -74,6 +77,8 @@ export async function getStaticProps({ params }) {
   const resCat = await fetch(process.env.API_URL + `/api/product-categories?filters[companies][slug][$eq]=${slug}&populate=*`);
   const resCatJson = await resCat.json();
   const categories = await resCatJson.data;
+
+  console.log(company.subsidiaries.data)
 
 
   // Check if company has categories

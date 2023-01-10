@@ -1,4 +1,17 @@
 import { extendTheme } from "@chakra-ui/react";
+// import Button from './components/button'
+// import styles from './styles'
+
+// const overrides = {
+//   styles,
+//   // Other foundational style overrides go here
+//   components: {
+//     Button,
+//     // Other components go here
+//   },
+// }
+
+// export default extendTheme(overrides)
 
 const theme = extendTheme({
   components: {
@@ -11,6 +24,12 @@ const theme = extendTheme({
       // 1. We can update the base styles
       baseStyle: {
         fontWeight: '500',
+      },
+      sizes: {
+        sm: {
+          pt: '16px',
+          pb: '16px'
+        },
       },
       variants: {
         gray50: {

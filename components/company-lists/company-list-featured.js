@@ -1,15 +1,20 @@
 import React from "react";
-import CompanyItem from "./company-item";
+import CardCompanySm from "../card/card-company-sm";
+import { Box } from "@chakra-ui/react";
 
 function CompanyListFeatured({ companyArray }) {
   return (  
-    companyArray.map((company, index) => {
-      if (company.featured == true) {
-          return (
-            <CompanyItem key={index} company={company} />
-          )
-      } 
-    })   
+    <Box display='flex' flexWrap='wrap'>
+      {
+        companyArray.map((company, index) => {
+          if (company.featured == true) {
+              return (
+                <CardCompanySm key={index} company={company}></CardCompanySm>
+              )
+          } 
+        })   
+      }
+      </Box>
   )
 }
 
