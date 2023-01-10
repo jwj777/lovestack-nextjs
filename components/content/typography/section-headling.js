@@ -11,7 +11,7 @@ function SectionHeading({ children }) {
       fontWeight='600'
       maxW='960px' 
       color='black'
-      mb='4'
+      mb='2'
     >{ children }</Text>
   )
 }

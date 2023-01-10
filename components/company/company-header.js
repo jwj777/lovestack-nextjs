@@ -10,7 +10,7 @@ const CompanyHeading = ({ company, hasCategory }) => {
     <Box 
       display="flex" 
       justifyContent="flex-start" 
-      mb='10'
+      mb={{ base: '6', md: '10' }}
       mt={{ base: '10', md: '16' }}
     >
       { company.webScreenshot.data != null ?

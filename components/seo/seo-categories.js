@@ -6,7 +6,7 @@ const SeoCategories = ({ pagedata }) => {
 
   <div>
     <Head>
-      <title>{pagedata ? 'Best ' + pagedata[0].attributes.categoryName + ' Software | Ranked by demand.stack'  : null}</title>
+      <title>{pagedata ? 'Best ' + pagedata[0].attributes.categoryName + ' Software | demand.stack'  : null}</title>
       {/* <title>Test</title> */}
       <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       <meta name="description" content={pagedata[0].attributes.metaDescription ? pagedata[0].attributes.metaDescription : null} />
