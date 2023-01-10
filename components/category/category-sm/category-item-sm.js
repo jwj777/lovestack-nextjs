@@ -1,11 +1,8 @@
 import React from "react";
-import { Box, Link, Text, Icon } from '@chakra-ui/react'
-import { HiArrowRight } from "react-icons/hi";
-import Overline from "../../content/typography/overline";
+import { Box, Link, Text } from '@chakra-ui/react'
 import CardOutline from "../../card/card-outline";
-import CardHeader from "../../card/card-header";
 import CardHeaderOutline from "../../card/card-header-outline";
-import CardBody from "../../card/card-body";
+import CardBodyPySm from "../../card/card-body-py-sm";
 
 
 function CategoryItemSm({ item }) {
@@ -15,7 +12,7 @@ function CategoryItemSm({ item }) {
         <CardHeaderOutline>
           <Text fontSize='lg' fontWeight='600'>{item.categoryNameParent}</Text>
         </CardHeaderOutline>
-        <CardBody padding={'sm'}>
+        <CardBodyPySm padding={'sm'}>
           {item.childCategories.map((item, index) => {
             return(
               <Box 
@@ -39,7 +36,7 @@ function CategoryItemSm({ item }) {
               </Box>
             )
           })}
-        </CardBody>  
+        </CardBodyPySm>  
       </CardOutline>
       </Box>
     )
